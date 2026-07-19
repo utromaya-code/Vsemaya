@@ -651,59 +651,6 @@ ul, ol {
 }
 
 /* -------------------------------------------------------------------------
-   Соцдоказательство
-   ------------------------------------------------------------------------- */
-.proof-strip {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8em;
-  margin: 1.5em 0 2.5em;
-}
-@media (min-width: 700px) {
-  .proof-strip {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-.proof-photo {
-  aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
-  background: linear-gradient(160deg, var(--color-stone), var(--color-graphite-2));
-  border: 1px dashed rgba(246, 241, 231, 0.25);
-  display: flex;
-  align-items: flex-end;
-  padding: 0.8em;
-}
-.proof-photo span {
-  color: rgba(246, 241, 231, 0.55);
-  font-size: 0.78rem;
-  font-style: italic;
-}
-.reviews-grid {
-  display: grid;
-  gap: 1.4em;
-}
-@media (min-width: 760px) {
-  .reviews-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.review-card {
-  padding: 1.4em;
-  border-radius: var(--radius);
-  background: var(--color-graphite-2);
-}
-.review-card--placeholder {
-  border: 1px dashed rgba(246, 241, 231, 0.25);
-}
-.review-card__field {
-  font-size: 0.9rem;
-  color: var(--color-snow-dim);
-}
-.review-card__field em {
-  color: rgba(246, 241, 231, 0.45);
-}
-
-/* -------------------------------------------------------------------------
    Команда
    ------------------------------------------------------------------------- */
 .team-card {
@@ -722,6 +669,9 @@ ul, ol {
   .team-card--reverse > * {
     direction: ltr;
   }
+  .team-card--text-only {
+    grid-template-columns: 1fr;
+  }
 }
 .team-card picture,
 .team-card img {
@@ -730,20 +680,8 @@ ul, ol {
   width: 100%;
   max-width: 220px;
 }
-.team-card__placeholder-photo {
-  width: 100%;
-  max-width: 220px;
-  aspect-ratio: 1;
-  border-radius: var(--radius);
-  background: linear-gradient(160deg, var(--color-stone), var(--color-graphite-2));
-  border: 1px dashed rgba(246, 241, 231, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 0.8rem;
-  color: rgba(246, 241, 231, 0.5);
-  padding: 1em;
+.team-card--text-only .team-card__text {
+  max-width: 60ch;
 }
 .team-card__text h3 {
   font-size: 1.3rem;
