@@ -291,6 +291,19 @@ ul, ol {
   padding-left: 1.2em;
   font-style: italic;
 }
+.prose--spirit {
+  border-left: 2px solid var(--color-saffron);
+  padding-left: 1.2em;
+  margin-top: 2.5em;
+}
+.prose--spirit h3 {
+  color: var(--color-saffron);
+  font-size: 1.15rem;
+}
+.prose--spirit p:last-child {
+  font-style: italic;
+  color: var(--color-snow-dim);
+}
 
 /* -------------------------------------------------------------------------
    Маршрут за 30 секунд
