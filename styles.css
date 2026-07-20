@@ -669,9 +669,6 @@ ul, ol {
   .team-card--reverse > * {
     direction: ltr;
   }
-  .team-card--text-only {
-    grid-template-columns: 1fr;
-  }
 }
 .team-card picture,
 .team-card img {
@@ -679,9 +676,6 @@ ul, ol {
   overflow: hidden;
   width: 100%;
   max-width: 220px;
-}
-.team-card--text-only .team-card__text {
-  max-width: 60ch;
 }
 .team-card__text h3 {
   font-size: 1.3rem;
