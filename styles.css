@@ -190,13 +190,26 @@ ul, ol {
   align-items: flex-end;
   overflow: hidden;
 }
-.hero__bg,
-.hero__bg img {
+.hero__bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+.hero__bg img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  animation: heroKenBurns 26s ease-out forwards;
+}
+@keyframes heroKenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
 }
 .hero__scrim {
   position: absolute;
@@ -815,13 +828,36 @@ ul, ol {
    Финальный CTA
    ------------------------------------------------------------------------- */
 .section--final-cta {
+  position: relative;
   text-align: center;
-  padding-bottom: 7em;
+  padding: 6em 1.25em 7em;
+  overflow: hidden;
+  isolation: isolate;
+}
+.final-cta__bg,
+.final-cta__bg img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+.final-cta__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(12, 15, 19, 0.88) 0%, rgba(12, 15, 19, 0.65) 40%, rgba(12, 15, 19, 0.92) 100%);
+}
+.final-cta__content {
+  max-width: var(--max-width);
+  margin: 0 auto;
 }
 .final-cta__title {
   font-size: clamp(1.7rem, 4vw, 2.6rem);
   max-width: 16ch;
   margin: 0 auto 0.9em;
+  color: var(--color-snow);
 }
 .final-cta__contacts {
   margin-top: 1.4em;

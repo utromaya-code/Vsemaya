@@ -98,6 +98,32 @@ function applyConfig() {
 }
 
 /* ---------------------------------------------------------------------
+   Линия высотного профиля «прорисовывается» при появлении в зоне видимости
+   --------------------------------------------------------------------- */
+function animateLineDraw(line, container) {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced || !('IntersectionObserver' in window)) return;
+
+  const length = line.getTotalLength();
+  line.style.strokeDasharray = String(length);
+  line.style.strokeDashoffset = String(length);
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          line.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1)';
+          line.style.strokeDashoffset = '0';
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(container);
+}
+
+/* ---------------------------------------------------------------------
    Высотный профиль: рендерим SVG из ROUTE_PROFILE
    --------------------------------------------------------------------- */
 function renderAltitudeProfile() {
@@ -234,6 +260,7 @@ function renderAltitudeProfile() {
 
   container.innerHTML = '';
   container.appendChild(svg);
+  animateLineDraw(line, container);
 
   // легенда природных зон
   const legend = document.createElement('div');

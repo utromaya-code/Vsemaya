@@ -19,6 +19,8 @@ SIZES = {
     "sunset-peaks.jpg": (1920, 900),
     "ilya.jpg": (800, 480),
     "andrey.jpg": (800, 480),
+    "golden-sunrise.jpg": (1920, 900),
+    "burning-mountain.jpg": (1920, 900),
 }
 
 for fname, (w_desktop, w_mobile) in SIZES.items():

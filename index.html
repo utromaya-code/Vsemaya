@@ -153,6 +153,16 @@
   </div>
 </section>
 
+<figure class="photo-pause photo-pause--sunrise" data-reveal>
+  <picture>
+    <source type="image/webp" media="(max-width: 640px)" srcset="images/golden-sunrise-m.webp">
+    <source type="image/webp" srcset="images/golden-sunrise.webp">
+    <source media="(max-width: 640px)" srcset="images/golden-sunrise-m.jpg">
+    <img src="images/golden-sunrise.jpg" alt="Рассвет золотит вершину Канченджанги над облаками" width="1920" height="1272" loading="lazy" decoding="async">
+  </picture>
+  <figcaption>Первый свет касается вершины раньше, чем долину. Ради таких минут стоит выходить затемно.</figcaption>
+</figure>
+
 <!-- 4. ПЯТЬ СОКРОВИЩ ЭТОГО ПУТИ -->
 <section class="section section--treasures" id="treasures" data-reveal>
   <h2 class="section__title">Пять сокровищ этого пути</h2>
@@ -323,7 +333,7 @@
       <source type="image/webp" media="(max-width: 640px)" srcset="images/sunset-peaks-m.webp">
       <source type="image/webp" srcset="images/sunset-peaks.webp">
       <source media="(max-width: 640px)" srcset="images/sunset-peaks-m.jpg">
-      <img src="images/sunset-peaks.jpg" alt="Гималайские вершины на закате, вид с высокого перевала" width="720" height="480" loading="lazy" decoding="async">
+      <img src="images/sunset-peaks.jpg" alt="Гималайские вершины в тёплом свете заката, вид с высокого перевала" width="1920" height="1449" loading="lazy" decoding="async">
     </picture>
     <div class="chapter__text">
       <p class="chapter__num">Глава IV</p>
@@ -575,14 +585,23 @@
 </section>
 
 <!-- 16. ФИНАЛЬНЫЙ CTA -->
-<section class="section section--final-cta" id="final-cta" data-reveal>
-  <h2 class="final-cta__title">Гора уже стоит и ждёт. Дело за вами.</h2>
-  <a class="btn btn--primary btn--large" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
-  <p class="final-cta__contacts">
-    Андрей Баранов ·
-    <a data-cta="telegram" href="#" target="_blank" rel="noopener">Telegram t.me/vsemaya</a> ·
-    <a data-cta="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
-  </p>
+<section class="section--final-cta" id="final-cta" data-reveal>
+  <picture class="final-cta__bg">
+    <source type="image/webp" media="(max-width: 640px)" srcset="images/burning-mountain-m.webp">
+    <source type="image/webp" srcset="images/burning-mountain.webp">
+    <source media="(max-width: 640px)" srcset="images/burning-mountain-m.jpg">
+    <img src="images/burning-mountain.jpg" alt="Канченджанга в огненном свете заката" width="1920" height="1275" loading="lazy" decoding="async">
+  </picture>
+  <div class="final-cta__scrim"></div>
+  <div class="final-cta__content">
+    <h2 class="final-cta__title">Гора уже стоит и ждёт. Дело за вами.</h2>
+    <a class="btn btn--primary btn--large" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
+    <p class="final-cta__contacts">
+      Андрей Баранов ·
+      <a data-cta="telegram" href="#" target="_blank" rel="noopener">Telegram t.me/vsemaya</a> ·
+      <a data-cta="whatsapp" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </p>
+  </div>
 </section>
 
 </main>
