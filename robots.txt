@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://utromaya-code.github.io/Vsemaya/sitemap.xml
+Sitemap: https://kanchenjunga.ru/sitemap.xml
