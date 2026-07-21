@@ -21,6 +21,16 @@ SIZES = {
     "andrey.jpg": (800, 480),
     "golden-sunrise.jpg": (1920, 900),
     "burning-mountain.jpg": (1920, 900),
+    "sunrise-clouds.jpg": (1600, 800),
+    "blue-sheep.jpg": (1600, 800),
+    "lodge-village.jpg": (1600, 800),
+    "vivid-massif.jpg": (1920, 900),
+    "hilltown-gompa.jpg": (1600, 800),
+    "gompa-flags.jpg": (1000, 700),
+    "group-prayerflags.jpg": (900, 500),
+    "group-ebc.jpg": (900, 500),
+    "group-valley.jpg": (900, 500),
+    "group-chorten.jpg": (900, 500),
 }
 
 for fname, (w_desktop, w_mobile) in SIZES.items():
