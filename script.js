@@ -69,12 +69,12 @@ const ZONE_LABELS = {
 };
 
 const ZONE_COLORS = {
-  tea: '#5a6e4f',
-  rhodo: '#9d3a49',
-  conifer: '#39493f',
-  moraine: '#7c8894',
-  pass: '#0f172a',
-  forest: '#465c46',
+  tea: '#8ba876',
+  rhodo: '#c65a6c',
+  conifer: '#6f8a70',
+  moraine: '#9aa5b0',
+  pass: '#8fa3c4',
+  forest: '#7a9a7c',
   lowland: '#d97706',
 };
 
@@ -122,10 +122,10 @@ function renderAltitudeChart() {
   const labels = ROUTE_PROFILE.map((p) => 'Д' + p.day);
   const altData = ROUTE_PROFILE.map((p) => p.alt);
   const peakData = ROUTE_PROFILE.map((p) => p.peakAlt || null);
-  const pointColors = ROUTE_PROFILE.map((p) => (p.accl ? '#9d3a49' : '#0f172a'));
+  const pointColors = ROUTE_PROFILE.map((p) => (p.accl ? '#c65a6c' : '#cbd3dc'));
   const pointRadii = ROUTE_PROFILE.map((p) => (p.accl ? 6 : 4));
   const peakRadii = ROUTE_PROFILE.map((p) => (p.peakAlt ? (p.isMax ? 7 : 5) : 0));
-  const peakColors = ROUTE_PROFILE.map((p) => (p.isMax ? '#9d3a49' : '#d97706'));
+  const peakColors = ROUTE_PROFILE.map((p) => (p.isMax ? '#c65a6c' : '#d97706'));
 
   const zoneBandsPlugin = {
     id: 'zoneBands',
@@ -141,7 +141,7 @@ function renderAltitudeChart() {
           const x0 = zoneStart === 0 ? chartArea.left : (xScale.getPixelForValue(zoneStart - 1) + xScale.getPixelForValue(zoneStart)) / 2;
           const x1 = i === n ? chartArea.right : (xScale.getPixelForValue(i - 1) + xScale.getPixelForValue(i)) / 2;
           ctx.fillStyle = ZONE_COLORS[ROUTE_PROFILE[zoneStart].zone];
-          ctx.globalAlpha = 0.08;
+          ctx.globalAlpha = 0.14;
           ctx.fillRect(x0, chartArea.top, x1 - x0, chartArea.bottom - chartArea.top);
           zoneStart = i;
         }
@@ -218,11 +218,11 @@ function renderAltitudeChart() {
         y: {
           suggestedMin: 0,
           suggestedMax: 5400,
-          ticks: { callback: (v) => v + ' м', color: '#64748b', font: { family: 'Inter', size: 11 } },
-          grid: { color: 'rgba(30,41,59,0.08)' },
+          ticks: { callback: (v) => v + ' м', color: '#93a0b0', font: { family: 'Inter', size: 11 } },
+          grid: { color: 'rgba(255,255,255,0.08)' },
         },
         x: {
-          ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } },
+          ticks: { color: '#93a0b0', font: { family: 'Inter', size: 11 } },
           grid: { display: false },
         },
       },
@@ -288,18 +288,36 @@ function initDayAccordion() {
    --------------------------------------------------------------------- */
 function initMobileBar() {
   const bar = document.getElementById('mobile-bar');
+  const hero = document.getElementById('hero');
   const finalCta = document.getElementById('final-cta');
-  if (!bar || !finalCta) return;
+  if (!bar || !hero || !finalCta) return;
 
-  const observer = new IntersectionObserver(
+  const state = { hero: true, finalCta: false };
+  const sync = () => {
+    bar.classList.toggle('mobile-bar--hidden', state.hero || state.finalCta);
+  };
+
+  const heroObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        bar.classList.toggle('mobile-bar--hidden', entry.isIntersecting);
+        state.hero = entry.isIntersecting;
+        sync();
       });
     },
     { threshold: 0.15 }
   );
-  observer.observe(finalCta);
+  heroObserver.observe(hero);
+
+  const finalCtaObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        state.finalCta = entry.isIntersecting;
+        sync();
+      });
+    },
+    { threshold: 0.15 }
+  );
+  finalCtaObserver.observe(finalCta);
 }
 
 /* ---------------------------------------------------------------------

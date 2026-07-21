@@ -1,20 +1,20 @@
 /* =========================================================================
-   Пять сокровищ снегов. Трек к Канченджанге — дизайн-система (light редизайн)
-   Снежно-серый + графит + золотой рассвет + гималайский navy.
+   Пять сокровищ снегов. Трек к Канченджанге — дизайн-система (dark редизайн)
+   Графит + пергамент + золотой рассвет + гималайский navy.
    Journal editorial: серриф (Cormorant Garamond) + гротеск (Inter).
    ========================================================================= */
 
 :root {
-  --color-paper: #faf9f6;
-  --color-paper-2: #ffffff;
-  --color-ink: #1e293b;
-  --color-stone: #64748b;
+  --color-paper: #14181f;
+  --color-paper-2: #1c212b;
+  --color-ink: #d9d5cb;
+  --color-heading: #f4f0e6;
+  --color-stone: #93a0b0;
   --color-navy: #0f172a;
   --color-gold: #d97706;
-  --color-gold-dim: #b45f04;
-  --color-rhodo: #9d3a49;
-  --color-line: rgba(30, 41, 59, 0.12);
-  --color-line-dark: rgba(250, 249, 246, 0.18);
+  --color-gold-dim: #f0a83c;
+  --color-rhodo: #c65a6c;
+  --color-line: rgba(255, 255, 255, 0.12);
 
   --font-display: 'Cormorant Garamond', 'Noto Serif Display', serif;
   --font-text: 'Inter', 'Manrope', sans-serif;
@@ -71,7 +71,7 @@ h1, h2, h3 {
   font-weight: 600;
   line-height: 1.15;
   margin: 0 0 0.5em;
-  color: var(--color-navy);
+  color: var(--color-heading);
 }
 
 p {
@@ -129,7 +129,7 @@ ul, ol {
 }
 .btn--ghost {
   background: transparent;
-  color: var(--color-navy);
+  color: var(--color-heading);
   border: 1px solid var(--color-line);
 }
 .btn--ghost:hover {
@@ -209,21 +209,6 @@ ul, ol {
     display: flex;
   }
 }
-.site-header__cta {
-  background: var(--color-gold);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
-  padding: 0.6em 1.2em;
-  border-radius: var(--radius);
-  text-decoration: none;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.site-header__cta:hover {
-  background: var(--color-gold-dim);
-}
-
 /* -------------------------------------------------------------------------
    Мобильная фиксированная панель
    ------------------------------------------------------------------------- */
@@ -494,7 +479,7 @@ ul, ol {
   display: block;
   font-family: var(--font-display);
   font-size: 1.4rem;
-  color: var(--color-navy);
+  color: var(--color-heading);
 }
 .fact span {
   color: var(--color-stone);
@@ -824,7 +809,7 @@ ul, ol {
 .day-card__head strong {
   font-family: var(--font-display);
   font-size: 1.05rem;
-  color: var(--color-navy);
+  color: var(--color-heading);
 }
 .day-card__head span {
   color: var(--color-stone);
@@ -929,7 +914,7 @@ ul, ol {
 .team-card__quote {
   margin-top: 0.6em;
   font-style: italic;
-  color: var(--color-navy);
+  color: var(--color-heading);
   border-left: 2px solid var(--color-gold);
   padding-left: 0.9em;
 }
