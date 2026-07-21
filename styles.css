@@ -265,7 +265,7 @@ ul, ol {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  justify-content: flex-end;
   overflow: hidden;
   padding-top: var(--header-h);
 }
@@ -319,70 +319,58 @@ ul, ol {
   margin-bottom: 1.2em;
   color: #fff;
 }
-.hero__fine {
-  font-size: 0.85rem;
-  color: rgba(250, 249, 246, 0.6);
-  max-width: 40ch;
-}
 @media (min-width: 900px) {
-  .hero {
-    flex-direction: row;
-  }
   .hero__content {
     padding-bottom: 4em;
   }
 }
 
-/* Плавающий виджет предложения */
-.hero-widget {
+/* Карточка предложения: даты / цена / места — отдельным блоком под хиро */
+.offer-band {
   position: relative;
-  z-index: 2;
-  margin: 1.6em 1.25em 0;
-  max-width: 22em;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(250, 249, 246, 0.16);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg);
-  padding: 1.1em 1.3em;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  z-index: 5;
+  padding: 0 1.25em;
+  margin-top: -3.2em;
 }
-@media (min-width: 900px) {
-  .hero-widget {
-    position: absolute;
-    right: 2.5em;
-    bottom: 4em;
-    margin: 0;
+.offer-band__card {
+  max-width: 52em;
+  margin: 0 auto;
+  background: var(--color-paper-2);
+  border: 1px solid rgba(217, 119, 6, 0.45);
+  border-top: 3px solid var(--color-gold);
+  border-radius: var(--radius-lg);
+  padding: 1.5em 1.8em;
+  display: grid;
+  gap: 1.2em;
+  text-align: center;
+}
+@media (min-width: 700px) {
+  .offer-band__card {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
   }
 }
-.hero-widget__row {
+.offer-band__item {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1em;
+  flex-direction: column;
+  gap: 0.25em;
 }
-.hero-widget__label {
+.offer-band__label {
   font-size: 0.78rem;
-  color: rgba(250, 249, 246, 0.6);
+  color: var(--color-stone);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
-.hero-widget__value {
-  color: #fff;
+.offer-band__value {
+  color: var(--color-heading);
   font-weight: 600;
-  font-size: 0.95rem;
-  text-align: right;
+  font-size: 1.05rem;
 }
-.hero-widget__price {
+.offer-band__price {
   font-family: var(--font-display);
-  font-size: 1.6rem;
-  color: var(--color-gold);
-}
-.hero-widget__spots {
-  font-size: 0.82rem;
-  color: rgba(250, 249, 246, 0.75);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--color-gold-dim);
 }
 
 /* -------------------------------------------------------------------------

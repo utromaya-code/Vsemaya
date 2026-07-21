@@ -136,20 +136,26 @@
     <p class="hero__subtitle">Трек к северному базовому лагерю третьей вершины мира. 16 дней, две гималайские долины, цветущие леса и перевал Селе Ла. Максимальная высота 5143 м. Маленькая группа. Без альпинизма, но с настоящей физической нагрузкой.</p>
     <p class="hero__line"><span data-cfg="dates"></span> · с Ильей Бариновым и Андреем Барановым</p>
     <a class="btn btn--primary" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
-    <p class="hero__fine">Ответим честно, подойдёт ли вам этот маршрут. Без обязательств и навязчивых продаж.</p>
-  </div>
-  <div class="hero-widget">
-    <div class="hero-widget__row">
-      <span class="hero-widget__label">Даты</span>
-      <span class="hero-widget__value" data-cfg="dates"></span>
-    </div>
-    <div class="hero-widget__row">
-      <span class="hero-widget__label">Цена</span>
-      <span class="hero-widget__price">от $<span data-cfg="priceEarly"></span></span>
-    </div>
-    <p class="hero-widget__spots">Осталось <span data-cfg="spotsLeft"></span> мест по ранней цене</p>
   </div>
 </section>
+
+<!-- 1a. ДАТЫ / ЦЕНА / МЕСТА -->
+<div class="offer-band">
+  <div class="offer-band__card">
+    <div class="offer-band__item">
+      <span class="offer-band__label">Даты</span>
+      <span class="offer-band__value" data-cfg="dates"></span>
+    </div>
+    <div class="offer-band__item">
+      <span class="offer-band__label">Цена</span>
+      <span class="offer-band__price">от $<span data-cfg="priceEarly"></span></span>
+    </div>
+    <div class="offer-band__item">
+      <span class="offer-band__label">Места</span>
+      <span class="offer-band__value">осталось <span data-cfg="spotsLeft"></span> по ранней цене</span>
+    </div>
+  </div>
+</div>
 
 <!-- 2. МАРШРУТ ЗА 30 СЕКУНД -->
 <section class="section section--facts" id="facts">
@@ -256,6 +262,12 @@
       </div>
       <div class="swiper-slide">
         <article class="treasure-card">
+          <picture>
+            <source type="image/webp" media="(max-width: 640px)" srcset="images/morning-practice-m.webp">
+            <source type="image/webp" srcset="images/morning-practice.webp">
+            <source media="(max-width: 640px)" srcset="images/morning-practice-m.jpg">
+            <img src="images/morning-practice.jpg" alt="Группа на утренней практике на рассвете, руки подняты к солнцу над гималайской долиной" width="1280" height="960" loading="lazy" decoding="async">
+          </picture>
           <div class="treasure-card__body">
             <h3>Состояние</h3>
             <p>Мягкие утренние практики, вечера у печки, почти полное отсутствие связи. Две недели, когда внимание принадлежит вам.</p>
@@ -663,8 +675,6 @@
       <img src="images/group-chorten.jpg" alt="Группа у чортена на фоне снежных вершин" width="900" height="1200" loading="lazy" decoding="async">
     </picture>
   </div>
-
-  <p class="section__lead">Отзывы участников добавим по мере поступления.</p>
 </section>
 
 <!-- 10. КОМАНДА -->
