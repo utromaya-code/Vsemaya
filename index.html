@@ -18,13 +18,16 @@
 <meta property="og:url" content="https://kanchenjunga.ru/">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%2312161c'/%3E%3Cpath d='M2 24 L11 10 L15 16 L20 6 L30 24 Z' fill='%23d99a4d'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%230f172a'/%3E%3Cpath d='M2 24 L11 10 L15 16 L20 6 L30 24 Z' fill='%23d97706'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;0,7..72,700;1,7..72,500&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
 <link rel="preload" as="image" href="images/hero-pangpema.webp" imagesrcset="images/hero-pangpema-m.webp 900w, images/hero-pangpema.webp 1920w" type="image/webp">
 
@@ -97,6 +100,21 @@
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
 
+<header class="site-header" id="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="#hero">Канченджанга</a>
+    <ul class="site-header__nav">
+      <li><a href="#facts">Маршрут</a></li>
+      <li><a href="#treasures">Сокровища</a></li>
+      <li><a href="#chapters">Главы пути</a></li>
+      <li><a href="#team">Команда</a></li>
+      <li><a href="#price">Цена</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="site-header__cta" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
+  </div>
+</header>
+
 <div id="mobile-bar" class="mobile-bar">
   <span class="mobile-bar__info"><span data-cfg="dates"></span> · от $<span data-cfg="priceEarly"></span></span>
   <a class="mobile-bar__cta" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
@@ -110,7 +128,7 @@
     <source type="image/webp" media="(max-width: 640px)" srcset="images/hero-pangpema-m.webp">
     <source type="image/webp" srcset="images/hero-pangpema.webp">
     <source media="(max-width: 640px)" srcset="images/hero-pangpema-m.jpg">
-    <img src="images/hero-pangpema.jpg" alt="Северная стена Канченджанги над ледником, вид от Пангпемы" width="1920" height="1079" loading="eager" fetchpriority="high" decoding="async">
+    <img src="images/hero-pangpema.jpg" alt="Северная стена Канченджанги над ледником, вид от Пангпемы" width="1920" height="1079" loading="eager" fetchpriority="high" decoding="async" data-parallax data-parallax-speed="0.25">
   </picture>
   <div class="hero__scrim"></div>
   <div class="hero__content">
@@ -119,23 +137,34 @@
     <p class="hero__subtitle">Трек к северному базовому лагерю третьей вершины мира. 16 дней, две гималайские долины, цветущие леса и перевал Селе Ла. Максимальная высота 5143 м. Маленькая группа. Без альпинизма, но с настоящей физической нагрузкой.</p>
     <p class="hero__line"><span data-cfg="dates"></span> · с Ильей Бариновым и Андреем Барановым</p>
     <a class="btn btn--primary" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
-    <p class="hero__price">Первые 5 мест $<span data-cfg="priceEarly"></span>, далее $<span data-cfg="priceRegular"></span></p>
     <p class="hero__fine">Ответим честно, подойдёт ли вам этот маршрут. Без обязательств и навязчивых продаж.</p>
+  </div>
+  <div class="hero-widget">
+    <div class="hero-widget__row">
+      <span class="hero-widget__label">Даты</span>
+      <span class="hero-widget__value" data-cfg="dates"></span>
+    </div>
+    <div class="hero-widget__row">
+      <span class="hero-widget__label">Цена</span>
+      <span class="hero-widget__price">от $<span data-cfg="priceEarly"></span></span>
+    </div>
+    <p class="hero-widget__spots">Осталось <span data-cfg="spotsLeft"></span> мест по ранней цене</p>
+    <a class="btn btn--primary" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
   </div>
 </section>
 
 <!-- 2. МАРШРУТ ЗА 30 СЕКУНД -->
-<section class="section section--facts" id="facts" data-reveal>
+<section class="section section--facts" id="facts">
   <h2 class="section__title">Канченджанга в цифрах</h2>
   <div class="facts-grid">
-    <div class="fact"><strong>5143 м</strong><span>высшая точка маршрута (Пангпема)</span></div>
-    <div class="fact"><strong>16 дней</strong><span>вся программа</span></div>
-    <div class="fact"><strong>12 дней</strong><span>ходовых</span></div>
-    <div class="fact"><strong>4–9 часов</strong><span>продолжительность переходов</span></div>
-    <div class="fact"><strong>2 долины</strong><span>и высокий перевал Селе Ла</span></div>
-    <div class="fact"><strong>Лоджи</strong><span>портеры, у вас только дневной рюкзак</span></div>
-    <div class="fact"><strong>Доступная</strong><span>без альпинистского опыта и спецподготовки</span></div>
-    <div class="fact"><strong>15 человек</strong><span>максимум в группе</span></div>
+    <div class="fact" data-aos="fade-up"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19l6-10 4 6 2-3 6 7H3z"/><circle cx="17" cy="6" r="1.4"/></svg><strong>5143 м</strong><span>высшая точка маршрута (Пангпема)</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="50"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><strong>16 дней</strong><span>вся программа</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="100"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20c2-4 3-7 3-9a3 3 0 116 0c0 3-3 5-3 9M14 20c1-3 2-5 2-7a2.4 2.4 0 114.8 0c0 2-1.8 3.5-1.8 7"/></svg><strong>12 дней</strong><span>ходовых</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="150"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><strong>4–9 часов</strong><span>продолжительность переходов</span></div>
+    <div class="fact" data-aos="fade-up"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 18l5-9 3 4 4-8 8 13H2z"/></svg><strong>2 долины</strong><span>и высокий перевал Селе Ла</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="50"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><strong>Лоджи</strong><span>портеры, у вас только дневной рюкзак</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="100"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg><strong>Доступная</strong><span>без альпинистского опыта и спецподготовки</span></div>
+    <div class="fact" data-aos="fade-up" data-aos-delay="150"><svg class="fact__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.2c2.3.4 3.9 2.4 3.9 4.8"/></svg><strong>15 человек</strong><span>максимум в группе</span></div>
   </div>
 
   <div class="profile-block">
@@ -145,8 +174,8 @@
 </section>
 
 <!-- 3. ПОЧЕМУ КАНЧЕНДЖАНГА -->
-<section class="section section--intro" id="why" data-reveal>
-  <div class="prose">
+<section class="section section--intro" id="why">
+  <div class="prose" data-aos="fade-up">
     <p>Есть Гималаи, где на тропе очереди, кофейни и вай-фай в лоджах. И есть восточный Непал, куда до сих пор нужен специальный пермит и где за день пути можно встретить только караван яков.</p>
     <p>Мы идём к Канченджанге: 8586 метров, третья вершина мира. До середины девятнадцатого века её считали самой высокой горой планеты, а для путешественников регион открыли только в 1988 году. Он остался таким, каким был: без толп, с горными деревнями, где жизнь идёт своим чередом.</p>
     <p>Шестнадцать дней мы поднимаемся от чайных плантаций до ледников на 5100 метрах, проходим две долины и высокий перевал. Это один из самых малолюдных больших треков Непала, и в этом весь его смысл.</p>
@@ -154,69 +183,94 @@
   </div>
 </section>
 
-<figure class="photo-pause photo-pause--sunrise" data-reveal>
+<figure class="photo-pause photo-pause--sunrise" data-aos="fade-up">
   <picture>
     <source type="image/webp" media="(max-width: 640px)" srcset="images/golden-sunrise-m.webp">
     <source type="image/webp" srcset="images/golden-sunrise.webp">
     <source media="(max-width: 640px)" srcset="images/golden-sunrise-m.jpg">
-    <img src="images/golden-sunrise.jpg" alt="Рассвет золотит вершину Канченджанги над облаками" width="1920" height="1272" loading="lazy" decoding="async">
+    <img src="images/golden-sunrise.jpg" alt="Рассвет золотит вершину Канченджанги над облаками" width="1920" height="1272" loading="lazy" decoding="async" data-parallax data-parallax-speed="0.12">
   </picture>
   <figcaption>Первый свет касается вершины раньше, чем долину. Ради таких минут стоит выходить затемно.</figcaption>
 </figure>
 
 <!-- 4. ПЯТЬ СОКРОВИЩ ЭТОГО ПУТИ -->
-<section class="section section--treasures" id="treasures" data-reveal>
+<section class="section section--treasures" id="treasures">
   <h2 class="section__title">Пять сокровищ этого пути</h2>
   <p class="section__lead">Канченджанга переводится с тибетского как «Пять сокровищ великих снегов». По легенде в пяти вершинах массива спрятаны золото, серебро, камни, зерно и священные книги. У нашего пути тоже пять сокровищ.</p>
 
-  <ol class="treasures-list">
-    <li>
-      <h3>Тишина</h3>
-      <p>Один из самых малолюдных больших маршрутов Непала: зона ограниченного доступа, пермиты, никакого массового туризма.</p>
-      <picture>
-        <source type="image/webp" media="(max-width: 640px)" srcset="images/conservation-area-m.webp">
-        <source type="image/webp" srcset="images/conservation-area.webp">
-        <source media="(max-width: 640px)" srcset="images/conservation-area-m.jpg">
-        <img src="images/conservation-area.jpg" alt="Вид на заповедную зону Канченджанги: безлюдные долины и снежные вершины" width="1600" height="1200" loading="lazy" decoding="async">
-      </picture>
-    </li>
-    <li>
-      <h3>Масштаб</h3>
-      <p>Северная стена Канченджанги над ледником и Жанну (7710 м), одна из самых суровых стен Гималаев.</p>
-      <picture>
-        <source type="image/webp" media="(max-width: 640px)" srcset="images/sunrise-clouds-m.webp">
-        <source type="image/webp" srcset="images/sunrise-clouds.webp">
-        <source media="(max-width: 640px)" srcset="images/sunrise-clouds-m.jpg">
-        <img src="images/sunrise-clouds.jpg" alt="Канченджанга в лучах рассвета над облаками" width="1290" height="730" loading="lazy" decoding="async">
-      </picture>
-    </li>
-    <li>
-      <h3>Две долины</h3>
-      <p>Поднимаемся долиной Гунсы, возвращаемся через перевал Селе Ла в южную долину. Маршрут не повторяет сам себя.</p>
-      <picture>
-        <source type="image/webp" media="(max-width: 640px)" srcset="images/ghunsa-village-m.webp">
-        <source type="image/webp" srcset="images/ghunsa-village.webp">
-        <source media="(max-width: 640px)" srcset="images/ghunsa-village-m.jpg">
-        <img src="images/ghunsa-village.jpg" alt="Деревня Гунса в одноимённой долине" width="1024" height="768" loading="lazy" decoding="async">
-      </picture>
-    </li>
-    <li>
-      <h3>Живая земля</h3>
-      <p>Апрельские рододендроны в цвету, деревни лимбу и шерпов, гомпы, караваны яков.</p>
-      <picture>
-        <source type="image/webp" media="(max-width: 640px)" srcset="images/rhododendron-1-m.webp">
-        <source type="image/webp" srcset="images/rhododendron-1.webp">
-        <source media="(max-width: 640px)" srcset="images/rhododendron-1-m.jpg">
-        <img src="images/rhododendron-1.jpg" alt="Цветущие рододендроны восточного Непала в апреле" width="1600" height="1067" loading="lazy" decoding="async">
-      </picture>
-    </li>
-    <li>
-      <h3>Состояние</h3>
-      <p>Мягкие утренние практики, вечера у печки, почти полное отсутствие связи. Две недели, когда внимание принадлежит вам.</p>
-    </li>
-  </ol>
+  <div class="swiper treasures-swiper" data-aos="fade-up">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <article class="treasure-card">
+          <picture>
+            <source type="image/webp" media="(max-width: 640px)" srcset="images/conservation-area-m.webp">
+            <source type="image/webp" srcset="images/conservation-area.webp">
+            <source media="(max-width: 640px)" srcset="images/conservation-area-m.jpg">
+            <img src="images/conservation-area.jpg" alt="Вид на заповедную зону Канченджанги: безлюдные долины и снежные вершины" width="1600" height="1200" loading="lazy" decoding="async">
+          </picture>
+          <div class="treasure-card__body">
+            <h3>Тишина</h3>
+            <p>Один из самых малолюдных больших маршрутов Непала: зона ограниченного доступа, пермиты, никакого массового туризма.</p>
+          </div>
+        </article>
+      </div>
+      <div class="swiper-slide">
+        <article class="treasure-card">
+          <picture>
+            <source type="image/webp" media="(max-width: 640px)" srcset="images/sunrise-clouds-m.webp">
+            <source type="image/webp" srcset="images/sunrise-clouds.webp">
+            <source media="(max-width: 640px)" srcset="images/sunrise-clouds-m.jpg">
+            <img src="images/sunrise-clouds.jpg" alt="Канченджанга в лучах рассвета над облаками" width="1290" height="730" loading="lazy" decoding="async">
+          </picture>
+          <div class="treasure-card__body">
+            <h3>Масштаб</h3>
+            <p>Северная стена Канченджанги над ледником и Жанну (7710 м), одна из самых суровых стен Гималаев.</p>
+          </div>
+        </article>
+      </div>
+      <div class="swiper-slide">
+        <article class="treasure-card">
+          <picture>
+            <source type="image/webp" media="(max-width: 640px)" srcset="images/ghunsa-village-m.webp">
+            <source type="image/webp" srcset="images/ghunsa-village.webp">
+            <source media="(max-width: 640px)" srcset="images/ghunsa-village-m.jpg">
+            <img src="images/ghunsa-village.jpg" alt="Деревня Гунса в одноимённой долине" width="1024" height="768" loading="lazy" decoding="async">
+          </picture>
+          <div class="treasure-card__body">
+            <h3>Две долины</h3>
+            <p>Поднимаемся долиной Гунсы, возвращаемся через перевал Селе Ла в южную долину. Маршрут не повторяет сам себя.</p>
+          </div>
+        </article>
+      </div>
+      <div class="swiper-slide">
+        <article class="treasure-card">
+          <picture>
+            <source type="image/webp" media="(max-width: 640px)" srcset="images/rhododendron-1-m.webp">
+            <source type="image/webp" srcset="images/rhododendron-1.webp">
+            <source media="(max-width: 640px)" srcset="images/rhododendron-1-m.jpg">
+            <img src="images/rhododendron-1.jpg" alt="Цветущие рододендроны восточного Непала в апреле" width="1600" height="1067" loading="lazy" decoding="async">
+          </picture>
+          <div class="treasure-card__body">
+            <h3>Живая земля</h3>
+            <p>Апрельские рододендроны в цвету, деревни лимбу и шерпов, гомпы, караваны яков.</p>
+          </div>
+        </article>
+      </div>
+      <div class="swiper-slide">
+        <article class="treasure-card">
+          <div class="treasure-card__body">
+            <h3>Состояние</h3>
+            <p>Мягкие утренние практики, вечера у печки, почти полное отсутствие связи. Две недели, когда внимание принадлежит вам.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev" aria-label="Предыдущее сокровище"></div>
+    <div class="swiper-button-next" aria-label="Следующее сокровище"></div>
+  </div>
 
-  <div class="spirit-block">
+  <div class="spirit-block" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/gompa-flags-m.webp">
       <source type="image/webp" srcset="images/gompa-flags.webp">
@@ -234,21 +288,21 @@
 </section>
 
 <!-- 5. ФОТО-ПАУЗА -->
-<figure class="photo-pause" data-reveal>
+<figure class="photo-pause" data-aos="fade-up">
   <picture>
     <source type="image/webp" media="(max-width: 640px)" srcset="images/vivid-massif-m.webp">
     <source type="image/webp" srcset="images/vivid-massif.webp">
     <source media="(max-width: 640px)" srcset="images/vivid-massif-m.jpg">
-    <img src="images/vivid-massif.jpg" alt="Массив Канченджанги в огненных красках заката" width="1154" height="770" loading="lazy" decoding="async">
+    <img src="images/vivid-massif.jpg" alt="Массив Канченджанги в огненных красках заката" width="1154" height="770" loading="lazy" decoding="async" data-parallax data-parallax-speed="0.12">
   </picture>
   <figcaption>Пангпема, 5143 м. Дальше тропы для путешественника уже нет.</figcaption>
 </figure>
 
 <!-- 6. ПОДОЙДЁТ ЛИ ВАМ ЭТОТ МАРШРУТ -->
-<section class="section section--fit" id="fit" data-reveal>
+<section class="section section--fit" id="fit">
   <h2 class="section__title">Подойдёт ли вам этот маршрут</h2>
   <div class="fit-grid">
-    <div class="fit-card fit-card--yes">
+    <div class="fit-card fit-card--yes" data-aos="fade-up">
       <h3>Подойдёт, если вы:</h3>
       <ul>
         <li>регулярно двигаетесь и готовы целенаправленно готовиться 2–3 месяца;</li>
@@ -258,7 +312,7 @@
         <li>готовы доверять решениям гида по высоте и погоде.</li>
       </ul>
     </div>
-    <div class="fit-card fit-card--no">
+    <div class="fit-card fit-card--no" data-aos="fade-up" data-aos-delay="100">
       <h3>Скорее не подойдёт, если вы:</h3>
       <ul>
         <li>ждёте комфорт уровня хорошего отеля;</li>
@@ -276,10 +330,10 @@
 </section>
 
 <!-- 7. БЕЗОПАСНОСТЬ И АККЛИМАТИЗАЦИЯ -->
-<section class="section section--safety" id="safety" data-reveal>
+<section class="section section--safety" id="safety">
   <h2 class="section__title">Безопасность и акклиматизация</h2>
   <p class="section__lead">График акклиматизации согласован с гидом и утверждён: 16 дней. Днёвка в Гунсе с радиальным выходом на 3900 м, постепенный набор до Камбачена и Лонака, радиальный выход к Пангпеме без ночёвки наверху по правилу «поднимайся высоко, спи ниже».</p>
-  <ul class="safety-list">
+  <ul class="safety-list" data-aos="fade-up">
     <li>Перед подтверждением участия: медицинская анкета и разговор с организаторами.</li>
     <li>График набора высоты построен с днём акклиматизации в Гунсе и постепенным подъёмом; правило «поднимайся высоко, спи ниже» соблюдается на радиальном выходе к Пангпеме.</li>
     <li>Ежедневный контроль самочувствия, в аптечке группы пульсоксиметр и всё необходимое для высоты.</li>
@@ -293,10 +347,10 @@
 </section>
 
 <!-- 8. ПУТЬ В ПЯТИ ГЛАВАХ -->
-<section class="section section--chapters" id="chapters" data-reveal>
+<section class="section section--chapters" id="chapters">
   <h2 class="section__title">Путь в пяти главах</h2>
 
-  <article class="chapter">
+  <article class="chapter" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/ilam-tea-garden-m.webp">
       <source type="image/webp" srcset="images/ilam-tea-garden.webp">
@@ -311,7 +365,7 @@
     </div>
   </article>
 
-  <article class="chapter chapter--reverse">
+  <article class="chapter chapter--reverse" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/rhododendron-2-m.webp">
       <source type="image/webp" srcset="images/rhododendron-2.webp">
@@ -326,7 +380,7 @@
     </div>
   </article>
 
-  <article class="chapter">
+  <article class="chapter" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/jannu-north-face-m.webp">
       <source type="image/webp" srcset="images/jannu-north-face.webp">
@@ -341,7 +395,7 @@
     </div>
   </article>
 
-  <figure class="chapter-photo-pause" data-reveal>
+  <figure class="chapter-photo-pause" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/blue-sheep-m.webp">
       <source type="image/webp" srcset="images/blue-sheep.webp">
@@ -351,7 +405,7 @@
     <figcaption>В моренных долинах выше леса хозяева троп — не люди: стада голубых баранов пасутся там, где мы проходим лишь дважды за сезон.</figcaption>
   </figure>
 
-  <article class="chapter chapter--reverse">
+  <article class="chapter chapter--reverse" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/sunset-peaks-m.webp">
       <source type="image/webp" srcset="images/sunset-peaks.webp">
@@ -366,7 +420,7 @@
     </div>
   </article>
 
-  <article class="chapter">
+  <article class="chapter" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/kanchenjunga-trek-m.webp">
       <source type="image/webp" srcset="images/kanchenjunga-trek.webp">
@@ -385,44 +439,203 @@
     Посмотреть подробную программу по дням
   </button>
   <div id="full-program-panel" class="full-program" hidden>
-
-    <div class="day"><p class="day__head"><strong>День 1 · 5 апреля</strong><span>Катманду — Бхадрапур — Илам</span></p><p class="day__badges"><span>≈1680 м</span><span>перелёт + переезд</span></p><p>Утренний перелёт из Катманду на восток, 45 минут над всей грядой Гималаев за иллюминатором. Дальше дорога вверх, в холмы Илама, через чайные плантации Каньяма: изумрудные террасы до горизонта. Первый вечер в прохладе холмов, чай оттуда же, с соседнего склона.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 2 · 6 апреля</strong><span>Илам — Секатум</span></p><p class="day__badges"><span>1585 м</span><span>7–8 ч переезд</span></p><p>Длинный красивый переезд на джипах вглубь района Тапледжунг. Дорога петляет над рекой Тамор, деревни становятся реже, горы ближе. К вечеру мы в Секатуме, у слияния рек, где заканчивается дорога и начинается тропа.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 3 · 7 апреля</strong><span>Секатум — Амджилоса</span></p><p class="day__badges"><span>2500 м</span><span>5–6 ч</span></p><p>Первый ходовой день, и сразу характер: тропа идёт ущельем реки Гунса, вверх и вниз по склонам, через подвесные мосты. Субтропический лес, водопады, бабочки. Вечером первая деревня лимбу на уступе над рекой.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 4 · 8 апреля</strong><span>Амджилоса — Гьябла</span></p><p class="day__badges"><span>2730 м</span><span>4–5 ч</span></p><p>Мягкий день. Лес меняется: появляются рододендроны, в апреле они в полном цвету. Идём сквозь красно-розовые склоны, слушаем реку внизу. Гьябла: тихая шерпская деревня, вечер у печки.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 5 · 9 апреля</strong><span>Гьябла — Гунса</span></p><p class="day__badges"><span>3500 м</span><span>5–6 ч</span></p><p>Долина раскрывается. Лес становится хвойным, воздух прозрачным и холодным. К вечеру приходим в Гунсу, главную деревню долины: деревянные дома, гомпа, молитвенные барабаны, чортены. Здесь уже настоящий Тибет по духу.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 6 · 10 апреля</strong><span>Гунса, день акклиматизации</span></p><p class="day__badges"><span>радиально 3900 м</span><span>днёвка</span></p><p>Днёвка по всем правилам высоты: живём внизу, гуляем вверх. Поднимаемся на обзорную точку 3900 м над деревней, смотрим на долину и белые стены впереди. Практика, отдых, баня по-местному, если повезёт. Тело перестраивается, и мы ему не мешаем.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 7 · 11 апреля</strong><span>Гунса — Камбачен</span></p><p class="day__badges"><span>4050 м</span><span>4–5 ч</span></p><p>Выходим за границу леса. Тропа траверсирует склоны над рекой, впереди открывается Жанну, она же Кумбхакарна, 7710 метров: одна из самых грозных и красивых стен Гималаев. Камбачен: горстка каменных домов в широкой долине, вечером свет на стене Жанну.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 8 · 12 апреля</strong><span>Камбачен — Лонак</span></p><p class="day__badges"><span>4780 м</span><span>4–6 ч</span></p><p>Мир становится минеральным: камень, лёд, ветер, свет. Идём вдоль морен, мимо водопадов и осыпей, воздух всё тоньше. Лонак: последний приют перед базовым лагерем, ночь под небом, в котором звёзд больше, чем черноты.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 9 · 13 апреля</strong><span>Лонак — Пангпема — Лонак</span></p><p class="day__badges"><span>5143 м</span><span>8–9 ч</span></p><p>Главный день. Выходим до рассвета, идём вдоль ледника Канченджанги к Пангпеме, северному базовому лагерю. И вот она: северная стена Канченджанги, три километра льда и камня над головой, рядом Ялунг Канг и весь амфитеатр восьмитысячных стен. Молитвенные флаги, ветер, тишина. Побыть там, встретить гору и вернуться в Лонак.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 10 · 14 апреля</strong><span>Лонак — Камбачен — Гунса</span></p><p class="day__badges"><span>3500 м</span><span>6–8 ч</span></p><p>Длинный спуск в обратную сторону, и это отдельное удовольствие: те же места, но новыми глазами, с горой за спиной. Обед в Камбачене, к вечеру Гунса, знакомые лица, толстый воздух, крепкий сон.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 11 · 15 апреля</strong><span>Гунса — высокий лагерь Селе Ла</span></p><p class="day__badges"><span>4200 м</span><span>3–5 ч</span></p><p>Сворачиваем с пройденной тропы: теперь наш путь через горы, в южную долину. Крутой набор через рододендроновый и можжевеловый лес, и к вечеру мы в высоком лагере под перевалом. Коротко, но насыщенно.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 12 · 16 апреля</strong><span>Селе Ла — Церам</span></p><p class="day__badges"><span>3870 м, перевал ~4600 м</span><span>7–8 ч</span></p><p>День перевала. Проходим связку седловин на высотах около 4200–4600 метров, и в ясную погоду отсюда видно пол-Гималаев, вплоть до Макалу. Долгий спуск в долину Симбуа Кхолы, к деревне Церам. Самый требовательный день второй половины, и один из самых красивых.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 13 · 17 апреля</strong><span>Церам — Тортонг</span></p><p class="day__badges"><span>2995 м</span><span>4–5 ч</span></p><p>Спускаемся южной долиной сквозь древний лес: мхи, лишайники, огромные рододендроны. С каждой сотней метров вниз воздух гуще, запахов больше, тело благодарит. Тортонг: лоджи у реки, шум воды на всю ночь.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 14 · 18 апреля</strong><span>Тортонг — Ясанг</span></p><p class="day__badges"><span>≈1780 м</span><span>5–6 ч</span></p><p>Последний полноценный ходовой день. Тропа выводит из ущелья к террасным полям и деревням, навстречу первым за две недели дорогам. Вечером празднуем: маршрут пройден, круг почти замкнулся.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 15 · 19 апреля</strong><span>Ясанг — Тапледжунг</span></p><p class="day__badges"><span>≈1820 м</span><span>2–3 ч пешком + 4–6 ч джип</span></p><p>Короткий переход до точки, где ждут джипы, и дорога в Тапледжунг через деревню с прекрасным названием Хеллок. Смотрим в окно на холмы, которые две недели назад казались началом пути, а теперь стали его рамой.</p></div>
-
-    <div class="day"><p class="day__head"><strong>День 16 · 20 апреля</strong><span>Тапледжунг — Бхадрапур — Катманду</span></p><p class="day__badges"><span>91 м</span><span>джип + перелёт</span></p><p>Длинный спуск на джипах к равнине, 178 километров серпантинов и чайных плантаций, и вечерний перелёт в Катманду. Сорок пять минут, и за иллюминатором снова вся гряда: теперь мы знаем её на ощупь.</p></div>
-
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-1" aria-expanded="false" aria-controls="day-panel-1">
+        <span class="day-card__head"><strong>День 1 · 5 апреля</strong><span>Катманду — Бхадрапур — Илам</span></span>
+        <span class="day-card__badges"><span>≈1680 м</span><span>перелёт + переезд</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-1" role="region" aria-labelledby="day-trigger-1">
+        <div class="day-card__panel-inner">
+          <p>Утренний перелёт из Катманду на восток, 45 минут над всей грядой Гималаев за иллюминатором. Дальше дорога вверх, в холмы Илама, через чайные плантации Каньяма: изумрудные террасы до горизонта. Первый вечер в прохладе холмов, чай оттуда же, с соседнего склона.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-2" aria-expanded="false" aria-controls="day-panel-2">
+        <span class="day-card__head"><strong>День 2 · 6 апреля</strong><span>Илам — Секатум</span></span>
+        <span class="day-card__badges"><span>1585 м</span><span>7–8 ч переезд</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-2" role="region" aria-labelledby="day-trigger-2">
+        <div class="day-card__panel-inner">
+          <p>Длинный красивый переезд на джипах вглубь района Тапледжунг. Дорога петляет над рекой Тамор, деревни становятся реже, горы ближе. К вечеру мы в Секатуме, у слияния рек, где заканчивается дорога и начинается тропа.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-3" aria-expanded="false" aria-controls="day-panel-3">
+        <span class="day-card__head"><strong>День 3 · 7 апреля</strong><span>Секатум — Амджилоса</span></span>
+        <span class="day-card__badges"><span>2500 м</span><span>5–6 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-3" role="region" aria-labelledby="day-trigger-3">
+        <div class="day-card__panel-inner">
+          <p>Первый ходовой день, и сразу характер: тропа идёт ущельем реки Гунса, вверх и вниз по склонам, через подвесные мосты. Субтропический лес, водопады, бабочки. Вечером первая деревня лимбу на уступе над рекой.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-4" aria-expanded="false" aria-controls="day-panel-4">
+        <span class="day-card__head"><strong>День 4 · 8 апреля</strong><span>Амджилоса — Гьябла</span></span>
+        <span class="day-card__badges"><span>2730 м</span><span>4–5 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-4" role="region" aria-labelledby="day-trigger-4">
+        <div class="day-card__panel-inner">
+          <p>Мягкий день. Лес меняется: появляются рододендроны, в апреле они в полном цвету. Идём сквозь красно-розовые склоны, слушаем реку внизу. Гьябла: тихая шерпская деревня, вечер у печки.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-5" aria-expanded="false" aria-controls="day-panel-5">
+        <span class="day-card__head"><strong>День 5 · 9 апреля</strong><span>Гьябла — Гунса</span></span>
+        <span class="day-card__badges"><span>3500 м</span><span>5–6 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-5" role="region" aria-labelledby="day-trigger-5">
+        <div class="day-card__panel-inner">
+          <p>Долина раскрывается. Лес становится хвойным, воздух прозрачным и холодным. К вечеру приходим в Гунсу, главную деревню долины: деревянные дома, гомпа, молитвенные барабаны, чортены. Здесь уже настоящий Тибет по духу.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-6" aria-expanded="false" aria-controls="day-panel-6">
+        <span class="day-card__head"><strong>День 6 · 10 апреля</strong><span>Гунса, день акклиматизации</span></span>
+        <span class="day-card__badges"><span>радиально 3900 м</span><span>днёвка</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-6" role="region" aria-labelledby="day-trigger-6">
+        <div class="day-card__panel-inner">
+          <p>Днёвка по всем правилам высоты: живём внизу, гуляем вверх. Поднимаемся на обзорную точку 3900 м над деревней, смотрим на долину и белые стены впереди. Практика, отдых, баня по-местному, если повезёт. Тело перестраивается, и мы ему не мешаем.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-7" aria-expanded="false" aria-controls="day-panel-7">
+        <span class="day-card__head"><strong>День 7 · 11 апреля</strong><span>Гунса — Камбачен</span></span>
+        <span class="day-card__badges"><span>4050 м</span><span>4–5 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-7" role="region" aria-labelledby="day-trigger-7">
+        <div class="day-card__panel-inner">
+          <p>Выходим за границу леса. Тропа траверсирует склоны над рекой, впереди открывается Жанну, она же Кумбхакарна, 7710 метров: одна из самых грозных и красивых стен Гималаев. Камбачен: горстка каменных домов в широкой долине, вечером свет на стене Жанну.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-8" aria-expanded="false" aria-controls="day-panel-8">
+        <span class="day-card__head"><strong>День 8 · 12 апреля</strong><span>Камбачен — Лонак</span></span>
+        <span class="day-card__badges"><span>4780 м</span><span>4–6 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-8" role="region" aria-labelledby="day-trigger-8">
+        <div class="day-card__panel-inner">
+          <p>Мир становится минеральным: камень, лёд, ветер, свет. Идём вдоль морен, мимо водопадов и осыпей, воздух всё тоньше. Лонак: последний приют перед базовым лагерем, ночь под небом, в котором звёзд больше, чем черноты.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-9" aria-expanded="false" aria-controls="day-panel-9">
+        <span class="day-card__head"><strong>День 9 · 13 апреля</strong><span>Лонак — Пангпема — Лонак</span></span>
+        <span class="day-card__badges"><span>5143 м</span><span>8–9 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-9" role="region" aria-labelledby="day-trigger-9">
+        <div class="day-card__panel-inner">
+          <p>Главный день. Выходим до рассвета, идём вдоль ледника Канченджанги к Пангпеме, северному базовому лагерю. И вот она: северная стена Канченджанги, три километра льда и камня над головой, рядом Ялунг Канг и весь амфитеатр восьмитысячных стен. Молитвенные флаги, ветер, тишина. Побыть там, встретить гору и вернуться в Лонак.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-10" aria-expanded="false" aria-controls="day-panel-10">
+        <span class="day-card__head"><strong>День 10 · 14 апреля</strong><span>Лонак — Камбачен — Гунса</span></span>
+        <span class="day-card__badges"><span>3500 м</span><span>6–8 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-10" role="region" aria-labelledby="day-trigger-10">
+        <div class="day-card__panel-inner">
+          <p>Длинный спуск в обратную сторону, и это отдельное удовольствие: те же места, но новыми глазами, с горой за спиной. Обед в Камбачене, к вечеру Гунса, знакомые лица, толстый воздух, крепкий сон.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-11" aria-expanded="false" aria-controls="day-panel-11">
+        <span class="day-card__head"><strong>День 11 · 15 апреля</strong><span>Гунса — высокий лагерь Селе Ла</span></span>
+        <span class="day-card__badges"><span>4200 м</span><span>3–5 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-11" role="region" aria-labelledby="day-trigger-11">
+        <div class="day-card__panel-inner">
+          <p>Сворачиваем с пройденной тропы: теперь наш путь через горы, в южную долину. Крутой набор через рододендроновый и можжевеловый лес, и к вечеру мы в высоком лагере под перевалом. Коротко, но насыщенно.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-12" aria-expanded="false" aria-controls="day-panel-12">
+        <span class="day-card__head"><strong>День 12 · 16 апреля</strong><span>Селе Ла — Церам</span></span>
+        <span class="day-card__badges"><span>3870 м, перевал ~4600 м</span><span>7–8 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-12" role="region" aria-labelledby="day-trigger-12">
+        <div class="day-card__panel-inner">
+          <p>День перевала. Проходим связку седловин на высотах около 4200–4600 метров, и в ясную погоду отсюда видно пол-Гималаев, вплоть до Макалу. Долгий спуск в долину Симбуа Кхолы, к деревне Церам. Самый требовательный день второй половины, и один из самых красивых.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-13" aria-expanded="false" aria-controls="day-panel-13">
+        <span class="day-card__head"><strong>День 13 · 17 апреля</strong><span>Церам — Тортонг</span></span>
+        <span class="day-card__badges"><span>2995 м</span><span>4–5 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-13" role="region" aria-labelledby="day-trigger-13">
+        <div class="day-card__panel-inner">
+          <p>Спускаемся южной долиной сквозь древний лес: мхи, лишайники, огромные рододендроны. С каждой сотней метров вниз воздух гуще, запахов больше, тело благодарит. Тортонг: лоджи у реки, шум воды на всю ночь.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-14" aria-expanded="false" aria-controls="day-panel-14">
+        <span class="day-card__head"><strong>День 14 · 18 апреля</strong><span>Тортонг — Ясанг</span></span>
+        <span class="day-card__badges"><span>≈1780 м</span><span>5–6 ч</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-14" role="region" aria-labelledby="day-trigger-14">
+        <div class="day-card__panel-inner">
+          <p>Последний полноценный ходовой день. Тропа выводит из ущелья к террасным полям и деревням, навстречу первым за две недели дорогам. Вечером празднуем: маршрут пройден, круг почти замкнулся.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-15" aria-expanded="false" aria-controls="day-panel-15">
+        <span class="day-card__head"><strong>День 15 · 19 апреля</strong><span>Ясанг — Тапледжунг</span></span>
+        <span class="day-card__badges"><span>≈1820 м</span><span>2–3 ч пешком + 4–6 ч джип</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-15" role="region" aria-labelledby="day-trigger-15">
+        <div class="day-card__panel-inner">
+          <p>Короткий переход до точки, где ждут джипы, и дорога в Тапледжунг через деревню с прекрасным названием Хеллок. Смотрим в окно на холмы, которые две недели назад казались началом пути, а теперь стали его рамой.</p>
+        </div>
+      </div>
+    </div>
+    <div class="day-card">
+      <button class="day-card__trigger" type="button" id="day-trigger-16" aria-expanded="false" aria-controls="day-panel-16">
+        <span class="day-card__head"><strong>День 16 · 20 апреля</strong><span>Тапледжунг — Бхадрапур — Катманду</span></span>
+        <span class="day-card__badges"><span>91 м</span><span>джип + перелёт</span></span>
+        <svg class="day-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="day-card__panel" id="day-panel-16" role="region" aria-labelledby="day-trigger-16">
+        <div class="day-card__panel-inner">
+          <p>Длинный спуск на джипах к равнине, 178 километров серпантинов и чайных плантаций, и вечерний перелёт в Катманду. Сорок пять минут, и за иллюминатором снова вся гряда: теперь мы знаем её на ощупь.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- 9. МЫ УЖЕ ПРОХОДИЛИ БОЛЬШИЕ ДОРОГИ ВМЕСТЕ -->
-<section class="section section--proof" id="proof" data-reveal>
+<section class="section section--proof" id="proof">
   <h2 class="section__title">Мы уже проходили большие дороги вместе</h2>
   <p class="section__lead">Последние пять лет Илья, Андрей и Манки вместе водят группы по Непалу, Тибету и Китаю: кора вокруг Кайласа, высокогорные треки, паломнические маршруты. Это не первая совместная экспедиция и, надеемся, не последняя.</p>
 
@@ -457,10 +670,10 @@
 </section>
 
 <!-- 10. КОМАНДА -->
-<section class="section section--team" id="team" data-reveal>
+<section class="section section--team" id="team">
   <h2 class="section__title">Команда</h2>
 
-  <article class="team-card">
+  <article class="team-card" data-aos="fade-up">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/ilya-m.webp">
       <source type="image/webp" srcset="images/ilya.webp">
@@ -473,7 +686,7 @@
     </div>
   </article>
 
-  <article class="team-card team-card--reverse">
+  <article class="team-card team-card--reverse" data-aos="fade-up" data-aos-delay="100">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/andrey-m.webp">
       <source type="image/webp" srcset="images/andrey.webp">
@@ -486,7 +699,7 @@
     </div>
   </article>
 
-  <article class="team-card">
+  <article class="team-card" data-aos="fade-up" data-aos-delay="200">
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/manki-m.webp">
       <source type="image/webp" srcset="images/manki.webp">
@@ -501,9 +714,9 @@
 </section>
 
 <!-- 11. БЫТ НА МАРШРУТЕ -->
-<section class="section section--life" id="life" data-reveal>
+<section class="section section--life" id="life">
   <h2 class="section__title">Быт на маршруте</h2>
-  <div class="life-block">
+  <div class="life-block" data-aos="fade-up">
     <div class="prose">
       <p>Живём в лоджах: простые гостевые дома, кровати, одеяла, печка в общей комнате. Едим горячее три раза в день: дал бат, супы, момо, имбирный чай. Еду каждый заказывает в лодже и оплачивает на месте, ориентир $<span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> в день. Основные вещи несут портеры, вы идёте с дневным рюкзаком (вода, тёплый слой, перекус). Утром короткая мягкая практика: дыхание и суставная настройка, чтобы тело входило в ходовой день собранным. Все практики адаптированы к высоте и состоянию группы, участие добровольное. Связи на маршруте почти нет, и через пару дней это начинает нравиться.</p>
     </div>
@@ -517,9 +730,9 @@
 </section>
 
 <!-- 12. СТОИМОСТЬ И УСЛОВИЯ -->
-<section class="section section--price" id="price" data-reveal>
+<section class="section section--price" id="price">
   <h2 class="section__title">Участие в путешествии</h2>
-  <div class="price-card">
+  <div class="price-card" data-aos="fade-up">
     <p class="price-card__early">$<span data-cfg="priceEarly"></span> <span class="price-card__early-label">для первых пяти участников</span></p>
     <p class="price-card__regular">Затем стоимость составит $<span data-cfg="priceRegular"></span></p>
     <p class="price-card__deposit">Предоплата для бронирования места: $<span data-cfg="deposit"></span></p>
@@ -540,10 +753,10 @@
 </section>
 
 <!-- 13. ЧТО ВХОДИТ / НЕ ВХОДИТ -->
-<section class="section section--includes" id="includes" data-reveal>
+<section class="section section--includes" id="includes">
   <h2 class="section__title">Что входит / что не входит</h2>
   <div class="includes-grid">
-    <div class="includes-card includes-card--yes">
+    <div class="includes-card includes-card--yes" data-aos="fade-up">
       <h3>Входит</h3>
       <ul>
         <li>Внутренние перелёты Катманду — Бхадрапур — Катманду</li>
@@ -554,7 +767,7 @@
         <li>Сопровождение Ильи и Андрея: практики, настройки, вся программа</li>
       </ul>
     </div>
-    <div class="includes-card includes-card--no">
+    <div class="includes-card includes-card--no" data-aos="fade-up" data-aos-delay="100">
       <h3>Не входит</h3>
       <ul>
         <li>Питание на треке: оплачивается самостоятельно на месте, ориентировочный бюджет $<span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> в день (дал бат, супы, момо, чай; чем выше, тем дороже — это нормально для региона)</li>
@@ -570,9 +783,9 @@
 </section>
 
 <!-- 14. ДАТЫ И ПЕРЕЛЁТЫ -->
-<section class="section section--dates" id="dates" data-reveal>
+<section class="section section--dates" id="dates">
   <h2 class="section__title">Даты и перелёты</h2>
-  <div class="prose">
+  <div class="prose" data-aos="fade-up">
     <p>Программа: <span data-cfg="datesFull"></span>, 16 дней (утверждено).</p>
     <p>Прилёт в Катманду: до вечера 4 апреля. Отель бронируете сами, подскажем, где остановимся мы, можно заселиться рядом. Утром 5 апреля забираем всех и вместе едем в аэропорт на рейс в Бхадрапур.</p>
     <p>Обратные билеты из Катманду: не раньше 21 апреля, надёжнее 22-е: вечерний перелёт из Бхадрапура в последний день зависит от погоды, запасной день снимает риск опоздать на международный рейс.</p>
@@ -582,9 +795,9 @@
 </section>
 
 <!-- 15. FAQ -->
-<section class="section section--faq" id="faq" data-reveal>
+<section class="section section--faq" id="faq">
   <h2 class="section__title">Вопросы и ответы</h2>
-  <div class="faq-list">
+  <div class="faq-list" data-aos="fade-up">
 
     <div class="faq-item">
       <h3><button class="accordion-trigger" type="button" data-accordion-trigger="faq" aria-expanded="false" aria-controls="faq-1">Нужен ли альпинистский опыт?</button></h3>
@@ -645,7 +858,7 @@
 </section>
 
 <!-- 16. ФИНАЛЬНЫЙ CTA -->
-<section class="section--final-cta" id="final-cta" data-reveal>
+<section class="section--final-cta" id="final-cta">
   <picture class="final-cta__bg">
     <source type="image/webp" media="(max-width: 640px)" srcset="images/burning-mountain-m.webp">
     <source type="image/webp" srcset="images/burning-mountain.webp">
@@ -653,7 +866,7 @@
     <img src="images/burning-mountain.jpg" alt="Канченджанга в огненном свете заката" width="1920" height="1275" loading="lazy" decoding="async">
   </picture>
   <div class="final-cta__scrim"></div>
-  <div class="final-cta__content">
+  <div class="final-cta__content" data-aos="fade-up">
     <h2 class="final-cta__title">Гора уже стоит и ждёт. Дело за вами.</h2>
     <a class="btn btn--primary btn--large" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
     <p class="final-cta__contacts">
@@ -666,6 +879,9 @@
 
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script src="script.js"></script>
 </body>
 </html>

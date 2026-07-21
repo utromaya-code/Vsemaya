@@ -70,13 +70,17 @@ const ZONE_LABELS = {
 
 const ZONE_COLORS = {
   tea: '#5a6e4f',
-  rhodo: '#8a4a4a',
+  rhodo: '#9d3a49',
   conifer: '#39493f',
   moraine: '#7c8894',
-  pass: '#5b6a86',
+  pass: '#0f172a',
   forest: '#465c46',
-  lowland: '#7a6a45',
+  lowland: '#d97706',
 };
+
+function prefersReducedMotion() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 /* ---------------------------------------------------------------------
    Применение констант ко всем data-cfg / data-cta элементам страницы
@@ -98,169 +102,132 @@ function applyConfig() {
 }
 
 /* ---------------------------------------------------------------------
-   Линия высотного профиля «прорисовывается» при появлении в зоне видимости
+   Высотный профиль: Chart.js график с тултипами и природными зонами
    --------------------------------------------------------------------- */
-function animateLineDraw(line, container) {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced || !('IntersectionObserver' in window)) return;
-
-  const length = line.getTotalLength();
-  line.style.strokeDasharray = String(length);
-  line.style.strokeDashoffset = String(length);
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          line.style.transition = 'stroke-dashoffset 2.4s cubic-bezier(0.22, 1, 0.36, 1)';
-          line.style.strokeDashoffset = '0';
-          observer.disconnect();
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-  observer.observe(container);
-}
-
-/* ---------------------------------------------------------------------
-   Высотный профиль: рендерим SVG из ROUTE_PROFILE
-   --------------------------------------------------------------------- */
-function renderAltitudeProfile() {
+function renderAltitudeChart() {
   const container = document.getElementById('altitude-profile');
-  if (!container) return;
+  if (!container || typeof Chart === 'undefined') return;
 
-  const width = 1000;
-  const height = 380;
-  const padTop = 56;
-  const padBottom = 46;
-  const padSide = 28;
-  const maxAlt = 5143;
-  const minAlt = 0;
-
-  const n = ROUTE_PROFILE.length;
-  const stepX = (width - padSide * 2) / (n - 1);
-  const yFor = (alt) =>
-    padTop + (1 - (alt - minAlt) / (maxAlt - minAlt)) * (height - padTop - padBottom);
-  const xFor = (i) => padSide + i * stepX;
-
-  const points = ROUTE_PROFILE.map((d, i) => ({ ...d, x: xFor(i), y: yFor(d.alt) }));
-
-  const NS = 'http://www.w3.org/2000/svg';
-  const svg = document.createElementNS(NS, 'svg');
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  svg.setAttribute('class', 'profile-svg');
-  svg.setAttribute('role', 'img');
-  svg.setAttribute(
+  const canvas = document.createElement('canvas');
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute(
     'aria-label',
     'Высотный профиль маршрута от Бхадрапура (91 м) до северного базового лагеря Канченджанги, Пангпема (5143 м), и обратно'
   );
-
-  // фон: зоны природных поясов
-  const zonesGroup = document.createElementNS(NS, 'g');
-  zonesGroup.setAttribute('class', 'profile-zones');
-  let zoneStart = 0;
-  for (let i = 1; i <= n; i++) {
-    const zoneChanged = i === n || points[i].zone !== points[zoneStart].zone;
-    if (zoneChanged) {
-      const rect = document.createElementNS(NS, 'rect');
-      const x1 = i === n ? points[n - 1].x + stepX / 2 : (points[i - 1].x + points[i].x) / 2;
-      const x0 = zoneStart === 0 ? 0 : (points[zoneStart - 1].x + points[zoneStart].x) / 2;
-      rect.setAttribute('x', x0);
-      rect.setAttribute('y', padTop - 30);
-      rect.setAttribute('width', Math.max(0, x1 - x0));
-      rect.setAttribute('height', height - padTop - padBottom + 30);
-      rect.setAttribute('fill', ZONE_COLORS[points[zoneStart].zone]);
-      rect.setAttribute('opacity', '0.12');
-      zonesGroup.appendChild(rect);
-      zoneStart = i;
-    }
-  }
-  svg.appendChild(zonesGroup);
-
-  // линия высоты (ночёвки)
-  const pathD = points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(' ');
-  const areaD = `${pathD} L ${points[n - 1].x} ${height - padBottom} L ${points[0].x} ${height - padBottom} Z`;
-
-  const area = document.createElementNS(NS, 'path');
-  area.setAttribute('d', areaD);
-  area.setAttribute('class', 'profile-area');
-  svg.appendChild(area);
-
-  const line = document.createElementNS(NS, 'path');
-  line.setAttribute('d', pathD);
-  line.setAttribute('class', 'profile-line');
-  svg.appendChild(line);
-
-  // радиальные пики (Пангпема, перевал, смотровая в Гунсе)
-  points.forEach((p) => {
-    if (p.peakAlt) {
-      const py = yFor(p.peakAlt);
-      const tick = document.createElementNS(NS, 'line');
-      tick.setAttribute('x1', p.x);
-      tick.setAttribute('y1', p.y);
-      tick.setAttribute('x2', p.x);
-      tick.setAttribute('y2', py);
-      tick.setAttribute('class', 'profile-peak-tick');
-      svg.appendChild(tick);
-
-      const peakDot = document.createElementNS(NS, 'circle');
-      peakDot.setAttribute('cx', p.x);
-      peakDot.setAttribute('cy', py);
-      peakDot.setAttribute('r', p.isMax ? 7 : 5);
-      peakDot.setAttribute('class', p.isMax ? 'profile-peak-dot profile-peak-dot--max' : 'profile-peak-dot');
-      svg.appendChild(peakDot);
-
-      const label = document.createElementNS(NS, 'text');
-      label.setAttribute('x', p.x);
-      label.setAttribute('y', py - (p.isMax ? 16 : 12));
-      label.setAttribute('class', p.isMax ? 'profile-label profile-label--max' : 'profile-label');
-      label.setAttribute('text-anchor', p.x > width - 120 ? 'end' : p.x < 120 ? 'start' : 'middle');
-      label.textContent = `${p.peakLabel} · ${p.peakAlt} м`;
-      svg.appendChild(label);
-    }
-  });
-
-  // точки ночёвок
-  points.forEach((p) => {
-    const dot = document.createElementNS(NS, 'circle');
-    dot.setAttribute('cx', p.x);
-    dot.setAttribute('cy', p.y);
-    dot.setAttribute('r', p.accl ? 6 : 4.5);
-    dot.setAttribute('class', p.accl ? 'profile-dot profile-dot--accl' : 'profile-dot');
-    svg.appendChild(dot);
-
-    if (p.marker) {
-      const markerText = document.createElementNS(NS, 'text');
-      markerText.setAttribute('x', p.x);
-      markerText.setAttribute('y', p.y - 18);
-      markerText.setAttribute('class', 'profile-marker');
-      markerText.setAttribute('text-anchor', p.x > width - 140 ? 'end' : 'middle');
-      markerText.textContent = p.marker;
-      svg.appendChild(markerText);
-    }
-
-    // день + высота под графиком
-    const dayLabel = document.createElementNS(NS, 'text');
-    dayLabel.setAttribute('x', p.x);
-    dayLabel.setAttribute('y', height - padBottom + 20);
-    dayLabel.setAttribute('class', 'profile-day');
-    dayLabel.setAttribute('text-anchor', 'middle');
-    dayLabel.textContent = `Д${p.day}`;
-    svg.appendChild(dayLabel);
-
-    const altLabel = document.createElementNS(NS, 'text');
-    altLabel.setAttribute('x', p.x);
-    altLabel.setAttribute('y', height - padBottom + 36);
-    altLabel.setAttribute('class', 'profile-alt');
-    altLabel.setAttribute('text-anchor', 'middle');
-    altLabel.textContent = `${p.alt}`;
-    svg.appendChild(altLabel);
-  });
-
+  canvas.height = 320;
   container.innerHTML = '';
-  container.appendChild(svg);
-  animateLineDraw(line, container);
+  container.appendChild(canvas);
+
+  const n = ROUTE_PROFILE.length;
+  const labels = ROUTE_PROFILE.map((p) => 'Д' + p.day);
+  const altData = ROUTE_PROFILE.map((p) => p.alt);
+  const peakData = ROUTE_PROFILE.map((p) => p.peakAlt || null);
+  const pointColors = ROUTE_PROFILE.map((p) => (p.accl ? '#9d3a49' : '#0f172a'));
+  const pointRadii = ROUTE_PROFILE.map((p) => (p.accl ? 6 : 4));
+  const peakRadii = ROUTE_PROFILE.map((p) => (p.peakAlt ? (p.isMax ? 7 : 5) : 0));
+  const peakColors = ROUTE_PROFILE.map((p) => (p.isMax ? '#9d3a49' : '#d97706'));
+
+  const zoneBandsPlugin = {
+    id: 'zoneBands',
+    beforeDraw(chart) {
+      const { ctx, chartArea, scales } = chart;
+      if (!chartArea) return;
+      const xScale = scales.x;
+      ctx.save();
+      let zoneStart = 0;
+      for (let i = 1; i <= n; i++) {
+        const changed = i === n || ROUTE_PROFILE[i].zone !== ROUTE_PROFILE[zoneStart].zone;
+        if (changed) {
+          const x0 = zoneStart === 0 ? chartArea.left : (xScale.getPixelForValue(zoneStart - 1) + xScale.getPixelForValue(zoneStart)) / 2;
+          const x1 = i === n ? chartArea.right : (xScale.getPixelForValue(i - 1) + xScale.getPixelForValue(i)) / 2;
+          ctx.fillStyle = ZONE_COLORS[ROUTE_PROFILE[zoneStart].zone];
+          ctx.globalAlpha = 0.08;
+          ctx.fillRect(x0, chartArea.top, x1 - x0, chartArea.bottom - chartArea.top);
+          zoneStart = i;
+        }
+      }
+      ctx.restore();
+    },
+  };
+
+  // eslint-disable-next-line no-undef
+  new Chart(canvas.getContext('2d'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label: 'Высота ночёвки',
+          data: altData,
+          borderColor: '#d97706',
+          backgroundColor: 'rgba(217, 119, 6, 0.12)',
+          fill: true,
+          tension: 0.3,
+          pointBackgroundColor: pointColors,
+          pointBorderColor: '#fff',
+          pointBorderWidth: 1,
+          pointRadius: pointRadii,
+          pointHoverRadius: 7,
+          borderWidth: 2.5,
+        },
+        {
+          label: 'Высшая точка дня',
+          data: peakData,
+          borderColor: 'transparent',
+          showLine: false,
+          pointRadius: peakRadii,
+          pointHoverRadius: peakRadii.map((r) => r + 2),
+          pointBackgroundColor: peakColors,
+          pointBorderColor: '#fff',
+          pointBorderWidth: 1,
+        },
+      ],
+    },
+    plugins: [zoneBandsPlugin],
+    options: {
+      responsive: true,
+      animation: prefersReducedMotion() ? false : { duration: 1100, easing: 'easeOutCubic' },
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleFont: { family: 'Inter', weight: '600' },
+          bodyFont: { family: 'Inter' },
+          padding: 12,
+          cornerRadius: 8,
+          filter: (item) => item.raw !== null && item.raw !== undefined,
+          callbacks: {
+            title(items) {
+              const i = items[0].dataIndex;
+              const p = ROUTE_PROFILE[i];
+              return `День ${p.day} · ${p.date}: ${p.place}`;
+            },
+            label(item) {
+              const i = item.dataIndex;
+              const p = ROUTE_PROFILE[i];
+              if (item.datasetIndex === 1 && p.peakAlt) {
+                return `${p.peakLabel}: ${p.peakAlt} м`;
+              }
+              return `${p.alt} м · ${p.hours}`;
+            },
+          },
+        },
+      },
+      scales: {
+        y: {
+          suggestedMin: 0,
+          suggestedMax: 5400,
+          ticks: { callback: (v) => v + ' м', color: '#64748b', font: { family: 'Inter', size: 11 } },
+          grid: { color: 'rgba(30,41,59,0.08)' },
+        },
+        x: {
+          ticks: { color: '#64748b', font: { family: 'Inter', size: 11 } },
+          grid: { display: false },
+        },
+      },
+    },
+  });
 
   // легенда природных зон
   const legend = document.createElement('div');
@@ -285,7 +252,7 @@ function renderAltitudeProfile() {
 }
 
 /* ---------------------------------------------------------------------
-   Аккордеоны (FAQ, полная программа по дням)
+   Аккордеоны (FAQ, общий тумблер полной программы)
    --------------------------------------------------------------------- */
 function initAccordions() {
   document.querySelectorAll('[data-accordion-trigger]').forEach((trigger) => {
@@ -297,6 +264,21 @@ function initAccordions() {
       if (panel) {
         panel.hidden = expanded;
       }
+    });
+  });
+}
+
+/* ---------------------------------------------------------------------
+   Аккордеон «Маршрут по дням»: каждая карточка раскрывается независимо
+   --------------------------------------------------------------------- */
+function initDayAccordion() {
+  document.querySelectorAll('.day-card__trigger').forEach((trigger) => {
+    const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+    if (!panel) return;
+    trigger.addEventListener('click', () => {
+      const expanded = trigger.getAttribute('aria-expanded') === 'true';
+      trigger.setAttribute('aria-expanded', String(!expanded));
+      panel.style.maxHeight = expanded ? '0px' : panel.scrollHeight + 'px';
     });
   });
 }
@@ -321,27 +303,70 @@ function initMobileBar() {
 }
 
 /* ---------------------------------------------------------------------
-   Плавное появление блоков при скролле (уважает prefers-reduced-motion)
+   Glass-навбар: фон плотнее при скролле
    --------------------------------------------------------------------- */
-function initReveal() {
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const items = document.querySelectorAll('[data-reveal]');
-  if (prefersReduced || !('IntersectionObserver' in window)) {
-    items.forEach((el) => el.classList.add('is-visible'));
-    return;
-  }
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
-      });
+function initHeader() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+  const onScroll = () => {
+    header.classList.toggle('is-scrolled', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* ---------------------------------------------------------------------
+   Лёгкий параллакс на крупных фото гор (уважает prefers-reduced-motion)
+   --------------------------------------------------------------------- */
+function initParallax() {
+  if (prefersReducedMotion()) return;
+  const items = Array.from(document.querySelectorAll('[data-parallax]'));
+  if (!items.length) return;
+
+  let ticking = false;
+  const update = () => {
+    const viewportH = window.innerHeight;
+    items.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > viewportH) return;
+      const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0.15;
+      const offset = (rect.top - viewportH / 2) * speed * -0.3;
+      el.style.transform = `translateY(${offset}px) scale(1.1)`;
+    });
+    ticking = false;
+  };
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
     },
-    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    { passive: true }
   );
-  items.forEach((el) => observer.observe(el));
+  update();
+}
+
+/* ---------------------------------------------------------------------
+   Swiper: «Пять сокровищ этого пути»
+   --------------------------------------------------------------------- */
+function initTreasuresSwiper() {
+  const el = document.querySelector('.treasures-swiper');
+  if (!el || typeof Swiper === 'undefined') return;
+  // eslint-disable-next-line no-undef
+  new Swiper('.treasures-swiper', {
+    slidesPerView: 1.15,
+    spaceBetween: 16,
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    a11y: { enabled: true },
+    keyboard: { enabled: true },
+    breakpoints: {
+      640: { slidesPerView: 2.2 },
+      1000: { slidesPerView: 3.2 },
+    },
+  });
 }
 
 /* ---------------------------------------------------------------------
@@ -355,10 +380,14 @@ function initAnalyticsGoals() {
   };
 
   document.querySelectorAll('[data-cta="telegram"]').forEach((el) => {
-    el.addEventListener('click', () => reach('click_telegram'));
+    el.addEventListener('click', () => {
+      reach('telegram_click');
+      const zone = el.getAttribute('data-cta-zone');
+      if (zone) reach(zone);
+    });
   });
   document.querySelectorAll('[data-cta="whatsapp"]').forEach((el) => {
-    el.addEventListener('click', () => reach('click_whatsapp'));
+    el.addEventListener('click', () => reach('whatsapp_click'));
   });
 
   const priceBlock = document.getElementById('price');
@@ -378,10 +407,13 @@ function initAnalyticsGoals() {
   }
 
   document.querySelectorAll('[data-accordion-trigger="full-program"]').forEach((el) => {
-    el.addEventListener('click', () => reach('open_full_program'), { once: true });
+    el.addEventListener('click', () => reach('itinerary_open'), { once: true });
+  });
+  document.querySelectorAll('.day-card__trigger').forEach((el) => {
+    el.addEventListener('click', () => reach('itinerary_day_open'), { once: true });
   });
   document.querySelectorAll('[data-accordion-trigger="faq"]').forEach((el) => {
-    el.addEventListener('click', () => reach('open_faq'), { once: true });
+    el.addEventListener('click', () => reach('faq_open'), { once: true });
   });
 
   const depthMarks = { 25: false, 50: false, 75: false, 100: false };
@@ -404,9 +436,20 @@ function initAnalyticsGoals() {
 
 document.addEventListener('DOMContentLoaded', () => {
   applyConfig();
-  renderAltitudeProfile();
+  renderAltitudeChart();
   initAccordions();
+  initDayAccordion();
   initMobileBar();
-  initReveal();
+  initHeader();
+  initParallax();
+  initTreasuresSwiper();
   initAnalyticsGoals();
+
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 800,
+      once: true,
+      disable: prefersReducedMotion() ? true : false,
+    });
+  }
 });
