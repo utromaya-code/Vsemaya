@@ -930,6 +930,26 @@ ul, ol {
 /* -------------------------------------------------------------------------
    Практики на маршруте
    ------------------------------------------------------------------------- */
+.practices-intro {
+  display: grid;
+  gap: 1.5em;
+  align-items: start;
+}
+@media (min-width: 800px) {
+  .practices-intro {
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+  }
+}
+.practices-intro picture,
+.practices-intro img {
+  border-radius: var(--radius);
+  overflow: hidden;
+  width: 100%;
+}
+.practices-intro .section__lead {
+  margin-bottom: 0;
+}
 .practices-list {
   list-style: none;
   padding: 0;

@@ -47,7 +47,7 @@
   "offers": {
     "@type": "Offer",
     "price": "2200",
-    "priceCurrency": "USD",
+    "priceCurrency": "EUR",
     "availability": "https://schema.org/LimitedAvailability",
     "validFrom": "2026-07-18"
   },
@@ -74,7 +74,7 @@
     {"@type": "Question", "name": "Насколько это безопасно по высоте и что если мне станет плохо?", "acceptedAnswer": {"@type": "Answer", "text": "График построен с учётом акклиматизации: днёвка в Гунсе, постепенный подъём, правило «поднимайся высоко, спи ниже» на радиальном выходе к Пангпеме. Мы ежедневно контролируем самочувствие группы, в аптечке пульсоксиметр и всё нужное для высоты. Если состояние ухудшается, гид меняет темп или организует спуск с сопровождением."}},
     {"@type": "Question", "name": "Какая погода в апреле?", "acceptedAnswer": {"@type": "Answer", "text": "Апрель — один из лучших сезонов: ясные утра, стабильные тропы, цветущие рододендроны на средних высотах. Днём в долинах тепло, на высоте у ледников холодно, возможен ветер и снег."}},
     {"@type": "Question", "name": "Есть ли связь и интернет?", "acceptedAnswer": {"@type": "Answer", "text": "На большей части маршрута связи почти нет, это часть замысла путешествия. В отдельных лоджах можно найти местную симку или Wi-Fi, но рассчитывать на это не стоит. В случае форс-мажора гид знает, как связаться с местной службой спасения."}},
-    {"@type": "Question", "name": "Что с едой, есть ли вегетарианские опции?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Основа рациона — дал бат, супы, момо, имбирный чай, во многих лоджах есть простые вегетарианские блюда. Питание на треке оплачивается самостоятельно на месте, ориентир $20–30 в день."}},
+    {"@type": "Question", "name": "Что с едой, есть ли вегетарианские опции?", "acceptedAnswer": {"@type": "Answer", "text": "Да. Основа рациона — дал бат, супы, момо, имбирный чай, во многих лоджах есть простые вегетарианские блюда. Питание на треке оплачивается самостоятельно на месте, ориентир 20–30 € в день."}},
     {"@type": "Question", "name": "Сколько нести самому?", "acceptedAnswer": {"@type": "Answer", "text": "Только дневной рюкзак: вода, тёплый слой, дождевик, перекус, документы. Основные вещи несут портеры."}},
     {"@type": "Question", "name": "Что если я не потяну какой-то день?", "acceptedAnswer": {"@type": "Answer", "text": "Скажите об этом гиду или Илье сразу. Есть возможность скорректировать темп, идти медленнее или ограничить радиальный выход. Прислушиваться к себе и говорить о состоянии — часть безопасности, а не проявление слабости."}},
     {"@type": "Question", "name": "Какая нужна страховка и где её оформить?", "acceptedAnswer": {"@type": "Answer", "text": "Обязательна страховка с покрытием треккинга до высоты 5500 м и вертолётной эвакуацией. Мы подскажем проверенные варианты, но оформляете вы её самостоятельно и присылаете нам полис перед стартом."}},
@@ -115,7 +115,7 @@
 </header>
 
 <div id="mobile-bar" class="mobile-bar">
-  <span class="mobile-bar__info"><span data-cfg="dates"></span> · от $<span data-cfg="priceEarly"></span></span>
+  <span class="mobile-bar__info"><span data-cfg="dates"></span> · от <span data-cfg="priceEarly"></span> €</span>
   <a class="mobile-bar__cta" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
 </div>
 
@@ -148,7 +148,7 @@
     </div>
     <div class="offer-band__item">
       <span class="offer-band__label">Цена</span>
-      <span class="offer-band__price">от $<span data-cfg="priceEarly"></span></span>
+      <span class="offer-band__price">от <span data-cfg="priceEarly"></span> €</span>
     </div>
     <div class="offer-band__item">
       <span class="offer-band__label">Места</span>
@@ -727,7 +727,7 @@
   <h2 class="section__title">Быт на маршруте</h2>
   <div class="life-block" data-aos="fade-up">
     <div class="prose">
-      <p>Живём в лоджах: простые гостевые дома, кровати, одеяла, печка в общей комнате. Едим горячее три раза в день: дал бат, супы, момо, имбирный чай. Еду каждый заказывает в лодже и оплачивает на месте, ориентир $<span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> в день. Основные вещи несут портеры, вы идёте с дневным рюкзаком (вода, тёплый слой, перекус). Связи на маршруте почти нет, и через пару дней это начинает нравиться.</p>
+      <p>Живём в лоджах: простые гостевые дома, кровати, одеяла, печка в общей комнате. Едим горячее три раза в день: дал бат, супы, момо, имбирный чай. Еду каждый заказывает в лодже и оплачивает на месте, ориентир <span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> € в день. Основные вещи несут портеры, вы идёте с дневным рюкзаком (вода, тёплый слой, перекус). Связи на маршруте почти нет, и через пару дней это начинает нравиться.</p>
     </div>
     <picture>
       <source type="image/webp" media="(max-width: 640px)" srcset="images/lodge-village-m.webp">
@@ -741,7 +741,15 @@
 <!-- 12. ПРАКТИКИ НА МАРШРУТЕ -->
 <section class="section section--practices" id="practices">
   <h2 class="section__title">Практики на маршруте</h2>
-  <p class="section__lead">Ведёт Илья: 20 лет личной практики и 14 лет преподавания телесных и восточных техник. Мягкие практики помогают телу и вниманию настроиться на горы — это не спортивная нагрузка, а способ глубже почувствовать место, где вы находитесь.</p>
+  <div class="practices-intro" data-aos="fade-up">
+    <p class="section__lead">Ведёт Илья: 20 лет личной практики и 14 лет преподавания телесных и восточных техник. Мягкие практики помогают телу и вниманию настроиться на горы — это не спортивная нагрузка, а способ глубже почувствовать место, где вы находитесь.</p>
+    <picture>
+      <source type="image/webp" media="(max-width: 640px)" srcset="images/qigong-terrace-m.webp">
+      <source type="image/webp" srcset="images/qigong-terrace.webp">
+      <source media="(max-width: 640px)" srcset="images/qigong-terrace-m.jpg">
+      <img src="images/qigong-terrace.jpg" alt="Группа на практике цигун на террасе лоджи с видом на гималайские вершины" width="1280" height="1785" loading="lazy" decoding="async">
+    </picture>
+  </div>
   <ul class="practices-list" data-aos="fade-up">
     <li>Пранаямы — дыхательные техники и брюшные манипуляции</li>
     <li>Дришти-йога — глазная гимнастика</li>
@@ -762,9 +770,9 @@
 <section class="section section--price" id="price">
   <h2 class="section__title">Участие в путешествии</h2>
   <div class="price-card" data-aos="fade-up">
-    <p class="price-card__early">$<span data-cfg="priceEarly"></span> <span class="price-card__early-label">для первых пяти участников</span></p>
-    <p class="price-card__regular">Затем стоимость составит $<span data-cfg="priceRegular"></span></p>
-    <p class="price-card__deposit">Предоплата для бронирования места: $<span data-cfg="deposit"></span></p>
+    <p class="price-card__early"><span data-cfg="priceEarly"></span> € <span class="price-card__early-label">для первых пяти участников</span></p>
+    <p class="price-card__regular">Затем стоимость составит <span data-cfg="priceRegular"></span> €</p>
+    <p class="price-card__deposit">Предоплата для бронирования места: <span data-cfg="deposit"></span> €</p>
     <p class="price-card__rest">Остаток: по прилёту в Катманду</p>
     <a class="btn btn--primary" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
   </div>
@@ -799,12 +807,12 @@
     <div class="includes-card includes-card--no" data-aos="fade-up" data-aos-delay="100">
       <h3>Не входит</h3>
       <ul>
-        <li>Питание на треке: оплачивается самостоятельно на месте, ориентировочный бюджет $<span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> в день (дал бат, супы, момо, чай; чем выше, тем дороже — это нормально для региона)</li>
+        <li>Питание на треке: оплачивается самостоятельно на месте, ориентировочный бюджет <span data-cfg="foodMin"></span>–<span data-cfg="foodMax"></span> € в день (дал бат, супы, момо, чай; чем выше, тем дороже — это нормально для региона)</li>
         <li>Международный перелёт до Катманду и обратно</li>
         <li>Виза Непала (оформляется по прилёту, процедура простая)</li>
         <li>Проживание и питание в Катманду (подскажем проверенный отель, можно остановиться рядом с нами)</li>
         <li>Страховка с покрытием треккинга до 5500 м и вертолётной эвакуации (обязательна)</li>
-        <li>Чаевые портерам и команде: примерно $<span data-cfg="tipsAmount"></span> на весь маршрут</li>
+        <li>Чаевые портерам и команде: примерно <span data-cfg="tipsAmount"></span> € на весь маршрут</li>
         <li>Личные расходы</li>
       </ul>
     </div>
@@ -850,7 +858,7 @@
 
     <div class="faq-item">
       <h3><button class="accordion-trigger" type="button" data-accordion-trigger="faq" aria-expanded="false" aria-controls="faq-5">Что с едой, есть ли вегетарианские опции?</button></h3>
-      <div id="faq-5" class="faq-panel" hidden><p>Да. Основа рациона — дал бат, супы, момо, имбирный чай, во многих лоджах есть простые вегетарианские блюда. Питание на треке оплачивается самостоятельно на месте, ориентир $20–30 в день.</p></div>
+      <div id="faq-5" class="faq-panel" hidden><p>Да. Основа рациона — дал бат, супы, момо, имбирный чай, во многих лоджах есть простые вегетарианские блюда. Питание на треке оплачивается самостоятельно на месте, ориентир 20–30 € в день.</p></div>
     </div>
 
     <div class="faq-item">
