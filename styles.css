@@ -448,7 +448,7 @@ ul, ol {
 }
 @media (min-width: 700px) {
   .facts-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .fact {
@@ -925,6 +925,42 @@ ul, ol {
   border-radius: var(--radius);
   overflow: hidden;
   width: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   Практики на маршруте
+   ------------------------------------------------------------------------- */
+.practices-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.8em 0 0;
+  display: grid;
+  gap: 0.8em;
+}
+@media (min-width: 700px) {
+  .practices-list {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2em;
+  }
+}
+.practices-list li {
+  padding-left: 1.6em;
+  position: relative;
+  color: var(--color-stone);
+}
+.practices-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-gold);
+}
+.practices-note {
+  margin-top: 2.6em;
+  color: var(--color-stone);
 }
 
 /* -------------------------------------------------------------------------
