@@ -100,6 +100,12 @@ ul, ol {
   top: 1em;
 }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 /* -------------------------------------------------------------------------
    Кнопки
    ------------------------------------------------------------------------- */
@@ -415,7 +421,13 @@ ul, ol {
   color: var(--color-gold-dim);
   font-size: 1.15rem;
 }
-.prose--spirit p:last-child {
+.prose--spirit-divider {
+  margin-top: 1.6em;
+  padding-top: 1.4em;
+  border-top: 1px solid var(--color-line);
+  color: var(--color-stone);
+}
+.prose--spirit-anecdote {
   font-style: italic;
   color: var(--color-stone);
 }
@@ -435,6 +447,75 @@ ul, ol {
   border-radius: var(--radius);
   overflow: hidden;
   width: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   Священные места пути
+   ------------------------------------------------------------------------- */
+.sacred-grid {
+  display: grid;
+  gap: 1.4em;
+  margin-top: 2em;
+}
+@media (min-width: 640px) {
+  .sacred-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 980px) {
+  .sacred-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.sacred-card {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.sacred-card picture,
+.sacred-card img {
+  width: 100%;
+  height: 13em;
+  object-fit: cover;
+}
+.sacred-card__body {
+  padding: 1.4em 1.5em 1.6em;
+  border-top: 3px solid var(--color-rhodo);
+}
+.sacred-card--text .sacred-card__body {
+  border-top: 3px solid var(--color-gold-dim);
+  padding-top: 1.8em;
+}
+.sacred-card__meta {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gold-dim);
+  margin-bottom: 0.5em;
+}
+.sacred-card__body h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5em;
+}
+.sacred-card__body p {
+  color: var(--color-stone);
+}
+.sacred-card__note {
+  margin: 1em 0 0;
+  padding-top: 0.9em;
+  border-top: 1px solid var(--color-line);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--color-stone);
+}
+.sacred-disclaimer {
+  margin-top: 2em;
+  color: var(--color-stone);
+  font-size: 0.9rem;
+  max-width: 70ch;
 }
 
 /* -------------------------------------------------------------------------
