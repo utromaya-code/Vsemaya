@@ -241,9 +241,14 @@ def manifesto(c):
 def chapters(c):
     cards = []
     for i, ch in enumerate(c["chapters"], start=1):
+        img = ch.get("image")
+        media = (picture(img["src"], img.get("srcMobile"), img["alt"],
+                         img["width"], img["height"],
+                         sizes="(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 25vw")
+                 if img else placeholder(ch["shot"], ratio="3 / 4"))
         cards.append(f"""      <article class="chapter" data-reveal>
         <div class="chapter__media">
-{placeholder(ch['shot'], ratio='3 / 4')}
+{media}
         </div>
         <div class="chapter__body">
           <p class="mono chapter__index">{i:02d} / {e(ch['nights'])}</p>
@@ -417,6 +422,24 @@ def route_map(c):
 
     <p class="note">{e(m['note'])}</p>
   </div>
+</section>
+"""
+
+
+def interlude(c):
+    """Полноширинный кадр между разделами. Без него страница слишком ровная."""
+    data = c.get("interlude")
+    if not data:
+        return ""
+    img = data["image"]
+    media = picture(img["src"], img.get("srcMobile"), img["alt"],
+                    img["width"], img["height"], cls="interlude__media", sizes="100vw")
+    caption = (f'<p class="mono interlude__caption">{e(data["caption"])}</p>'
+               if data.get("caption") else "")
+    return f"""
+<section class="interlude">
+{media}
+  {caption}
 </section>
 """
 
@@ -771,6 +794,17 @@ def footer(c):
     if privacy:
         links.append(privacy)
 
+    credits = ""
+    if f.get("credits"):
+        cr = f["credits"]
+        items = ", ".join(
+            f'{e(x["who"])} — {e(x["what"])} (<a href="{e(x["url"])}" '
+            f'rel="license noopener" target="_blank">{e(x["license"])}</a>)'
+            for x in cr["items"]
+        )
+        credits = (f'<p class="footer__credits">{e(cr["intro"])} {items}. '
+                   f'{e(cr.get("note", ""))}</p>')
+
     return f"""
 <footer class="footer">
   <div class="wrap">
@@ -782,6 +816,7 @@ def footer(c):
       {' · '.join(links)}
     </nav>
     <p class="footer__disclaimer">{e(f['disclaimer'])}</p>
+    {credits}
     {legal}
   </div>
 </footer>
@@ -813,7 +848,7 @@ def build():
     c = json.loads((BALI / "content.json").read_text(encoding="utf-8"))
     parts = [
         head(c), header(c), hero(c), manifesto(c), chapters(c), practices(c),
-        team(c), route_map(c), program(c), rhythm(c), stay(c), terms(c),
+        team(c), route_map(c), interlude(c), program(c), rhythm(c), stay(c), terms(c),
         price(c), faq(c), request(c), footer(c),
     ]
     out = "".join(parts)

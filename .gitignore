@@ -3,3 +3,5 @@ scripts/shots/
 scripts/node_modules/
 scripts/package.json
 scripts/package-lock.json
+scripts/bali-originals/
+__pycache__/
