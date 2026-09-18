@@ -1728,3 +1728,156 @@ textarea.field__input {
 .footer__credits a:hover {
   color: var(--graphite);
 }
+
+/* ---------- Галерея маршрута ---------- */
+
+.shot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(12px, 1.6vw, 22px);
+}
+
+.shot-card {
+  margin: 0;
+}
+
+.shot-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.shot-card__cap {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 9px;
+}
+
+.shot-card__place {
+  font-size: 15px;
+}
+
+.shot-card__day {
+  color: var(--stone-ink);
+  flex: 0 0 auto;
+}
+
+/* Первый кадр занимает две колонки — сетка перестаёт быть ровным ковром */
+.shot-grid .shot-card:first-child {
+  grid-column: span 2;
+}
+
+.shot-grid .shot-card:first-child img {
+  aspect-ratio: 8 / 3;
+}
+
+@media (max-width: 1000px) {
+  .shot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shot-grid .shot-card:first-child img {
+    aspect-ratio: 16 / 6;
+  }
+}
+
+@media (max-width: 560px) {
+  .shot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shot-grid .shot-card:first-child {
+    grid-column: span 1;
+  }
+
+  .shot-grid .shot-card:first-child img {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* ---------- Перелёт и прибытие ---------- */
+
+.arrival__row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: clamp(16px, 3vw, 40px);
+  padding-block: clamp(18px, 2.2vw, 26px);
+  border-top: 1px solid var(--line-soft);
+}
+
+.arrival__row:last-child {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.arrival__time {
+  color: var(--sea-ink);
+  margin: 0;
+  padding-top: 5px;
+}
+
+.arrival__title {
+  font-size: clamp(17px, 1.3vw, 20px);
+  font-weight: 500;
+  margin: 0 0 6px;
+}
+
+.arrival__body p {
+  color: var(--stone-ink);
+  font-size: clamp(15px, 1.05vw, 17px);
+}
+
+@media (max-width: 560px) {
+  .arrival__row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+}
+
+/* ---------- Отзывы ---------- */
+
+.quotes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+
+.quote {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  padding-top: clamp(18px, 2vw, 26px);
+}
+
+.quote__text {
+  margin: 0 0 16px;
+  font-size: clamp(17px, 1.4vw, 21px);
+  line-height: 1.5;
+}
+
+.quote__who {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.quote__name {
+  font-weight: 500;
+}
+
+.quote__where {
+  color: var(--stone-ink);
+}
+
+@media (max-width: 760px) {
+  .quotes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Действие после программы ---------- */
+
+.program__cta {
+  margin-top: clamp(28px, 3.5vw, 44px);
+}

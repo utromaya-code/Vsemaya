@@ -38,6 +38,9 @@ python3 scripts/build_bali.py
 | Отели | `stay.cards[]` |
 | Ведущие и организатор | `leaders`, `lab`, `organizer` |
 | Вопросы и ответы | `faq` |
+| Галерея мест | `gallery.items[]` |
+| Перелёт и прибытие | `arrival.rows[]` |
+| Отзывы (пусто — блок скрыт) | `testimonials.items[]` |
 | Контакты, Telegram, WhatsApp | `config` |
 | Title, description, canonical, OG | `meta` |
 
@@ -86,7 +89,8 @@ python3 scripts/build_bali.py
 
 - [ ] `meta.noindex` → `false` (сейчас `true`, чтобы черновик не попал в поиск)
 - [ ] `meta.siteUrl` → финальный домен, обновить canonical и OG
-- [ ] `meta.ogImage` → обложка 1200 × 630
+- [x] `meta.ogImage` → обложка 1200 × 630 (собирается `scripts/og/og-template.html`)
+- [ ] Отзывы участников с именами и разрешением — `testimonials.items`
 - [ ] Цена, состав пакета, правила отмены
 - [ ] Подтверждённые отели вместо списка требований
 - [ ] Портрет и био Виты, фото практик и локаций

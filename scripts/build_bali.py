@@ -65,8 +65,11 @@ def head(c):
     robots = '\n<meta name="robots" content="noindex, nofollow">' if m.get("noindex") else ""
     og_image = ""
     if m.get("ogImage"):
+        og_url = m["ogImage"]
+        if not og_url.startswith("http"):
+            og_url = m["siteUrl"].rstrip("/") + "/" + og_url.lstrip("/")
         og_image = f"""
-<meta property="og:image" content="{e(m['ogImage'])}">
+<meta property="og:image" content="{e(og_url)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">"""
@@ -506,6 +509,93 @@ def program(c):
 """
 
 
+def gallery(c):
+    """Сетка кадров маршрута. Подпись у каждого кадра называет реальное место."""
+    g = c.get("gallery")
+    if not g or not g.get("items"):
+        return ""
+    items = []
+    for item in g["items"]:
+        media = picture(item["src"], item["src"] + "-m", item["alt"], 1000, 750,
+                        sizes="(max-width: 560px) 100vw, (max-width: 1000px) 50vw, 25vw")
+        items.append(f"""      <figure class="shot-card">
+{media}
+        <figcaption class="shot-card__cap">
+          <span class="shot-card__place">{e(item['caption'])}</span>
+          <span class="mono shot-card__day">{e(item['day'])}</span>
+        </figcaption>
+      </figure>""")
+    return f"""
+<section class="section section--gallery" id="gallery">
+  <div class="wrap">
+    {kicker(g.get('kicker'))}
+    <h2 class="section__title">{e(g['title'])}</h2>
+    <div class="shot-grid" data-reveal>
+{chr(10).join(items)}
+    </div>
+    <p class="note">{e(g['note'])}</p>
+  </div>
+</section>
+"""
+
+
+def arrival(c):
+    """Практика перелёта: чем раньше человек это поймёт, тем раньше купит билет."""
+    a = c.get("arrival")
+    if not a:
+        return ""
+    rows = "\n".join(
+        f"""        <div class="arrival__row">
+          <p class="mono arrival__time">{e(r['time'])}</p>
+          <div class="arrival__body">
+            <h3 class="arrival__title">{e(r['title'])}</h3>
+            <p>{e(r['text'])}</p>
+          </div>
+        </div>""" for r in a["rows"]
+    )
+    return f"""
+<section class="section section--arrival" id="arrival">
+  <div class="wrap wrap--narrow">
+    {kicker(a.get('kicker'))}
+    <h2 class="section__title">{e(a['title'])}</h2>
+    <p class="section__lead">{e(a['lead'])}</p>
+    <div class="arrival">
+{rows}
+    </div>
+    <p class="note">{e(a['note'])}</p>
+  </div>
+</section>
+"""
+
+
+def testimonials(c):
+    """Появляется, только когда есть настоящие отзывы с именем и разрешением."""
+    t = c.get("testimonials")
+    if not t or not t.get("items"):
+        return ""
+    cards = []
+    for item in t["items"]:
+        where = f'<span class="mono quote__where">{e(item["where"])}</span>' if item.get("where") else ""
+        cards.append(f"""      <figure class="quote" data-reveal>
+        <blockquote class="quote__text">{e(item['text'])}</blockquote>
+        <figcaption class="quote__who">
+          <span class="quote__name">{e(item['name'])}</span>
+          {where}
+        </figcaption>
+      </figure>""")
+    return f"""
+<section class="section section--quotes" id="testimonials">
+  <div class="wrap">
+    {kicker(t.get('kicker'))}
+    <h2 class="section__title">{e(t['title'])}</h2>
+    <div class="quotes">
+{chr(10).join(cards)}
+    </div>
+  </div>
+</section>
+"""
+
+
 def rhythm(c):
     r = c["rhythm"]
     rows = "\n".join(
@@ -848,8 +938,9 @@ def build():
     c = json.loads((BALI / "content.json").read_text(encoding="utf-8"))
     parts = [
         head(c), header(c), hero(c), manifesto(c), chapters(c), practices(c),
-        team(c), route_map(c), interlude(c), program(c), rhythm(c), stay(c), terms(c),
-        price(c), faq(c), request(c), footer(c),
+        team(c), route_map(c), interlude(c), program(c), rhythm(c), gallery(c),
+        stay(c), arrival(c), terms(c), price(c), testimonials(c), faq(c),
+        request(c), footer(c),
     ]
     out = "".join(parts)
     (BALI / "index.html").write_text(out, encoding="utf-8")

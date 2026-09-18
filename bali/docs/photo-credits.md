@@ -14,9 +14,32 @@
 | `chapter-sanur` | Глава «Возвращение» | 2ndoct | CC BY-SA 4.0 | ESEAP2018 Sunrise at Pantai Karang.jpg |
 | `batur` | Разделитель перед программой | TMFalkner | CC BY-SA 4.0 | Sunrise on Mount Batur.jpg |
 | `ilya`, `andrey` | Ведущие и организатор | Архив команды | — | из проекта «Канченджанга» |
+| `g-uluwatu` | Галерея | rheins | CC BY 3.0 | Split Gate… / Uluwatu |
+| `g-kecak` | Галерея | Rennytan | CC BY-SA 4.0 | Kecak Fire Dance – Pura Uluwatu Bali.jpg |
+| `g-offering` | Галерея | Enrico Strocchi | CC BY-SA 2.0 | Canang Sari (49364678042).jpg |
+| `g-batukaru` | Галерея | Franz-Josef Alayon Monsanto | CC BY-SA 4.0 | The Faithful Gathered.jpg |
+| `g-jatiluwih` | Галерея | Paxson Woelber | CC BY-SA 4.0 | Rice fields at Jatiluwih.JPG |
+| `g-meno-dusk` | Галерея | Vyacheslav Argenberg | CC BY 4.0 | Gili Meno Island, Clouds over Bali Sea.jpg |
+| `g-meno-sun` | Галерея | yeowatzup | CC BY 2.0 | Sunset, Gili Meno, Indonesia (933054521).jpg |
+| `og-image` | Open Graph | собирается из `hero-ocean` | — | `scripts/og/og-template.html` |
 
 Ссылки на лицензии: [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/),
 [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/).
+
+## Что отбраковано и почему
+
+При отборе выбрасывались кадры, которые выглядят красиво, но врут или
+создают риск:
+
+- **Улун Дану Братан** и **Гили Траванган** — красивые, но этих мест нет
+  в маршруте. Подписать чужое место именем нашего нельзя.
+- **Плюмерия** — снята в Индии. Как «балийская деталь» это натяжка.
+- Кадры рифа и черепах с **видимым водяным знаком** фотографа.
+- Архивные снимки балийских танцев 1920-х — чёрно-белые, не про эту поездку.
+- Крупные портреты незнакомых людей на религиозных церемониях.
+
+Фотографии с сайтов других ретритов не использовались и использоваться не могут:
+они сняты по заказу и защищены авторским правом.
 
 ## Что важно понимать
 

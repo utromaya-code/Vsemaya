@@ -6,7 +6,7 @@
     "siteUrl": "https://kanchenjunga.ru/bali/",
     "ogTitle": "Соль. Рис. Тишина. Путешествие-практика по Бали и Гили Мено",
     "ogDescription": "12–22 февраля 2027. 11 дней / 10 ночей. Баланган, Убуд, Гили Мено, Санур.",
-    "ogImage": "",
+    "ogImage": "images/og-image.jpg",
     "noindex": true,
     "keywords": "путешествие-практика Бали, ретрит на Бали 2027, йога-тур Бали, Гили Мено, цигун, звуковые медитации"
   },
@@ -780,13 +780,31 @@
           "url": "https://creativecommons.org/licenses/by/3.0/"
         },
         {
-          "who": "Tiya20",
+          "who": "Vyacheslav Argenberg",
+          "what": "Убуд и Гили Мено",
+          "license": "CC BY 4.0",
+          "url": "https://creativecommons.org/licenses/by/4.0/"
+        },
+        {
+          "who": "rheins",
           "what": "Улувату",
-          "license": "CC BY-SA 4.0",
+          "license": "CC BY 3.0",
+          "url": "https://creativecommons.org/licenses/by/3.0/"
+        },
+        {
+          "who": "yeowatzup",
+          "what": "закат на Гили Мено",
+          "license": "CC BY 2.0",
+          "url": "https://creativecommons.org/licenses/by/2.0/"
+        },
+        {
+          "who": "Tiya20, CEphoto Uwe Aranas",
+          "what": "Улувату",
+          "license": "CC BY-SA",
           "url": "https://creativecommons.org/licenses/by-sa/4.0/"
         },
         {
-          "who": "Thomas Fuhrmann",
+          "who": "Thomas Fuhrmann, Paxson Woelber",
           "what": "Джатилувих",
           "license": "CC BY-SA 4.0",
           "url": "https://creativecommons.org/licenses/by-sa/4.0/"
@@ -800,6 +818,24 @@
         {
           "who": "TMFalkner",
           "what": "Батур",
+          "license": "CC BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        {
+          "who": "Rennytan",
+          "what": "Kecak",
+          "license": "CC BY-SA 4.0",
+          "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        {
+          "who": "Enrico Strocchi",
+          "what": "канang сари",
+          "license": "CC BY-SA 2.0",
+          "url": "https://creativecommons.org/licenses/by-sa/2.0/"
+        },
+        {
+          "who": "Franz-Josef Alayon Monsanto",
+          "what": "Батукару",
           "license": "CC BY-SA 4.0",
           "url": "https://creativecommons.org/licenses/by-sa/4.0/"
         }
@@ -816,5 +852,87 @@
       "height": 875
     },
     "caption": "Батур, рассвет. День 5"
+  },
+  "gallery": {
+    "kicker": "Что вы увидите",
+    "title": "Места маршрута",
+    "items": [
+      {
+        "src": "images/g-uluwatu",
+        "alt": "Закат над океаном у храма Улувату",
+        "caption": "Улувату, закат",
+        "day": "День 2"
+      },
+      {
+        "src": "images/g-kecak",
+        "alt": "Огненный круг во время танца Kecak на площадке храма",
+        "caption": "Танец Kecak",
+        "day": "День 2"
+      },
+      {
+        "src": "images/g-offering",
+        "alt": "Чананг сари — балийское подношение из пальмовых листьев и цветов",
+        "caption": "Чананг сари, подношение",
+        "day": "Дни 3–7"
+      },
+      {
+        "src": "images/g-batukaru",
+        "alt": "Люди в белом на церемонии у храма Pura Luhur Batukaru",
+        "caption": "Храм Батукару",
+        "day": "День 7"
+      },
+      {
+        "src": "images/g-jatiluwih",
+        "alt": "Тропа между рисовыми террасами Джатилувих",
+        "caption": "Джатилувих и субак",
+        "day": "День 7"
+      },
+      {
+        "src": "images/g-meno-dusk",
+        "alt": "Облака над морем после заката у Гили Мено",
+        "caption": "Гили Мено после заката",
+        "day": "Дни 8–10"
+      },
+      {
+        "src": "images/g-meno-sun",
+        "alt": "Силуэт лодки на фоне заходящего солнца у Гили Мено",
+        "caption": "Закат на Гили Мено",
+        "day": "Дни 8–10"
+      }
+    ],
+    "note": "Пейзажи и культурные места маршрута. Кадры практик и группы появятся после собственной съёмки."
+  },
+  "arrival": {
+    "kicker": "",
+    "title": "Перелёт и прибытие",
+    "lead": "Перелёт участники берут сами. Всё, что происходит после выхода из аэропорта, — наша забота.",
+    "rows": [
+      {
+        "time": "12 февраля",
+        "title": "Прилёт",
+        "text": "Встречаем в аэропорту Денпасар (DPS) и везём на Баланган. Групповой трансфер входит в стоимость."
+      },
+      {
+        "time": "22 февраля",
+        "title": "Вылет",
+        "text": "Групповые окна трансфера из Санура в аэропорт. Санур — в 30–40 минутах езды от терминала."
+      },
+      {
+        "time": "До и после",
+        "title": "Дополнительные ночи",
+        "text": "Если хотите прилететь раньше или остаться дольше, скажите в заявке — поможем с бронированием, это оплачивается отдельно."
+      },
+      {
+        "time": "Документы",
+        "title": "Виза и страховка",
+        "text": "Нужен загранпаспорт со сроком действия не меньше полугода на дату въезда и страховка на весь период. Визовые правила Индонезии меняются — актуальный порядок подтверждаем ближе к датам."
+      }
+    ],
+    "note": "Точные окна трансфера публикуются после подтверждения отелей. Если рейс выпадает за их пределы, подскажем, как состыковаться."
+  },
+  "testimonials": {
+    "kicker": "Отзывы",
+    "title": "Кто уже ездил",
+    "items": []
   }
 }
