@@ -21,6 +21,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "scripts" / "bali-originals"
 OUT = ROOT / "bali" / "images"
 
+# Antique White — тот же, что фон страницы: зазор в развороте должен исчезать
+MILK = (237, 231, 219)
+
 # name: (исходник, соотношение сторон, ширина десктоп, ширина мобильная,
 #        фокус кропа по x и y в долях, поворот в градусах)
 SHOTS = {
@@ -45,13 +48,12 @@ SHOTS = {
     # только свести их с остальной страницей, а не переделывать.
     "ilya":           dict(src="ilya-namaste.jpg",   ratio=(4, 5),  w=900,  wm=600, focus=(0.52, 0.40), grade="team"),
     "vita":           dict(src="vita-portrait.jpg",  ratio=(4, 5),  w=900,  wm=600, focus=(0.50, 0.42), grade="team"),
-    "practice-move":  dict(src="ilya-taiji.jpg",     ratio=(3, 4),  w=900,  wm=600, focus=(0.50, 0.50), grade="team"),
+    "practice-move":  dict(src="back-mono.jpg",      ratio=(3, 4),  w=900,  wm=600, focus=(0.46, 0.50), grade="mono"),
     "practice-sound": dict(src="vita-bowl.jpg",      ratio=(3, 4),  w=820,  wm=600, focus=(0.45, 0.45), grade="team"),
     "practice-shore": dict(src="vita-shore.jpg",     ratio=(16, 7), w=1280, wm=900, focus=(0.50, 0.52), grade="team"),
     "rhythm-hands":   dict(src="hands-palosanto.jpg", ratio=(3, 4), w=900,  wm=600, focus=(0.50, 0.55), grade="team"),
     # Чёрно-белый кадр греть нельзя — уйдёт в сепию
     "andrey":         dict(src="andrey-src.jpg",     ratio=(4, 3),  w=800,  wm=600, focus=(0.50, 0.50), grade="team"),
-    "lab-back":       dict(src="back-mono.jpg",      ratio=(3, 2),  w=1100, wm=700, focus=(0.50, 0.50), grade="mono"),
 }
 
 
@@ -80,6 +82,12 @@ PROFILES = {
     # Съёмка команды: авторский грейд уже есть, тени работают на настроение
     "team": dict(warm_r=1.012, warm_b=0.992, green=0.95,
                  sat=0.98, contrast=1.02, lift=0, sharpen=40),
+    # Разворот: половины сняты в разное время суток, поэтому обе уводятся
+    # к общему приглушённому тону — иначе тёплый день спорит с синим часом
+    "pair-warm": dict(warm_r=1.005, warm_b=1.005, green=0.88,
+                      sat=0.80, contrast=1.03, lift=4, sharpen=40),
+    "pair-cool": dict(warm_r=1.045, warm_b=0.975, green=0.92,
+                      sat=0.86, contrast=1.02, lift=0, sharpen=40),
     # Чёрно-белое: только лёгкая резкость, никакого тонирования
     "mono": dict(warm_r=1.0, warm_b=1.0, green=1.0,
                  sat=1.0, contrast=1.0, lift=0, sharpen=40),
@@ -116,8 +124,55 @@ def grade(im, profile="landscape"):
     return im
 
 
+# Разворот для блока лабораторий: два кадра рядом, снятые в одном месте.
+# Никакого монтажа «как будто вдвоём» — просто два реальных снимка на одном листе.
+DIPTYCHS = {
+    "lab-pair": dict(
+        left=dict(src="ilya-taiji.jpg", focus=(0.50, 0.46), grade="pair-warm"),
+        right=dict(src="vita-move.jpg", focus=(0.50, 0.50), grade="pair-cool"),
+        ratio=(3, 4), panel_w=900, w=1840, wm=1100, gap=0.022,
+    ),
+}
+
+
+def build_diptychs():
+    """Склейка двух кадров с зазором цвета страницы между ними."""
+    for name, spec in DIPTYCHS.items():
+        panels = []
+        for side in ("left", "right"):
+            path = SRC / spec[side]["src"]
+            if not path.exists():
+                print("НЕТ ИСХОДНИКА", spec[side]["src"])
+                break
+            im = Image.open(path).convert("RGB")
+            im = crop_to(im, spec["ratio"], spec[side]["focus"])
+            im = grade(im, spec[side].get("grade", "team"))
+            pw = spec["panel_w"]
+            ph = round(im.height * pw / im.width)
+            panels.append(im.resize((pw, ph), Image.LANCZOS))
+        else:
+            h = min(p.height for p in panels)
+            panels = [p.crop((0, 0, p.width, h)) for p in panels]
+            gap = round(panels[0].width * spec["gap"])
+            sheet = Image.new("RGB", (panels[0].width * 2 + gap, h), MILK)
+            sheet.paste(panels[0], (0, 0))
+            sheet.paste(panels[1], (panels[0].width + gap, 0))
+
+            for suffix, target_w in (("", spec["w"]), ("-m", spec["wm"])):
+                target_w = min(target_w, sheet.width)
+                hh = round(sheet.height * target_w / sheet.width)
+                out = sheet.resize((target_w, hh), Image.LANCZOS)
+                jpg = OUT / f"{name}{suffix}.jpg"
+                webp = OUT / f"{name}{suffix}.webp"
+                out.save(jpg, "JPEG", quality=78, optimize=True, progressive=True)
+                out.save(webp, "WEBP", quality=74, method=6)
+                print(f"{name}{suffix}: {out.size[0]}×{out.size[1]}  "
+                      f"{jpg.stat().st_size // 1024}KB jpg / {webp.stat().st_size // 1024}KB webp")
+
+
 def build():
     OUT.mkdir(parents=True, exist_ok=True)
+    build_diptychs()
     for name, spec in SHOTS.items():
         path = SRC / spec["src"]
         if not path.exists():

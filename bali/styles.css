@@ -5,19 +5,25 @@
    ========================================================================= */
 
 :root {
-  /* Палитра из ТЗ */
-  --milk: #f2ede5;
-  --milk-deep: #e9e2d7;
-  --graphite: #171815;
-  --sea: #5f8585;
-  --sea-ink: #3f5c5c;      /* затемнённая морская для текста и ссылок: AA на молочном */
-  --rice: #78825c;
-  --rice-ink: #565e3f;
-  --sand: #c8b99e;
-  --stone: #777d76;
-  --stone-ink: #5c625b;
-  --line: rgba(23, 24, 21, 0.14);
-  --line-soft: rgba(23, 24, 21, 0.08);
+  /* Палитра: Pantone весна 2027, замеры сняты с образцов заказчика.
+     Рядом с каждым цветом — его роль, потому что имя цвета роли не объясняет. */
+  --milk: #ede7db;         /* Antique White 11-0102 — основная поверхность */
+  --milk-deep: #e2dacb;    /* она же на полтона глубже: плашки и кадры */
+  --graphite: #1c1d1a;     /* текст и контрастные кнопки */
+
+  --indigo: #3e4a63;       /* Blue Indigo 19-4029 — главный акцент */
+  --indigo-ink: #3e4a63;   /* он же в тексте: 7.2:1 на молочном, AA проходит */
+
+  --tarragon: #6c6f4f;     /* Tarragon 16-0430 — второй акцент, линии */
+  --tarragon-ink: #575a3e;  /* затемнён до читаемого в мелком тексте */
+
+  --arrowwood: #c3a057;    /* Arrowwood 14-0952 — редкий тёплый штрих, только графика */
+  --arrowwood-ink: #8a6d2c; /* затемнён до 4:1 — годится для заметных маркеров */
+  --dolphin: #8b8a8c;      /* Dolphin 17-4101 — серый для линий и маркеров */
+  --dolphin-ink: #5e5d60;  /* затемнён для вторичного текста */
+
+  --line: rgba(28, 29, 26, 0.16);
+  --line-soft: rgba(28, 29, 26, 0.09);
 
   --font-text: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -79,7 +85,7 @@ p:last-child {
 }
 
 a {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   text-decoration: none;
   border-bottom: 1px solid currentColor;
   transition: color 0.2s ease, border-color 0.2s ease;
@@ -96,7 +102,7 @@ ul {
 }
 
 :focus-visible {
-  outline: 2px solid var(--sea-ink);
+  outline: 2px solid var(--indigo-ink);
   outline-offset: 3px;
 }
 
@@ -127,7 +133,7 @@ ul {
 }
 
 .kicker {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0 0 clamp(16px, 2vw, 28px);
 }
 
@@ -148,13 +154,13 @@ ul {
 .section__lead {
   max-width: 62ch;
   font-size: clamp(17px, 1.4vw, 21px);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin-bottom: clamp(32px, 5vw, 64px);
 }
 
 .note {
   font-size: clamp(14px, 1vw, 16px);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   max-width: 68ch;
   margin-top: clamp(24px, 3vw, 40px);
 }
@@ -195,8 +201,8 @@ ul {
 }
 
 .btn--primary:hover {
-  background: var(--sea-ink);
-  border-color: var(--sea-ink);
+  background: var(--indigo-ink);
+  border-color: var(--indigo-ink);
   color: var(--milk);
 }
 
@@ -220,7 +226,7 @@ ul {
   border: 0;
   border-bottom: 1px solid var(--line);
   background: none;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .btn--text:hover {
@@ -274,7 +280,7 @@ ul {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.06em;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .nav__list {
@@ -287,7 +293,7 @@ ul {
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   border: 0;
   padding-block: 6px;
 }
@@ -392,7 +398,7 @@ ul {
 }
 
 .hero__eyebrow {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0 0 clamp(18px, 2.2vw, 28px);
 }
 
@@ -425,7 +431,7 @@ ul {
 .hero__tagline {
   margin: 8px 0 0;
   font-size: clamp(18px, 1.8vw, 24px);
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
 }
 
 .hero__route {
@@ -433,7 +439,7 @@ ul {
   flex-wrap: wrap;
   gap: 8px 20px;
   margin: clamp(22px, 2.6vw, 32px) 0 0;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .hero__route li {
@@ -478,18 +484,18 @@ ul {
 
 .hero__waves path {
   fill: none;
-  stroke: var(--sea);
+  stroke: var(--indigo);
   stroke-width: 1.25;
   opacity: 0.45;
 }
 
 .hero__waves path:nth-child(2) {
-  stroke: var(--sand);
+  stroke: var(--arrowwood);
   opacity: 0.7;
 }
 
 .hero__waves path:nth-child(3) {
-  stroke: var(--stone);
+  stroke: var(--dolphin);
   opacity: 0.35;
 }
 
@@ -520,7 +526,7 @@ ul {
   font-size: clamp(12px, 1vw, 14px);
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   white-space: nowrap;
 }
 
@@ -547,7 +553,7 @@ ul {
 
 .manifesto__note {
   margin-top: clamp(28px, 4vw, 48px);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   max-width: 62ch;
 }
 
@@ -567,7 +573,7 @@ ul {
   font-size: 11px;
   line-height: 1.5;
   letter-spacing: 0.04em;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   max-width: 34ch;
 }
 
@@ -590,7 +596,7 @@ ul {
 }
 
 .chapter__index {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0 0 10px;
 }
 
@@ -603,13 +609,13 @@ ul {
 }
 
 .chapter__place {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 6px 0 14px;
 }
 
 .chapter__body p:last-child {
   font-size: clamp(15px, 1.05vw, 17px);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 1000px) {
@@ -634,7 +640,7 @@ ul {
 }
 
 .practice__time {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0 0 12px;
 }
 
@@ -656,7 +662,7 @@ ul {
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.04em;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   padding-bottom: 3px;
   border-bottom: 1px solid var(--line);
 }
@@ -682,12 +688,12 @@ ul {
 }
 
 .change__place {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   padding-top: 4px;
 }
 
 .change__text {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 760px) {
@@ -721,7 +727,7 @@ ul {
 }
 
 .person__role {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0 0 8px;
 }
 
@@ -752,7 +758,7 @@ ul {
 
 .lab {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
   gap: clamp(24px, 4vw, 64px);
   align-items: center;
   margin-top: clamp(40px, 6vw, 80px);
@@ -807,7 +813,7 @@ ul {
   margin-top: -3.5px;
   margin-left: -3.5px;
   border-radius: 50%;
-  background: var(--sea-ink);
+  background: var(--indigo-ink);
 }
 
 .strip__stop:first-child {
@@ -825,7 +831,7 @@ ul {
 }
 
 .strip__nights {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .strip__leg {
@@ -843,24 +849,24 @@ ul {
   right: 0;
   bottom: 10px;
   height: 1px;
-  background: var(--sea);
+  background: var(--indigo);
   opacity: 0.45;
 }
 
 .strip__leg .mono {
   display: block;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   font-size: 11px;
   line-height: 1.45;
 }
 
 .strip__stop--muted .strip__name {
   font-weight: 400;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .strip__stop--muted::before {
-  background: var(--stone);
+  background: var(--dolphin);
 }
 
 @media (max-width: 760px) {
@@ -915,12 +921,12 @@ ul {
 }
 
 .stop__meta {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0 0 6px;
 }
 
 .stop__region {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   font-size: 15px;
   margin: 0 0 16px;
 }
@@ -929,7 +935,7 @@ ul {
   font-size: 15px;
   padding-block: 7px;
   border-top: 1px solid var(--line-soft);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 1000px) {
@@ -971,7 +977,7 @@ ul {
 }
 
 .program__chapter-place {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0;
 }
 
@@ -1005,11 +1011,11 @@ ul {
 }
 
 .day__trigger:hover .day__title {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
 }
 
 .day__n {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .day__title {
@@ -1020,7 +1026,7 @@ ul {
 }
 
 .day__date {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .day__icon {
@@ -1076,20 +1082,20 @@ ul {
 }
 
 .day__block-time {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0;
   padding-top: 3px;
 }
 
 .day__block-text {
   margin: 0;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   font-size: clamp(15px, 1.05vw, 17px);
 }
 
 .day__stay {
   margin: 20px 0 0;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 680px) {
@@ -1141,7 +1147,7 @@ ul {
 }
 
 .rhythm__time {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0;
   padding-top: 4px;
 }
@@ -1178,13 +1184,13 @@ ul {
 }
 
 .stay-card__nights {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0 0 16px;
 }
 
 .stay-card__reqs li {
   font-size: 15px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   padding-block: 8px;
   border-top: 1px solid var(--line-soft);
 }
@@ -1226,7 +1232,7 @@ ul {
 }
 
 .terms__note p {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 860px) {
@@ -1258,7 +1264,7 @@ ul {
 }
 
 .price__terms {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0;
 }
 
@@ -1271,7 +1277,7 @@ ul {
 
 .price__will li {
   font-size: 15px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   padding-block: 9px;
   border-top: 1px solid var(--line-soft);
 }
@@ -1283,7 +1289,7 @@ ul {
 }
 
 .package__title {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0 0 8px;
 }
 
@@ -1301,12 +1307,12 @@ ul {
   left: 2px;
   top: 21px;
   width: 12px;
-  height: 1px;
-  background: var(--rice-ink);
+  height: 2px;
+  background: var(--arrowwood-ink);
 }
 
 .package__list--out li {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .package__list--out li::before {
@@ -1316,7 +1322,7 @@ ul {
   top: 17px;
   width: 5px;
   height: 5px;
-  border: 1px solid var(--stone);
+  border: 1px solid var(--dolphin);
   border-radius: 50%;
 }
 
@@ -1363,7 +1369,7 @@ ul {
 }
 
 .faq-item__trigger:hover {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
 }
 
 .faq-item__trigger .day__icon {
@@ -1374,7 +1380,7 @@ ul {
 .faq-item__panel {
   padding-bottom: clamp(20px, 2.5vw, 28px);
   max-width: 68ch;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 /* ---------- Форма ---------- */
@@ -1414,7 +1420,7 @@ ul {
   font-size: 12px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   padding: 0;
 }
 
@@ -1434,8 +1440,8 @@ ul {
 }
 
 select.field__input {
-  background-image: linear-gradient(45deg, transparent 50%, var(--stone-ink) 50%),
-    linear-gradient(135deg, var(--stone-ink) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, transparent 50%, var(--dolphin-ink) 50%),
+    linear-gradient(135deg, var(--dolphin-ink) 50%, transparent 50%);
   background-position: calc(100% - 9px) 21px, calc(100% - 4px) 21px;
   background-size: 5px 5px, 5px 5px;
   background-repeat: no-repeat;
@@ -1450,19 +1456,19 @@ textarea.field__input {
 
 .field__input:focus {
   outline: none;
-  border-bottom-color: var(--sea-ink);
+  border-bottom-color: var(--indigo-ink);
   border-bottom-width: 2px;
   padding-bottom: 9px;
 }
 
 .field__input:focus-visible {
-  outline: 2px solid var(--sea-ink);
+  outline: 2px solid var(--indigo-ink);
   outline-offset: 4px;
 }
 
 .field__hint {
   font-size: 13px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .field__error {
@@ -1499,13 +1505,13 @@ textarea.field__input {
   margin: 4px 0 0;
   width: 18px;
   height: 18px;
-  accent-color: var(--sea-ink);
+  accent-color: var(--indigo-ink);
   flex: 0 0 auto;
 }
 
 .checkbox span {
   font-size: 15px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 .form-result {
@@ -1526,12 +1532,12 @@ textarea.field__input {
 }
 
 .form-result__contacts {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin-top: 16px;
 }
 
 .form-result__contacts a {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
 }
 
 @media (max-width: 560px) {
@@ -1564,7 +1570,7 @@ textarea.field__input {
 }
 
 .footer__note {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   margin: 0;
 }
 
@@ -1572,13 +1578,13 @@ textarea.field__input {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   padding-block: 18px;
   border-top: 1px solid var(--line-soft);
 }
 
 .footer__links a {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   border-bottom-color: var(--line);
   padding-block: 14px;
 }
@@ -1586,7 +1592,7 @@ textarea.field__input {
 .footer__disclaimer,
 .footer__legal {
   font-size: 14px;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   max-width: 68ch;
   margin: 18px 0 0;
 }
@@ -1624,7 +1630,7 @@ textarea.field__input {
 
 .mobile-bar__dates,
 .mobile-bar__route {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   font-size: 11px;
   white-space: nowrap;
 }
@@ -1701,7 +1707,7 @@ textarea.field__input {
   max-width: var(--wrap);
   margin: 12px auto 0;
   padding-inline: var(--gutter);
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 640px) {
@@ -1715,13 +1721,13 @@ textarea.field__input {
 .footer__credits {
   font-size: 13px;
   line-height: 1.6;
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   max-width: 76ch;
   margin: 14px 0 0;
 }
 
 .footer__credits a {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   border-bottom-color: var(--line-soft);
 }
 
@@ -1760,7 +1766,7 @@ textarea.field__input {
 }
 
 .shot-card__day {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   flex: 0 0 auto;
 }
 
@@ -1812,7 +1818,7 @@ textarea.field__input {
 }
 
 .arrival__time {
-  color: var(--sea-ink);
+  color: var(--indigo-ink);
   margin: 0;
   padding-top: 5px;
 }
@@ -1824,7 +1830,7 @@ textarea.field__input {
 }
 
 .arrival__body p {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
   font-size: clamp(15px, 1.05vw, 17px);
 }
 
@@ -1867,7 +1873,7 @@ textarea.field__input {
 }
 
 .quote__where {
-  color: var(--stone-ink);
+  color: var(--dolphin-ink);
 }
 
 @media (max-width: 760px) {
@@ -1928,7 +1934,7 @@ textarea.field__input {
 
 .lab__media img {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 1820 / 1200;
   object-fit: cover;
 }
 

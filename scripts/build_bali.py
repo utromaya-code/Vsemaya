@@ -116,7 +116,7 @@ def head(c):
 <meta property="og:description" content="{e(m['ogDescription'])}">
 <meta property="og:url" content="{e(m['siteUrl'])}">{og_image}
 
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F2EDE5'/%3E%3Cpath d='M0 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3' stroke='%235F8585' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23EDE7DB'/%3E%3Cpath d='M0 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3 4 3 8 3' stroke='%233E4A63' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
