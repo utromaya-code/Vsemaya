@@ -278,14 +278,30 @@ def practices(c):
     groups = []
     for g in p["groups"]:
         items = "\n".join(f'          <li>{e(x)}</li>' for x in g["items"])
+        img = g.get("image")
+        media = ""
+        if img:
+            media = f"""        <div class="practice__media">
+{picture(img["src"], img.get("srcMobile"), img["alt"], img["width"], img["height"],
+         sizes="(max-width: 760px) 100vw, 45vw")}
+        </div>
+"""
         groups.append(f"""      <article class="practice" data-reveal>
-        <p class="mono practice__time">{e(g['time'])}</p>
+{media}        <p class="mono practice__time">{e(g['time'])}</p>
         <h3 class="practice__title">{e(g['title'])}</h3>
         <p>{e(g['text'])}</p>
         <ul class="tags">
 {items}
         </ul>
       </article>""")
+    w = p.get("wide")
+    wide = ""
+    if w:
+        wide = f"""<div class="practice-wide" data-reveal>
+{picture(w["src"], w.get("srcMobile"), w["alt"], w["width"], w["height"],
+         cls="practice-wide__media", sizes="100vw")}
+    </div>"""
+
     changes = "\n".join(
         f"""        <li>
           <span class="mono change__place">{e(x['place'])}</span>
@@ -301,6 +317,7 @@ def practices(c):
     <div class="practices">
 {chr(10).join(groups)}
     </div>
+    {wide}
     <div class="changes">
       <h3 class="changes__title">Как практика меняется по пути</h3>
       <ul class="changes__list">
@@ -333,6 +350,11 @@ def team(c):
       </article>""")
 
     lab = c["lab"]
+    lab_img = lab.get("image")
+    lab_media = (picture(lab_img["src"], lab_img.get("srcMobile"), lab_img["alt"],
+                         lab_img["width"], lab_img["height"],
+                         sizes="(max-width: 760px) 100vw, 45vw")
+                 if lab_img else placeholder(lab["shot"], ratio="3 / 2"))
     org = c["organizer"]
     org_media = picture(org["image"], org.get("imageMobile"), org["alt"],
                         org["width"], org["height"],
@@ -353,7 +375,7 @@ def team(c):
         <p>{e(lab['text'])}</p>
       </div>
       <div class="lab__media">
-{placeholder(lab['shot'], ratio='3 / 2')}
+{lab_media}
       </div>
     </article>
 
@@ -604,6 +626,31 @@ def rhythm(c):
           <p class="rhythm__text">{e(x['text'])}</p>
         </div>""" for x in r["rows"]
     )
+    img = r.get("image")
+    if img:
+        media = picture(img["src"], img.get("srcMobile"), img["alt"],
+                        img["width"], img["height"],
+                        sizes="(max-width: 860px) 100vw, 34vw")
+        return f"""
+<section class="section section--rhythm">
+  <div class="wrap">
+    {kicker(r['kicker'])}
+    <h2 class="section__title">{e(r['title'])}</h2>
+    <div class="rhythm-layout">
+      <div>
+        <div class="rhythm" data-reveal>
+{rows}
+        </div>
+        <p class="note">{e(r['note'])}</p>
+      </div>
+      <div class="rhythm__media" data-reveal>
+{media}
+      </div>
+    </div>
+  </div>
+</section>
+"""
+
     return f"""
 <section class="section section--rhythm">
   <div class="wrap wrap--narrow">

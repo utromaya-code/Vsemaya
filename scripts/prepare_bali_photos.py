@@ -25,30 +25,34 @@ OUT = ROOT / "bali" / "images"
 #        фокус кропа по x и y в долях, поворот в градусах)
 SHOTS = {
     # Ключевые кадры страницы
-    "hero-ocean":      ("gilimeno-0.jpg",  (21, 9), 1920, 1100, (0.50, 0.68), 0.0),
-    "chapter-sol":     ("uluwatu-2.jpg",   (3, 4),   900,  600, (0.28, 0.70), -1.1),
-    "chapter-ris":     ("jatiluwih-1.jpg", (3, 4),   900,  600, (0.42, 0.52), 0.0),
-    "chapter-tishina": ("gilimeno-3.jpg",  (3, 4),   900,  600, (0.45, 0.50), 0.0),
-    "chapter-sanur":   ("sanur-3.jpg",     (3, 4),   900,  600, (0.55, 0.70), 0.0),
-    "batur":           ("batur-1.jpg",     (16, 7), 2000, 1000, (0.50, 0.55), 0.0),
+    "hero-ocean":      dict(src="gilimeno-0.jpg",  ratio=(21, 9), w=1920, wm=1100, focus=(0.50, 0.68)),
+    "chapter-sol":     dict(src="uluwatu-2.jpg",   ratio=(3, 4),  w=900,  wm=600,  focus=(0.28, 0.70), angle=-1.1),
+    "chapter-ris":     dict(src="jatiluwih-1.jpg", ratio=(3, 4),  w=900,  wm=600,  focus=(0.42, 0.52)),
+    "chapter-tishina": dict(src="gilimeno-3.jpg",  ratio=(3, 4),  w=900,  wm=600,  focus=(0.45, 0.50)),
+    "chapter-sanur":   dict(src="sanur-3.jpg",     ratio=(3, 4),  w=900,  wm=600,  focus=(0.55, 0.70)),
+    "batur":           dict(src="batur-1.jpg",     ratio=(16, 7), w=2000, wm=1000, focus=(0.50, 0.55)),
 
     # Галерея маршрута
-    "g-uluwatu":   ("uluwatu-3.jpg",     (4, 3), 1000, 640, (0.55, 0.50), 0.0),
-    "g-kecak":     ("kecak-4.jpg",       (4, 3), 1000, 640, (0.50, 0.55), 0.0),
-    "g-offering":  ("offering-0.jpg",    (4, 3), 1000, 640, (0.50, 0.50), 0.0),
-    "g-batukaru":  ("batukaru-0.jpg",    (4, 3), 1000, 640, (0.50, 0.55), 0.0),
-    "g-jatiluwih": ("jatiluwih-4.jpg",   (4, 3), 1000, 640, (0.55, 0.55), 0.0),
-    "g-meno-dusk": ("menosunset-2.jpg",  (4, 3), 1000, 640, (0.50, 0.50), 0.0),
-    "g-meno-sun":  ("menosunset-3.jpg",  (4, 3), 1000, 640, (0.50, 0.52), 0.0),
-}
+    "g-uluwatu":   dict(src="uluwatu-3.jpg",    ratio=(4, 3), w=1000, wm=640, focus=(0.55, 0.50)),
+    "g-kecak":     dict(src="kecak-4.jpg",      ratio=(4, 3), w=1000, wm=640, focus=(0.50, 0.55)),
+    "g-offering":  dict(src="offering-0.jpg",   ratio=(4, 3), w=1000, wm=640, focus=(0.50, 0.50)),
+    "g-batukaru":  dict(src="batukaru-0.jpg",   ratio=(4, 3), w=1000, wm=640, focus=(0.50, 0.55)),
+    "g-jatiluwih": dict(src="jatiluwih-4.jpg",  ratio=(4, 3), w=1000, wm=640, focus=(0.55, 0.55)),
+    "g-meno-dusk": dict(src="menosunset-2.jpg", ratio=(4, 3), w=1000, wm=640, focus=(0.50, 0.50)),
+    "g-meno-sun":  dict(src="menosunset-3.jpg", ratio=(4, 3), w=1000, wm=640, focus=(0.50, 0.52)),
 
-# Грейд
-WARM_R = 1.022        # тёплый свет
-WARM_B = 0.982
-GREEN_CALM = 0.86     # насыщенность зелени вниз
-SATURATION = 0.94     # общая насыщенность чуть вниз
-CONTRAST = 1.04       # мягкий контраст
-SHADOW_LIFT = 8       # приподнятые тени, плёночный характер
+    # Съёмка команды. Профиль "team": кадры уже обработаны автором, наша задача —
+    # только свести их с остальной страницей, а не переделывать.
+    "ilya":           dict(src="ilya-namaste.jpg",   ratio=(4, 5),  w=900,  wm=600, focus=(0.52, 0.40), grade="team"),
+    "vita":           dict(src="vita-portrait.jpg",  ratio=(4, 5),  w=900,  wm=600, focus=(0.50, 0.42), grade="team"),
+    "practice-move":  dict(src="ilya-taiji.jpg",     ratio=(3, 4),  w=900,  wm=600, focus=(0.50, 0.50), grade="team"),
+    "practice-sound": dict(src="vita-bowl.jpg",      ratio=(3, 4),  w=820,  wm=600, focus=(0.45, 0.45), grade="team"),
+    "practice-shore": dict(src="vita-shore.jpg",     ratio=(16, 7), w=1280, wm=900, focus=(0.50, 0.52), grade="team"),
+    "rhythm-hands":   dict(src="hands-palosanto.jpg", ratio=(3, 4), w=900,  wm=600, focus=(0.50, 0.55), grade="team"),
+    # Чёрно-белый кадр греть нельзя — уйдёт в сепию
+    "andrey":         dict(src="andrey-src.jpg",     ratio=(4, 3),  w=800,  wm=600, focus=(0.50, 0.50), grade="team"),
+    "lab-back":       dict(src="back-mono.jpg",      ratio=(3, 2),  w=1100, wm=700, focus=(0.50, 0.50), grade="mono"),
+}
 
 
 def crop_to(im, ratio, focus):
@@ -69,52 +73,70 @@ def crop_to(im, ratio, focus):
     return im.crop(box)
 
 
-def grade(im):
+PROFILES = {
+    # Стоковые пейзажи: обычно перекручены по насыщенности, тени глухие
+    "landscape": dict(warm_r=1.022, warm_b=0.982, green=0.86,
+                      sat=0.94, contrast=1.04, lift=8, sharpen=70),
+    # Съёмка команды: авторский грейд уже есть, тени работают на настроение
+    "team": dict(warm_r=1.012, warm_b=0.992, green=0.95,
+                 sat=0.98, contrast=1.02, lift=0, sharpen=40),
+    # Чёрно-белое: только лёгкая резкость, никакого тонирования
+    "mono": dict(warm_r=1.0, warm_b=1.0, green=1.0,
+                 sat=1.0, contrast=1.0, lift=0, sharpen=40),
+}
+
+
+def grade(im, profile="landscape"):
+    pr = PROFILES[profile]
     im = im.convert("RGB")
 
     # Тёплый баланс и спокойная зелень
     r, g, b = im.split()
-    r = r.point(lambda v: min(255, int(v * WARM_R)))
-    b = b.point(lambda v: int(v * WARM_B))
+    r = r.point(lambda v: min(255, int(v * pr["warm_r"])))
+    b = b.point(lambda v: int(v * pr["warm_b"]))
     im = Image.merge("RGB", (r, g, b))
 
     grey = im.convert("L").convert("RGB")
-    im = Image.blend(im, grey, 1 - SATURATION)
+    im = Image.blend(im, grey, 1 - pr["sat"])
 
     # Зелёный канал тянем к серому сильнее остальных
     r, g, b = im.split()
     _, g_grey, _ = grey.split()
-    g = Image.blend(g, g_grey, 1 - GREEN_CALM)
+    g = Image.blend(g, g_grey, 1 - pr["green"])
     im = Image.merge("RGB", (r, g, b))
 
-    im = ImageEnhance.Contrast(im).enhance(CONTRAST)
+    im = ImageEnhance.Contrast(im).enhance(pr["contrast"])
 
-    # Приподнятые тени: чёрная точка уходит от нуля
-    im = im.point(lambda v: int(SHADOW_LIFT + v * (255 - SHADOW_LIFT) / 255))
+    if pr["lift"]:
+        # Приподнятые тени: чёрная точка уходит от нуля
+        lift = pr["lift"]
+        im = im.point(lambda v: int(lift + v * (255 - lift) / 255))
 
-    im = im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=70, threshold=3))
+    im = im.filter(ImageFilter.UnsharpMask(radius=1.2, percent=pr["sharpen"], threshold=3))
     return im
 
 
 def build():
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, (src, ratio, w_desktop, w_mobile, focus, angle) in SHOTS.items():
-        path = SRC / src
+    for name, spec in SHOTS.items():
+        path = SRC / spec["src"]
         if not path.exists():
-            print("НЕТ ИСХОДНИКА", src)
+            print("НЕТ ИСХОДНИКА", spec["src"])
             continue
 
         im = Image.open(path).convert("RGB")
+        angle = spec.get("angle", 0.0)
         if angle:
             # Поворот с последующим кропом краёв, чтобы не осталось пустых углов
             im = im.rotate(angle, resample=Image.BICUBIC, expand=False)
             inset = int(max(im.size) * abs(angle) / 55)
             im = im.crop((inset, inset, im.width - inset, im.height - inset))
 
-        im = crop_to(im, ratio, focus)
-        im = grade(im)
+        im = crop_to(im, spec["ratio"], spec["focus"])
+        im = grade(im, spec.get("grade", "landscape"))
 
-        for suffix, target_w in (("", w_desktop), ("-m", w_mobile)):
+        for suffix, target_w in (("", spec["w"]), ("-m", spec["wm"])):
+            target_w = min(target_w, im.width)
             h = round(im.height * target_w / im.width)
             resized = im.resize((target_w, h), Image.LANCZOS)
             jpg = OUT / f"{name}{suffix}.jpg"

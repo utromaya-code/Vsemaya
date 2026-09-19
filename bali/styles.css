@@ -1881,3 +1881,67 @@ textarea.field__input {
 .program__cta {
   margin-top: clamp(28px, 3.5vw, 44px);
 }
+
+/* ---------- Кадры в блоке практик ---------- */
+
+.practice__media {
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+
+.practice__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.practice-wide {
+  margin-top: clamp(44px, 6vw, 80px);
+}
+
+.practice-wide__media img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .practice-wide__media img {
+    aspect-ratio: 3 / 2;
+  }
+}
+
+/* ---------- Ритм дня рядом с кадром ---------- */
+
+.rhythm-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
+}
+
+.rhythm__media img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.lab__media img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+}
+
+@media (max-width: 860px) {
+  .rhythm-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .rhythm__media {
+    order: -1;
+  }
+
+  .rhythm__media img {
+    aspect-ratio: 3 / 2;
+  }
+}
