@@ -666,7 +666,30 @@ def rhythm(c):
 
 
 def stay(c):
+    """Забронированные точки идут с фотографиями, остальные — требованиями."""
     s = c["stay"]
+
+    confirmed = []
+    for item in s.get("confirmed", []):
+        shots = []
+        for img in item["images"]:
+            cls = "stay-shot stay-shot--wide" if img.get("wide") else "stay-shot"
+            sizes = ("(max-width: 760px) 100vw, 46vw" if img.get("wide")
+                     else "(max-width: 760px) 50vw, 23vw")
+            shots.append(f"""          <div class="{cls}">
+{picture(img["src"], img["src"] + "-m", img["alt"], img["width"], img["height"], sizes=sizes)}
+          </div>""")
+        confirmed.append(f"""      <article class="stay-place" data-reveal>
+        <div class="stay-place__text">
+          <h3 class="stay-place__name">{e(item['place'])}</h3>
+          <p class="mono stay-place__nights">{e(item['nights'])}</p>
+          <p>{e(item['text'])}</p>
+        </div>
+        <div class="stay-place__shots">
+{chr(10).join(shots)}
+        </div>
+      </article>""")
+
     cards = []
     for card in s["cards"]:
         reqs = "\n".join(f'          <li>{e(x)}</li>' for x in card["requirements"])
@@ -677,15 +700,24 @@ def stay(c):
 {reqs}
         </ul>
       </article>""")
+
+    pending = ""
+    if cards:
+        pending = f"""    <h3 class="stay-pending__title">Подтверждаем</h3>
+    <div class="stay-cards">
+{chr(10).join(cards)}
+    </div>"""
+
     return f"""
 <section class="section section--stay" id="stay">
   <div class="wrap">
-    <p class="mono kicker">{e(s['kicker'])}</p>
+    {kicker(s.get('kicker'))}
     <h2 class="section__title">{e(s['title'])}</h2>
     <p class="section__lead">{e(s['lead'])}</p>
-    <div class="stay-cards">
-{chr(10).join(cards)}
+    <div class="stay-places">
+{chr(10).join(confirmed)}
     </div>
+{pending}
     <p class="note">{e(s['note'])}</p>
   </div>
 </section>

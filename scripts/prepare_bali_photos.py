@@ -53,6 +53,14 @@ SHOTS = {
     "practice-shore": dict(src="vita-shore.jpg",     ratio=(16, 7), w=1280, wm=900, focus=(0.50, 0.52), grade="team"),
     "rhythm-hands":   dict(src="hands-palosanto.jpg", ratio=(3, 4), w=900,  wm=600, focus=(0.50, 0.55), grade="team"),
     # Чёрно-белый кадр греть нельзя — уйдёт в сепию
+    # Размещение
+    "stay-ubud-pool":    dict(src="stay-ubud-pool.jpg",    ratio=(3, 2), w=1200, wm=800, focus=(0.50, 0.50), grade="hotel"),
+    "stay-ubud-shala":   dict(src="stay-ubud-shala.jpg",   ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.52), grade="hotel"),
+    "stay-ubud-room":    dict(src="stay-ubud-room.jpg",    ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.50), grade="hotel"),
+    "stay-meno-pool":    dict(src="stay-meno-pool.jpg",    ratio=(3, 2), w=1200, wm=800, focus=(0.50, 0.50), grade="hotel"),
+    "stay-meno-terrace": dict(src="stay-meno-terrace.jpg", ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.55), grade="hotel"),
+    "stay-meno-room":    dict(src="stay-meno-room.jpg",    ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.50), grade="hotel"),
+
     "andrey":         dict(src="andrey-src.jpg",     ratio=(4, 3),  w=800,  wm=600, focus=(0.50, 0.50), grade="team"),
 }
 
@@ -88,6 +96,10 @@ PROFILES = {
                       sat=0.80, contrast=1.03, lift=4, sharpen=40),
     "pair-cool": dict(warm_r=1.045, warm_b=0.975, green=0.92,
                       sat=0.86, contrast=1.02, lift=0, sharpen=40),
+    # Съёмка объектов размещения: гостиничные кадры почти всегда пересвечены
+    # и перекручены по HDR, поэтому здесь насыщенность и контраст идут вниз
+    "hotel": dict(warm_r=1.01, warm_b=0.995, green=0.84,
+                  sat=0.86, contrast=0.98, lift=0, sharpen=50),
     # Чёрно-белое: только лёгкая резкость, никакого тонирования
     "mono": dict(warm_r=1.0, warm_b=1.0, green=1.0,
                  sat=1.0, contrast=1.0, lift=0, sharpen=40),

@@ -1951,3 +1951,70 @@ textarea.field__input {
     aspect-ratio: 3 / 2;
   }
 }
+
+/* ---------- Размещение: забронированные точки ---------- */
+
+.stay-places {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(44px, 6vw, 80px);
+}
+
+.stay-place {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: start;
+  border-top: 1px solid var(--line);
+  padding-top: clamp(22px, 2.6vw, 32px);
+}
+
+.stay-place__name {
+  font-size: clamp(24px, 2.2vw, 32px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+}
+
+.stay-place__nights {
+  color: var(--indigo-ink);
+  margin: 0 0 14px;
+}
+
+.stay-place__text p:last-child {
+  color: var(--dolphin-ink);
+  font-size: clamp(15px, 1.05vw, 17px);
+}
+
+.stay-place__shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 1.2vw, 16px);
+}
+
+.stay-shot img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.stay-shot--wide {
+  grid-column: span 2;
+}
+
+.stay-shot--wide img {
+  aspect-ratio: 3 / 2;
+}
+
+.stay-pending__title {
+  font-size: clamp(18px, 1.5vw, 22px);
+  font-weight: 500;
+  margin: clamp(48px, 6vw, 80px) 0 20px;
+}
+
+@media (max-width: 860px) {
+  .stay-place {
+    grid-template-columns: 1fr;
+  }
+}
