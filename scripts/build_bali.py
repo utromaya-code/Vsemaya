@@ -68,13 +68,13 @@ def head(c):
 <meta property="og:description" content="{e(m['ogDescription'])}">
 <meta property="og:url" content="{e(m['siteUrl'])}">
 {og}
-<meta name="theme-color" content="#283044">
+<meta name="theme-color" content="#f6f2ea">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23283044'/%3E%3Cpath d='M4 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3' stroke='%23C3A057' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Onest:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/hero.webp" media="(min-width: 701px)">
-<link rel="preload" as="image" href="images/hero-tall.webp" media="(max-width: 700px)">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/cover.webp" media="(min-width: 701px)">
+<link rel="preload" as="image" href="images/cover-m.webp" media="(max-width: 700px)">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">{json.dumps(trip_ld, ensure_ascii=False)}</script>
@@ -110,22 +110,36 @@ def header(c):
 # ------------------------------------------------------------------ sections
 
 def hero(c):
+    """Обложка выпуска: шапка журнала, заголовок-логотип, анонсы и главный кадр."""
     h, cfg = c["hero"], c["config"]
     title = "".join(f"<span>{e(x)}</span>" for x in h["titleLines"])
     facts = "".join(
-        f'<div class="hero__fact"><dt>{e(f["label"])}</dt><dd>{e(f["value"])}</dd></div>'
+        f'<div class="cover__fact"><dt>{e(f["label"])}</dt><dd>{e(f["value"])}</dd></div>'
         for f in h["facts"])
+    lines = "".join(
+        f'<li><a href="{e(l["href"])}"><span class="cover__kicker">{e(l["kicker"])}</span>'
+        f'<span class="cover__line">{e(l["text"])}</span></a></li>' for l in h["coverLines"])
+    img = h["image"]
     return f"""
-<section class="hero" id="top">
-  <div class="hero__media">{picture(h['image'], sizes="100vw", eager=True)}</div>
-  <div class="hero__in">
-    <p class="hero__sub">{e(h['subtitle'])}</p>
-    <h1 class="hero__title">{title}</h1>
-    <p class="hero__tagline">{e(h['tagline'])}</p>
-    <dl class="hero__facts">{facts}</dl>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#request" data-goal="cta_hero">{e(cfg['ctaPrimary'])}</a>
-      <a class="btn btn--line" href="#route" data-goal="cta_route">{e(cfg['ctaSecondary'])}</a>
+<section class="cover" id="top">
+  <div class="wrap">
+    <div class="cover__strip"><span>{e(h['issue'])}</span><span>{e(h['place'])}</span></div>
+    <h1 class="cover__title">{title}</h1>
+    <div class="cover__grid">
+      <div class="cover__text">
+        <p class="cover__tagline">{e(h['tagline'])}</p>
+        <p class="cover__sub">{e(h['subtitle'])}</p>
+        <dl class="cover__facts">{facts}</dl>
+        <div class="cover__actions">
+          <a class="btn btn--primary" href="#request" data-goal="cta_hero">{e(cfg['ctaPrimary'])}</a>
+          <a class="btn btn--line" href="#route" data-goal="cta_route">{e(cfg['ctaSecondary'])}</a>
+        </div>
+        <ul class="cover__lines">{lines}</ul>
+      </div>
+      <figure class="cover__photo">
+        {picture(img, sizes="(max-width: 860px) 100vw, 50vw", eager=True)}
+        <figcaption>{e(img['caption'])}</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -133,6 +147,18 @@ def hero(c):
 <div class="refrain" aria-hidden="true"><div class="refrain__track">
 {"".join(f"<span>{e(cfg['refrain'])}</span>" for _ in range(6))}
 </div></div>
+"""
+
+
+def spread(c):
+    """Разворот: фото во всю ширину и одна строка поверх, как в журнале."""
+    sp = c["spread"]
+    return f"""
+<figure class="spread">
+  {picture(sp['image'], sizes="100vw")}
+  <div class="spread__over"><p class="spread__line wrap">{e(sp['line'])}</p></div>
+  <figcaption class="wrap">{e(sp['caption'])}</figcaption>
+</figure>
 """
 
 
@@ -151,16 +177,19 @@ def intro(c):
 """
 
 
+ROMAN = {1: "I", 2: "II", 3: "III", 4: "IV"}
+
+
 def chapters(c):
     cols = "".join(f"""
       <article class="chapter" data-reveal>
-        <p class="chapter__num">{i:02d} · {e(ch['nights'])}</p>
+        <p class="chapter__num"><span class="chapter__roman">{ROMAN[i]}</span>{e(ch['nights'])}</p>
         <h3 class="chapter__name">{e(ch['name'])}</h3>
         <p class="chapter__place">{e(ch['place'])}</p>
         <p class="chapter__text">{e(ch['text'])}</p>
       </article>""" for i, ch in enumerate(c["chapters"], 1))
     return f"""
-<section class="section section--night" id="route">
+<section class="section section--cream" id="route">
   <div class="wrap">
     {label("Маршрут")}
     <h2 class="h2">Четыре главы, одиннадцать дней</h2>
@@ -245,16 +274,6 @@ def people(c):
     </div>
   </div>
 </section>
-"""
-
-
-def interlude(c):
-    i = c["interlude"]
-    return f"""
-<figure class="interlude">
-  {picture(i['image'], sizes="100vw")}
-  <figcaption class="wrap">{e(i['caption'])}</figcaption>
-</figure>
 """
 
 
@@ -383,11 +402,11 @@ def price(c):
     inc = "".join(f"<li>{e(x)}</li>" for x in p["included"])
     exc = "".join(f"<li>{e(x)}</li>" for x in p["excluded"])
     return f"""
-<section class="section section--night" id="price">
+<section class="section section--cream" id="price">
   <div class="wrap">
     {label("Стоимость")}
     <h2 class="h2">{e(p['title'])}</h2>
-    <p class="lead lead--night">{e(p['lead'])}</p>
+    <p class="lead">{e(p['lead'])}</p>
     <div class="pack">
       <div><h3 class="pack__h">Входит</h3><ul class="pack__list pack__list--in">{inc}</ul></div>
       <div><h3 class="pack__h">Не входит</h3><ul class="pack__list pack__list--out">{exc}</ul></div>
@@ -522,8 +541,8 @@ def footer(c):
 
 def build():
     c = json.loads((BALI / "content.json").read_text(encoding="utf-8"))
-    parts = [head(c), header(c), hero(c), intro(c), chapters(c), practices(c), people(c),
-             interlude(c), stay(c), program(c), terms(c), price(c), faq(c), request(c), footer(c)]
+    parts = [head(c), header(c), hero(c), spread(c), intro(c), chapters(c), practices(c), people(c),
+             stay(c), program(c), terms(c), price(c), faq(c), request(c), footer(c)]
     out = "".join(parts)
     (BALI / "index.html").write_text(out, encoding="utf-8")
     print(f"bali/index.html — {len(out):,} bytes")

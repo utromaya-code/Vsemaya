@@ -13,13 +13,13 @@
 <meta property="og:description" content="12–22 февраля 2027. 11 дней / 10 ночей. Баланган, Убуд, Гили Мено, Санур.">
 <meta property="og:url" content="https://kanchenjunga.ru/bali/">
 <meta property="og:image" content="https://kanchenjunga.ru/bali/images/og-image.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#283044">
+<meta name="theme-color" content="#f6f2ea">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23283044'/%3E%3Cpath d='M4 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3' stroke='%23C3A057' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;1,400&family=Onest:wght@400;500&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/hero.webp" media="(min-width: 701px)">
-<link rel="preload" as="image" href="images/hero-tall.webp" media="(max-width: 700px)">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/cover.webp" media="(min-width: 701px)">
+<link rel="preload" as="image" href="images/cover-m.webp" media="(max-width: 700px)">
 <link rel="stylesheet" href="styles.css">
 <script>document.documentElement.classList.add('js');</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TouristTrip", "name": "Соль. Рис. Тишина. Авторское путешествие-практика по Бали и Гили Мено", "description": "11 дней движения, дыхания, звука и природы на Бали и Гили Мено. Баланган, Убуд, Батур, Джатилувих и океан. 12–22 февраля 2027.", "touristType": ["Телесные практики", "Йога", "Медитация"]}</script>
@@ -42,16 +42,25 @@
 </header>
 <main id="main">
 
-<section class="hero" id="top">
-  <div class="hero__media"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/hero-tall.webp"><source type="image/webp" srcset="images/hero.webp"><source media="(max-width: 700px)" srcset="images/hero-tall.jpg"><img src="images/hero.jpg" alt="Фигура на камнях у кромки воды на закате" width="1280" height="853" sizes="100vw" loading="eager" fetchpriority="high" decoding="async"></picture></div>
-  <div class="hero__in">
-    <p class="hero__sub">Авторское путешествие-практика по Бали и Гили Мено</p>
-    <h1 class="hero__title"><span>Соль.</span><span>Рис.</span><span>Тишина.</span></h1>
-    <p class="hero__tagline">Между движением и звуком</p>
-    <dl class="hero__facts"><div class="hero__fact"><dt>Даты</dt><dd>12–22 февраля 2027</dd></div><div class="hero__fact"><dt>Длительность</dt><dd>11 дней / 10 ночей</dd></div><div class="hero__fact"><dt>Маршрут</dt><dd>Баланган · Убуд · Гили Мено · Санур</dd></div></dl>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#request" data-goal="cta_hero">Оставить заявку</a>
-      <a class="btn btn--line" href="#route" data-goal="cta_route">Смотреть маршрут</a>
+<section class="cover" id="top">
+  <div class="wrap">
+    <div class="cover__strip"><span>Выпуск № 01 · Февраль 2027</span><span>Бали · Гили Мено</span></div>
+    <h1 class="cover__title"><span>Соль.</span><span>Рис.</span><span>Тишина.</span></h1>
+    <div class="cover__grid">
+      <div class="cover__text">
+        <p class="cover__tagline">Между движением и звуком</p>
+        <p class="cover__sub">Авторское путешествие-практика по Бали и Гили Мено</p>
+        <dl class="cover__facts"><div class="cover__fact"><dt>Даты</dt><dd>12–22 февраля 2027</dd></div><div class="cover__fact"><dt>Длительность</dt><dd>11 дней / 10 ночей</dd></div><div class="cover__fact"><dt>Маршрут</dt><dd>Баланган · Убуд · Гили Мено · Санур</dd></div></dl>
+        <div class="cover__actions">
+          <a class="btn btn--primary" href="#request" data-goal="cta_hero">Оставить заявку</a>
+          <a class="btn btn--line" href="#route" data-goal="cta_route">Смотреть маршрут</a>
+        </div>
+        <ul class="cover__lines"><li><a href="#practices"><span class="cover__kicker">Практики</span><span class="cover__line">Цигун на рассвете и звук поющих чаш на закате</span></a></li><li><a href="#program"><span class="cover__kicker">Маршрут</span><span class="cover__line">Мелукат, рассвет на Батуре, террасы Джатилувих</span></a></li><li><a href="#stay"><span class="cover__kicker">Где живём</span><span class="cover__line">Вилла над джунглями Убуда и бунгало у моря</span></a></li></ul>
+      </div>
+      <figure class="cover__photo">
+        <picture><source type="image/webp" media="(max-width: 700px)" srcset="images/cover-m.webp"><source type="image/webp" srcset="images/cover.webp"><source media="(max-width: 700px)" srcset="images/cover-m.jpg"><img src="images/cover.jpg" alt="Вита с хрустальной поющей чашей в золотом свете заката" width="853" height="1066" sizes="(max-width: 860px) 100vw, 50vw" loading="eager" fetchpriority="high" decoding="async"></picture>
+        <figcaption>Вита Бузик, звук и восстановление</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -59,6 +68,12 @@
 <div class="refrain" aria-hidden="true"><div class="refrain__track">
 <span>Тело. Звук. Природа. Океан.</span><span>Тело. Звук. Природа. Океан.</span><span>Тело. Звук. Природа. Океан.</span><span>Тело. Звук. Природа. Океан.</span><span>Тело. Звук. Природа. Океан.</span><span>Тело. Звук. Природа. Океан.</span>
 </div></div>
+
+<figure class="spread">
+  <picture><source type="image/webp" media="(max-width: 700px)" srcset="images/spread-m.webp"><source type="image/webp" srcset="images/spread.webp"><source media="(max-width: 700px)" srcset="images/spread-m.jpg"><img src="images/spread.jpg" alt="Бассейн виллы над долиной Убуда в утреннем тумане" width="1280" height="640" sizes="100vw" loading="lazy" decoding="async"></picture>
+  <div class="spread__over"><p class="spread__line wrap">Одиннадцать дней, когда никуда не нужно спешить</p></div>
+  <figcaption class="wrap">Убуд, утро. Здесь мы живём пять ночей</figcaption>
+</figure>
 
 <section class="intro">
   <div class="wrap intro__grid">
@@ -70,31 +85,31 @@
   </div>
 </section>
 
-<section class="section section--night" id="route">
+<section class="section section--cream" id="route">
   <div class="wrap">
     <p class="label">Маршрут</p>
     <h2 class="h2">Четыре главы, одиннадцать дней</h2>
     <div class="chapters">
       <article class="chapter" data-reveal>
-        <p class="chapter__num">01 · 2 ночи</p>
+        <p class="chapter__num"><span class="chapter__roman">I</span>2 ночи</p>
         <h3 class="chapter__name">Соль</h3>
         <p class="chapter__place">Баланган и Улувату</p>
         <p class="chapter__text">Океан, горизонт и первые практики после перелёта. Восстановить сон и войти в общий ритм без спешки.</p>
       </article>
       <article class="chapter" data-reveal>
-        <p class="chapter__num">02 · 5 ночей</p>
+        <p class="chapter__num"><span class="chapter__roman">II</span>5 ночей</p>
         <h3 class="chapter__name">Рис</h3>
         <p class="chapter__place">Убуд</p>
         <p class="chapter__text">Главная глава: цигун и йога, мелукат, рассвет на Батуре, горячие источники, Джатилувих и Батукару.</p>
       </article>
       <article class="chapter" data-reveal>
-        <p class="chapter__num">03 · 2 ночи</p>
+        <p class="chapter__num"><span class="chapter__roman">III</span>2 ночи</p>
         <h3 class="chapter__name">Тишина</h3>
         <p class="chapter__place">Гили Мено</p>
         <p class="chapter__text">Остров без машин. Практики у воды, снорклинг с черепахами и добровольная цифровая пауза.</p>
       </article>
       <article class="chapter" data-reveal>
-        <p class="chapter__num">04 · 1 ночь</p>
+        <p class="chapter__num"><span class="chapter__roman">IV</span>1 ночь</p>
         <h3 class="chapter__name">Возвращение</h3>
         <p class="chapter__place">Санур</p>
         <p class="chapter__text">Практика на песке, финальный круг и общий ужин у моря перед дорогой домой.</p>
@@ -109,14 +124,14 @@
     <h2 class="h2">Утро собирает тело. Вечер его отпускает.</h2>
     <div class="practices">
       <article class="practice" data-reveal>
-        <div class="practice__media"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/practice-body-m.webp"><source type="image/webp" srcset="images/practice-body.webp"><source media="(max-width: 700px)" srcset="images/practice-body-m.jpg"><img src="images/practice-body.jpg" alt="Спина и руки в наклоне, чётки" width="760" height="950" sizes="(max-width: 760px) 100vw, 45vw" loading="lazy" decoding="async"></picture></div>
+        <div class="practice__media"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/practice-morning-m.webp"><source type="image/webp" srcset="images/practice-morning.webp"><source media="(max-width: 700px)" srcset="images/practice-morning-m.jpg"><img src="images/practice-morning.jpg" alt="Илья с мечом тайцзи на камне у моря в утреннем свете" width="900" height="1125" sizes="(max-width: 760px) 100vw, 45vw" loading="lazy" decoding="async"></picture></div>
         <p class="label label--accent">Утро</p>
         <h3 class="h3">Движение и дыхание</h3>
         <p class="muted">Цигун, йога, мобильность, дыхание и биомеханика. Утренний блок готовит тело к дороге, подъёмам и воде.</p>
         <p class="practice__items">Цигун · Йога · Мобильность · Дыхание · Даосский самомассаж</p>
       </article>
       <article class="practice" data-reveal>
-        <div class="practice__media"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/practice-sound-m.webp"><source type="image/webp" srcset="images/practice-sound.webp"><source media="(max-width: 700px)" srcset="images/practice-sound-m.jpg"><img src="images/practice-sound.jpg" alt="Хрустальная поющая чаша в руках на закате" width="820" height="1025" sizes="(max-width: 760px) 100vw, 45vw" loading="lazy" decoding="async"></picture></div>
+        <div class="practice__media"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/practice-evening-m.webp"><source type="image/webp" srcset="images/practice-evening.webp"><source media="(max-width: 700px)" srcset="images/practice-evening-m.jpg"><img src="images/practice-evening.jpg" alt="Фигура у кромки воды на закате" width="680" height="850" sizes="(max-width: 760px) 100vw, 45vw" loading="lazy" decoding="async"></picture></div>
         <p class="label label--accent">Вечер</p>
         <h3 class="h3">Звук и восстановление</h3>
         <p class="muted">Медитация, йога-нидра, поющие чаши и лаборатории парного взаимодействия — чтобы выйти из дневной нагрузки.</p>
@@ -163,7 +178,7 @@
       <h2 class="h2">Илья и Вита вместе</h2>
       <p class="muted">Через движение и внимание участники исследуют контакт, личные границы, невербальное доверие и свободную импровизацию. Любое взаимодействие строится на добровольности и возможности выбрать комфортный уровень участия.</p>
     </div>
-    <div class="lab__shots" data-reveal><div class="lab__shot"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/lab-ilya-m.webp"><source type="image/webp" srcset="images/lab-ilya.webp"><source media="(max-width: 700px)" srcset="images/lab-ilya-m.jpg"><img src="images/lab-ilya.jpg" alt="Илья с мечом тайцзи на камне у воды" width="900" height="1200" sizes="(max-width: 760px) 50vw, 26vw" loading="lazy" decoding="async"></picture></div><div class="lab__shot"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/lab-vita-m.webp"><source type="image/webp" srcset="images/lab-vita.webp"><source media="(max-width: 700px)" srcset="images/lab-vita-m.jpg"><img src="images/lab-vita.jpg" alt="Вита в движении на камне у воды" width="820" height="1093" sizes="(max-width: 760px) 50vw, 26vw" loading="lazy" decoding="async"></picture></div></div>
+    <div class="lab__shots" data-reveal><div class="lab__shot"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/lab-back-m.webp"><source type="image/webp" srcset="images/lab-back.webp"><source media="(max-width: 700px)" srcset="images/lab-back-m.jpg"><img src="images/lab-back.jpg" alt="Спина и руки в наклоне, чётки" width="720" height="960" sizes="(max-width: 760px) 50vw, 26vw" loading="lazy" decoding="async"></picture></div><div class="lab__shot"><picture><source type="image/webp" media="(max-width: 700px)" srcset="images/lab-vita-m.webp"><source type="image/webp" srcset="images/lab-vita.webp"><source media="(max-width: 700px)" srcset="images/lab-vita-m.jpg"><img src="images/lab-vita.jpg" alt="Вита в движении на камне у воды" width="820" height="1093" sizes="(max-width: 760px) 50vw, 26vw" loading="lazy" decoding="async"></picture></div></div>
   </div>
 </section>
 
@@ -177,11 +192,6 @@
     </div>
   </div>
 </section>
-
-<figure class="interlude">
-  <picture><source type="image/webp" media="(max-width: 700px)" srcset="images/ubud-fog-m.webp"><source type="image/webp" srcset="images/ubud-fog.webp"><source media="(max-width: 700px)" srcset="images/ubud-fog-m.jpg"><img src="images/ubud-fog.jpg" alt="Бассейн над долиной Убуда в утреннем тумане" width="1280" height="560" sizes="100vw" loading="lazy" decoding="async"></picture>
-  <figcaption class="wrap">Убуд, утро. Здесь пять ночей из десяти.</figcaption>
-</figure>
 
 <section class="section" id="stay">
   <div class="wrap">
@@ -444,11 +454,11 @@
   </div>
 </section>
 
-<section class="section section--night" id="price">
+<section class="section section--cream" id="price">
   <div class="wrap">
     <p class="label">Стоимость</p>
     <h2 class="h2">Что входит</h2>
-    <p class="lead lead--night">Стоимость и график оплаты присылаем в ответ на заявку вместе с полной программой и договором.</p>
+    <p class="lead">Стоимость и график оплаты присылаем в ответ на заявку вместе с полной программой и договором.</p>
     <div class="pack">
       <div><h3 class="pack__h">Входит</h3><ul class="pack__list pack__list--in"><li>Проживание по маршруту</li><li>Групповые трансферы и спидботы</li><li>Питание по дням программы</li><li>Все практики Ильи и Виты</li><li>Местный гид и сопровождение</li><li>Входные билеты и танец Kecak</li><li>Мелукат и подношения</li><li>Батур: пеший подъём или джипы</li><li>Горячие источники</li><li>Dragonfly Village</li><li>Снорклинг и лодки</li></ul></div>
       <div><h3 class="pack__h">Не входит</h3><ul class="pack__list pack__list--out"><li>Авиаперелёт</li><li>Виза и страховка</li><li>Массажи и индивидуальные процедуры</li><li>Доплата за одноместное размещение</li><li>Личные расходы и напитки вне программы</li></ul></div>

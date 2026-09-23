@@ -2,32 +2,35 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;1,400&family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;1,300&family=Manrope:wght@500;600&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; margin: 0; }
   body {
     width: 1200px; height: 630px; position: relative; overflow: hidden;
-    font-family: 'Onest', sans-serif; color: #ede7db; background: #1d2331;
+    font-family: 'Manrope', sans-serif; color: #1f2638; background: #f6f2ea;
+    display: grid; grid-template-columns: 1fr 440px;
   }
-  img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; }
-  .scrim { position: absolute; inset: 0;
-    background: linear-gradient(90deg, rgba(20,24,34,.82) 0%, rgba(20,24,34,.45) 45%, rgba(20,24,34,.1) 100%); }
-  .in { position: absolute; left: 72px; bottom: 64px; }
-  .sub { font-size: 15px; letter-spacing: .16em; text-transform: uppercase; opacity: .9; margin-bottom: 18px; }
-  h1 { font-family: 'Cormorant', serif; font-weight: 400; font-size: 104px; line-height: .9; }
+  .in { padding: 56px 56px 52px 64px; display: flex; flex-direction: column; }
+  .strip { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600;
+    letter-spacing: .2em; text-transform: uppercase; border-top: 3px double #1f2638;
+    border-bottom: 1px solid #1f2638; padding: 12px 0; }
+  h1 { font-family: 'Noto Serif Display', serif; font-weight: 300; font-size: 104px;
+    line-height: .92; letter-spacing: -.035em; margin-top: 36px; }
   h1 span { display: block; }
-  .tag { font-family: 'Cormorant', serif; font-style: italic; font-size: 32px; color: #c3a057; margin-top: 16px; }
-  .dates { font-size: 20px; margin-top: 22px; }
+  .tag { font-family: 'Noto Serif Display', serif; font-style: italic; font-weight: 300;
+    font-size: 34px; color: #6c5320; margin-top: auto; }
+  .dates { font-size: 17px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; margin-top: 10px; }
+  .photo { position: relative; }
+  img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 45% 40%; }
 </style>
 </head>
 <body>
-  <img src="../../bali/images/hero.jpg" alt="">
-  <div class="scrim"></div>
   <div class="in">
-    <p class="sub">Путешествие-практика · Бали и Гили Мено</p>
-    <h1><span>Соль.</span><span>Рис.</span><span>Тишина.</span></h1>
+    <p class="strip"><span>Выпуск № 01</span><span>Бали · Гили Мено</span></p>
+    <h1><span>Соль. Рис.</span><span>Тишина.</span></h1>
     <p class="tag">Между движением и звуком</p>
     <p class="dates">12–22 февраля 2027 · 11 дней</p>
   </div>
+  <div class="photo"><img src="../../bali/images/cover.jpg" alt=""></div>
 </body>
 </html>
