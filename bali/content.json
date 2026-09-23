@@ -86,12 +86,17 @@
   },
   "manifesto": {
     "text": "Практика здесь встроена в маршрут. Утром — движение и дыхание. Днём — остров, вода, храмы и люди. Вечером — звук, йога-нидра и бережный контакт.",
-    "after": "За одиннадцать дней меняется не только пейзаж, но и качество присутствия в нём.",
     "image": {
       "src": "images/manifesto",
       "alt": "Руки с тлеющим палo санто и чётками",
       "width": 900,
       "height": 1125
+    },
+    "image2": {
+      "src": "images/frangipani-sea",
+      "alt": "Цветок франжипани на камне у моря",
+      "width": 560,
+      "height": 700
     }
   },
   "chapters": [
@@ -99,25 +104,49 @@
       "name": "Соль",
       "place": "Баланган и Улувату",
       "nights": "2 ночи",
-      "text": "Океан, горизонт и первые практики после перелёта. Восстановить сон и войти в общий ритм без спешки."
+      "text": "Океан, утёсы Улувату и первые практики после перелёта.",
+      "image": {
+        "src": "images/ch-sol",
+        "alt": "Храм Улувату на скале над океаном",
+        "width": 720,
+        "height": 960
+      }
     },
     {
       "name": "Рис",
       "place": "Убуд",
       "nights": "5 ночей",
-      "text": "Главная глава: цигун и йога, мелукат, рассвет на Батуре, горячие источники, Джатилувих и Батукару."
+      "text": "Джунгли, мелукат, рассвет на Батуре и террасы Джатилувих.",
+      "image": {
+        "src": "images/ch-ris",
+        "alt": "Тропа через рисовые террасы Джатилувих",
+        "width": 720,
+        "height": 960
+      }
     },
     {
       "name": "Тишина",
       "place": "Гили Мено",
       "nights": "2 ночи",
-      "text": "Остров без машин. Практики у воды, снорклинг с черепахами и добровольная цифровая пауза."
+      "text": "Остров без машин, черепахи и звук на закате.",
+      "image": {
+        "src": "images/ch-tishina",
+        "alt": "Белый песок и бирюзовая вода Гили Мено",
+        "width": 720,
+        "height": 960
+      }
     },
     {
       "name": "Возвращение",
       "place": "Санур",
       "nights": "1 ночь",
-      "text": "Практика на песке, финальный круг и общий ужин у моря перед дорогой домой."
+      "text": "Практика на песке и последний ужин у моря.",
+      "image": {
+        "src": "images/ch-return",
+        "alt": "Лодка-джукунг на рассвете в Сануре",
+        "width": 720,
+        "height": 960
+      }
     }
   ],
   "practices": {
@@ -126,7 +155,7 @@
       {
         "time": "Утро",
         "title": "Движение и дыхание",
-        "text": "Цигун, йога, мобильность, дыхание и биомеханика. Утренний блок готовит тело к дороге, подъёмам и воде.",
+        "text": "Цигун, йога, дыхание. Тело собирается к дороге, подъёмам и воде.",
         "items": [
           "Цигун",
           "Йога",
@@ -144,7 +173,7 @@
       {
         "time": "Вечер",
         "title": "Звук и восстановление",
-        "text": "Медитация, йога-нидра, поющие чаши и лаборатории парного взаимодействия — чтобы выйти из дневной нагрузки.",
+        "text": "Поющие чаши, йога-нидра, медитация. Выход из дневной нагрузки.",
         "items": [
           "Поющие чаши",
           "Йога-нидра",
@@ -159,24 +188,6 @@
           "height": 850
         }
       }
-    ],
-    "path": [
-      {
-        "place": "Баланган",
-        "text": "Заземление, сон и возвращение в тело после перелёта."
-      },
-      {
-        "place": "Убуд",
-        "text": "Основная глубина: две лаборатории контакта, работа с осью, восстановление после Батура."
-      },
-      {
-        "place": "Гили Мено",
-        "text": "Практика у воды, баланс, звук на закате и цифровая пауза."
-      },
-      {
-        "place": "Санур",
-        "text": "Практика на песке и интеграционный круг."
-      }
     ]
   },
   "leaders": [
@@ -184,7 +195,7 @@
       "id": "ilya",
       "name": "Илья Баринов",
       "role": "Движение и дыхание",
-      "text": "Специализируется на реабилитации и биомеханике движения, преподаёт тайцзицюань и цигун. В программе отвечает за работу с осью тела, устойчивостью, мобильностью, дыханием и восстановлением после нагрузки.",
+      "text": "Реабилитолог и специалист по биомеханике, преподаёт тайцзицюань и цигун. Отвечает за ось тела, дыхание и восстановление.",
       "image": "images/ilya",
       "imageMobile": "images/ilya-m",
       "width": 900,
@@ -195,7 +206,7 @@
       "id": "vita",
       "name": "Вита Бузик",
       "role": "Звук и восстановление",
-      "text": "Преподаёт мягкие стили йоги и йога-нидру, проводит звуковые медитации с поющими чашами. В программе отвечает за вечернее замедление, практики отдыха и акустические погружения.",
+      "text": "Ведёт мягкую йогу, йога-нидру и звуковые медитации с поющими чашами. Отвечает за вечернее замедление и отдых.",
       "image": "images/vita",
       "alt": "Вита Бузик с хрустальной поющей чашей",
       "imageMobile": "images/vita-m",
@@ -206,7 +217,7 @@
   "lab": {
     "title": "Илья и Вита вместе",
     "subtitle": "Лаборатории парного взаимодействия",
-    "text": "Через движение и внимание участники исследуют контакт, личные границы, невербальное доверие и свободную импровизацию. Любое взаимодействие строится на добровольности и возможности выбрать комфортный уровень участия.",
+    "text": "Движение и внимание в паре: контакт, границы, доверие, импровизация. Всё — по согласию и на комфортном уровне.",
     "images": [
       {
         "src": "images/lab-back",
@@ -225,7 +236,7 @@
   "organizer": {
     "name": "Андрей Баранов",
     "role": "Организатор маршрута",
-    "text": "20 лет организует путешествия и экспедиционные программы в Тибете, Патагонии, Японии, Индии и Китае. В этой поездке отвечает за логистику, размещение, связь с локальной командой, безопасность и форс-мажоры, чтобы участникам не приходилось решать организационные вопросы посреди маршрута.",
+    "text": "20 лет экспедиций: Тибет, Патагония, Япония, Индия, Китай. Берёт на себя логистику, размещение и безопасность — чтобы вы думали только о практике.",
     "image": "images/andrey",
     "imageMobile": "images/andrey-m",
     "width": 480,
@@ -235,7 +246,7 @@
   "program": {
     "kicker": "Программа",
     "title": "Одиннадцать дней",
-    "lead": "Одиннадцать дней по главам. Нажмите на день, чтобы раскрыть его.",
+    "lead": "Нажмите на день, чтобы раскрыть подробности.",
     "note": "Порядок практик и выездов подстраивается под погоду и состояние моря.",
     "chapters": [
       {
@@ -257,7 +268,13 @@
                 "time": "Вечер",
                 "text": "Знакомство группы, мягкая практика заземления и первое звуковое погружение в крытом пространстве."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d1",
+              "alt": "Прибытие и тело",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 2,
@@ -282,7 +299,13 @@
                 "time": "Вечер",
                 "text": "Свободное движение и медитация."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d2",
+              "alt": "Горизонт и Улувату",
+              "width": 480,
+              "height": 360
+            }
           }
         ]
       },
@@ -309,7 +332,13 @@
                 "time": "Вечер",
                 "text": "Первая лаборатория контакта: границы и умение слышать себя рядом с другими."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d3",
+              "alt": "Переезд и связь",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 4,
@@ -330,7 +359,13 @@
                 "time": "Вечер",
                 "text": "Йога-нидра под хрустальные чаши и ранний отдых перед Батуром."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d4",
+              "alt": "Вода и очищение",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 5,
@@ -355,7 +390,13 @@
                 "time": "Вечер",
                 "text": "Дыхание и медитация для восстановления."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d5",
+              "alt": "Рассвет на Батуре",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 6,
@@ -376,7 +417,13 @@
                 "time": "Вечер",
                 "text": "Закрытый групповой слот в Dragonfly Village: травяные бани и медленный вечер."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d6",
+              "alt": "Восстановление и травяные бани",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 7,
@@ -397,7 +444,13 @@
                 "time": "Вечер",
                 "text": "Вторая лаборатория контакта и завершение убудского блока."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d7",
+              "alt": "Природа и культура Бали",
+              "width": 480,
+              "height": 360
+            }
           }
         ]
       },
@@ -424,7 +477,13 @@
                 "time": "Закат",
                 "text": "Мягкое движение и звуковая медитация у воды или в крытом пространстве."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d8",
+              "alt": "Переход к тишине",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 9,
@@ -449,7 +508,13 @@
                 "time": "Вечер",
                 "text": "Парная практика йоги."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d9",
+              "alt": "Океан и глубина тишины",
+              "width": 480,
+              "height": 360
+            }
           }
         ]
       },
@@ -476,7 +541,13 @@
                 "time": "Вечер",
                 "text": "Короткий интеграционный круг и общий ужин у моря."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d10",
+              "alt": "Возвращение на Бали",
+              "width": 480,
+              "height": 360
+            }
           },
           {
             "n": 11,
@@ -493,7 +564,13 @@
                 "time": "День",
                 "text": "Групповые окна трансфера в аэропорт Денпасар."
               }
-            ]
+            ],
+            "image": {
+              "src": "images/d11",
+              "alt": "Отъезд",
+              "width": 480,
+              "height": 360
+            }
           }
         ]
       }
@@ -527,12 +604,12 @@
   },
   "stay": {
     "title": "Где мы живём",
-    "lead": "Вся группа живёт вместе. В Убуде и на Гили Мено — на виллах, где проходят и практики.",
+    "lead": "Вся группа живёт вместе — там же, где проходят практики.",
     "places": [
       {
         "place": "Убуд",
         "nights": "5 ночей · 14–19 февраля",
-        "text": "Бутик-вилла над рисовыми полями, в стороне от шума центра. Бассейн с видом на долину, крытая беседка для практик, сад.",
+        "text": "Вилла над рисовыми полями: бассейн с видом на долину, беседка для практик, тишина.",
         "images": [
           {
             "src": "images/stay-ubud-dusk",
@@ -558,7 +635,7 @@
       {
         "place": "Гили Мено",
         "nights": "2 ночи · 19–21 февраля",
-        "text": "Бунгало в кокосовой роще у белого песка. Бассейн двадцать метров, пространство для йоги, выход к воде.",
+        "text": "Бунгало в кокосовой роще у белого песка. Бассейн, йога-пространство, выход к воде.",
         "images": [
           {
             "src": "images/stay-meno-night",
@@ -584,12 +661,12 @@
       {
         "place": "Баланган",
         "nights": "2 ночи · 12–14 февраля",
-        "text": "Первые ночи у океана на полуострове Букит: отдых после перелёта, пляж Баланган и закаты над Улувату."
+        "text": "Первые ночи у океана: пляж Баланган и закаты над Улувату."
       },
       {
         "place": "Санур",
         "nights": "1 ночь · 21–22 февраля",
-        "text": "Последняя ночь на набережной Санура, в получасе от аэропорта. Общий ужин у моря."
+        "text": "Последняя ночь у моря, в получасе от аэропорта."
       }
     ]
   },
@@ -599,22 +676,22 @@
       {
         "time": "12 февраля",
         "title": "Прилёт",
-        "text": "Встречаем в аэропорту Денпасар (DPS) и везём на Баланган. Групповой трансфер входит в стоимость."
+        "text": "Встречаем в аэропорту Денпасар, трансфер на Баланган включён."
       },
       {
         "time": "22 февраля",
         "title": "Вылет",
-        "text": "Групповые окна трансфера из Санура в аэропорт. Санур — в 30–40 минутах езды от терминала."
+        "text": "Групповой трансфер из Санура в аэропорт, 30–40 минут."
       },
       {
         "time": "До и после",
         "title": "Дополнительные ночи",
-        "text": "Если хотите прилететь раньше или остаться дольше, скажите в заявке — поможем с бронированием, это оплачивается отдельно."
+        "text": "Поможем забронировать ночи до или после поездки."
       },
       {
         "time": "Документы",
         "title": "Виза и страховка",
-        "text": "Загранпаспорт со сроком действия не меньше полугода на дату въезда и страховка на весь период. Инструкцию по визе пришлём перед поездкой."
+        "text": "Паспорт на полгода вперёд и страховка. Инструкцию по визе пришлём."
       }
     ]
   },
@@ -622,17 +699,17 @@
     "kicker": "Условия участия",
     "title": "Для кого эта программа",
     "items": [
-      "Для тех, кому интересны движение, дыхание, звук и внимательный контакт с людьми.",
-      "Для тех, кто хочет увидеть разные части Бали в спокойном темпе и готов к нескольким ранним подъёмам и переездам.",
-      "Для тех, кому подходит групповое путешествие с личным пространством и добровольным участием в парных практиках."
+      "Интересны движение, дыхание, звук и живой контакт.",
+      "Хочется увидеть разный Бали без спешки.",
+      "Подходит группа, где у каждого есть личное пространство."
     ],
     "load": {
       "title": "Физическая нагрузка",
-      "text": "В маршруте есть ночной подъём на Батур, неровные тропы, лодочные переходы, ранние практики и высокая влажность. Для Батура предусмотрен отдельный вариант на джипах — его нужно выбрать заранее. До оплаты участник сообщает об ограничениях по здоровью, а окончательное решение об участии в отдельных активностях принимает с учётом рекомендаций врача и местной команды."
+      "text": "Ночной подъём на Батур (есть вариант на джипах), тропы, лодки, влажность. Об ограничениях по здоровью скажите до оплаты."
     },
     "consent": {
       "title": "Добровольность и границы",
-      "text": "Парные практики и цифровая пауза строятся на согласии. Участник может остановиться, выбрать наблюдение или адаптированный вариант. На время цифровой паузы у организатора остаётся работающий телефон для экстренной связи."
+      "text": "Парные практики и цифровая пауза — только по согласию. Можно остановиться или просто наблюдать."
     }
   },
   "price": {
@@ -669,10 +746,6 @@
       "a": "Пеший подъём начинается ночью, тропа неровная, идти вверх примерно два часа. Нужна привычка к длительной ходьбе и устойчивость на спуске. Если это не ваш формат, есть вариант на джипах — его выбирают заранее."
     },
     {
-      "q": "Можно ли выбрать джип вместо трекинга",
-      "a": "Да. Пеший подъём и подъём на джипах различаются по времени, требованиям и стоимости, поэтому выбор подтверждается до поездки, а не утром на месте."
-    },
-    {
       "q": "Как устроено размещение и можно ли жить одному",
       "a": "Живём всей группой в одних местах: в Убуде и на Гили Мено — на виллах, где проходят и практики. Базово — двухместные номера с раздельными кроватями, одноместное размещение — за доплату."
     },
@@ -681,24 +754,12 @@
       "a": "Питание по дням входит в программу, в день Батура предусмотрен ранний или упакованный приём пищи. Вегетарианские, веганские и безглютеновые запросы, а также аллергии мы собираем заранее и передаём отелям — напишите о них в анкете после первичного контакта."
     },
     {
-      "q": "Что взять с собой для практик, дождя, храма и снорклинга",
-      "a": "Форма для практики, лёгкий дождевик, саронг и закрытые плечи для храма, купальник, солнцезащита без агрессивной химии для рифа, обувь с устойчивой подошвой для Батура и тёплый слой на ночной подъём. Полный список приходит после бронирования."
-    },
-    {
-      "q": "Как добраться до Бали и какие окна трансфера включены",
-      "a": "Перелёт вы берёте сами. 12 февраля встречаем в аэропорту Денпасар и везём на Баланган, 22 февраля отвозим в аэропорт из Санура. Если рейс неудобный — подскажем, как состыковаться."
-    },
-    {
       "q": "Что происходит при изменении морской или погодной обстановки",
       "a": "Решение по лодкам и переездам принимает местная команда. Если море или погода не позволяют выйти, мы меняем порядок дня и переносим практику в защищённое пространство. Это заложено в маршрут заранее."
     },
     {
       "q": "Обязательны ли парные практики и цифровая пауза",
       "a": "Нет. И то, и другое — по согласию. Можно остановиться в любой момент, выбрать наблюдение или адаптированный вариант. Телефон организатора во время цифровой паузы остаётся включённым."
-    },
-    {
-      "q": "Какие документы, страховка и правила въезда нужны",
-      "a": "Загранпаспорт, действующий не меньше полугода на дату въезда, и медицинская страховка на весь срок. Виза оформляется по прилёте или онлайн — перед поездкой пришлём актуальную инструкцию."
     },
     {
       "q": "Каковы правила оплаты, отмены и передачи места другому человеку",
@@ -745,7 +806,7 @@
   "footer": {
     "note": "Бали и Гили Мено · 12–22 февраля 2027",
     "disclaimer": "Практики на маршруте — это работа с телом, дыханием, вниманием и звуком. Они не являются медицинской процедурой и не заменяют лечение.",
-    "credits": "Фотографии: команда проекта и места, где мы живём."
+    "credits": "Фотографии: команда проекта, места, где мы живём, и фотографы Wikimedia Commons и rawpixel — список ниже."
   },
   "spread": {
     "image": {
@@ -756,5 +817,376 @@
     },
     "line": "Одиннадцать дней, когда никуда не нужно спешить",
     "caption": "Убуд, утро. Здесь мы живём пять ночей"
-  }
+  },
+  "numbers": [
+    {
+      "n": "11",
+      "t": "дней в пути"
+    },
+    {
+      "n": "4",
+      "t": "главы маршрута"
+    },
+    {
+      "n": "5",
+      "t": "ночей в джунглях Убуда"
+    },
+    {
+      "n": "0",
+      "t": "машин на Гили Мено"
+    }
+  ],
+  "gallery": {
+    "title": "Бали в кадрах",
+    "items": [
+      {
+        "src": "images/f-kecak",
+        "alt": "Танец кечак у огня",
+        "width": 560,
+        "height": 700,
+        "caption": "Кечак"
+      },
+      {
+        "src": "images/f-meno",
+        "alt": "Гили Мено: лодки и вулкан Ринджани на Ломбоке",
+        "width": 840,
+        "height": 560,
+        "caption": "Гили Мено"
+      },
+      {
+        "src": "images/f-offering",
+        "alt": "Чананг сари — ежедневное подношение из листьев и цветов",
+        "width": 620,
+        "height": 620,
+        "caption": "Подношение"
+      },
+      {
+        "src": "images/f-terraces",
+        "alt": "Рисовые террасы Джатилувих",
+        "width": 840,
+        "height": 560,
+        "caption": "Джатилувих"
+      },
+      {
+        "src": "images/f-dancer",
+        "alt": "Балийская танцовщица в золотом головном уборе",
+        "width": 560,
+        "height": 700,
+        "caption": "Танец"
+      },
+      {
+        "src": "images/f-jukung",
+        "alt": "Яркие лодки-джукунги на пляже",
+        "width": 840,
+        "height": 560,
+        "caption": "Джукунги"
+      },
+      {
+        "src": "images/f-penjor",
+        "alt": "Белый пенджор у храма Тирта Эмпул",
+        "width": 560,
+        "height": 700,
+        "caption": "Пенджор"
+      },
+      {
+        "src": "images/f-uluwatu",
+        "alt": "Закат над утёсами Улувату",
+        "width": 840,
+        "height": 560,
+        "caption": "Улувату"
+      },
+      {
+        "src": "images/f-coconut",
+        "alt": "Кокосовая пальма на фоне неба",
+        "width": 620,
+        "height": 620,
+        "caption": "Кокосы"
+      },
+      {
+        "src": "images/f-gate",
+        "alt": "Расщеплённые врата балийского храма",
+        "width": 560,
+        "height": 700,
+        "caption": "Врата"
+      },
+      {
+        "src": "images/f-batukaru",
+        "alt": "Церемония в храме Батукару",
+        "width": 620,
+        "height": 620,
+        "caption": "Батукару"
+      },
+      {
+        "src": "images/f-jungle",
+        "alt": "Джунгли Бали",
+        "width": 540,
+        "height": 675,
+        "caption": "Джунгли"
+      }
+    ]
+  },
+  "breaks": {
+    "batur": {
+      "image": {
+        "src": "images/break-batur",
+        "alt": "Рассвет над облаками с вулкана Батур",
+        "width": 1600,
+        "height": 686
+      },
+      "kicker": "День 5 · 1717 метров",
+      "line": "Рассвет над облаками"
+    },
+    "gili": {
+      "image": {
+        "src": "images/break-gili",
+        "alt": "Розовый рассвет над Гили и горами Ломбока",
+        "width": 1600,
+        "height": 686
+      },
+      "kicker": "Глава III",
+      "line": "Остров, где слышно только море"
+    }
+  },
+  "photoCredits": [
+    {
+      "files": "frangipani-sea",
+      "title": "A Frangipani flower used to be a traditional ceremony of the Balinese people who fell on coral reef.jpg",
+      "author": "Bayu dwi k",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=79219680"
+    },
+    {
+      "files": "ch-sol",
+      "title": "Kuta Bali Indonesia Pura-Luhur-Uluwatu-03",
+      "author": "CEphoto, Uwe Aranas",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=39372882"
+    },
+    {
+      "files": "ch-return",
+      "title": "Sunrise at Sanur beach, Bali, Indonesia. The sun is behind a gazebo, which makes it look somewhat like a lantern. A traditional wooden boat lies on the beach. The sky is partially cloudy.",
+      "author": "Roy Tanck",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://wordpress.org/photos/photo/92769ff096/"
+    },
+    {
+      "files": "f-kecak",
+      "title": "Kecak Dance in Bali 6",
+      "author": "Cmichel67",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=47964476"
+    },
+    {
+      "files": "f-meno",
+      "title": "Lombok Island and Mount Rinjani from Gili Meno Island, Indonesia",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=152522100"
+    },
+    {
+      "files": "f-dancer",
+      "title": "Balinese Dancer (Imagicity 1235)",
+      "author": "Graham Crumb",
+      "license": "CC BY-SA 1.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/1.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=25261085"
+    },
+    {
+      "files": "f-jukung",
+      "title": "Balinese Jukung Boat",
+      "author": "Ev Röhm",
+      "license": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=29383558"
+    },
+    {
+      "files": "f-penjor",
+      "title": "048 White Penjor, Pura Tirta Empul, Gyanyar, Bali, photograph by Anandajoti Bhikkhu",
+      "author": "Anandajoti",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=146669125"
+    },
+    {
+      "files": "f-coconut",
+      "title": "Coconuts coconut palm, Bali island",
+      "author": "rawpixel",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://www.rawpixel.com/image/6076632/coconuts-coconut-palm-bali-island"
+    },
+    {
+      "files": "f-gate",
+      "title": "Вход в среднюю часть храма Таман Аюн (Бали) через расщеплённые ворота, 2020-02-12",
+      "author": "AdmiralHood",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=88419938"
+    },
+    {
+      "files": "f-jungle",
+      "title": "Swinging Bali, background photo",
+      "author": "rawpixel",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://www.rawpixel.com/image/6042735/photo-image-background-public-domain-tree"
+    },
+    {
+      "files": "break-batur",
+      "title": "Sunrise on Mount Batur - panoramio (5)",
+      "author": "Alexey Komarov",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=60338776"
+    },
+    {
+      "files": "break-gili",
+      "title": "Red colour at sunrise and Lombok's mountains (16788815848).jpg",
+      "author": "Jorge Láscar from Melbourne, Australia",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=66236240"
+    },
+    {
+      "files": "d1",
+      "title": "Bali Beach & Blue Sea",
+      "author": "rawpixel",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://www.rawpixel.com/image/5968915/bali-beach-blue-sea"
+    },
+    {
+      "files": "d2",
+      "title": "Ramayana Kecak Dance Performance after sunset.jpg",
+      "author": "Johannnindito Adisuryo (Yohanes Nindito Adisuryo)",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=73976075"
+    },
+    {
+      "files": "d3",
+      "title": "Ubud, Indonesia",
+      "author": "rawpixel",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://www.rawpixel.com/image/3290131/free-photo-image-arecaceae-cc0-countryside"
+    },
+    {
+      "files": "d4",
+      "title": "WIKITIRTA - TIRTA EMPUL APUAN 7",
+      "author": "Anggabuana",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=126575543"
+    },
+    {
+      "files": "d6",
+      "title": "",
+      "author": "rawpixel",
+      "license": "CC0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "source": "https://www.rawpixel.com/image/5943562/free-public-domain-cc0-photo"
+    },
+    {
+      "files": "d7",
+      "title": "Keindahan Sawah Jatiluwih",
+      "author": "Putu Andika Panendra",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=60538665"
+    },
+    {
+      "files": "d8",
+      "title": "The beautiful turquoise water surrounding the Gili Islands (16975598051).jpg",
+      "author": "Jorge Láscar from Melbourne, Australia",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=66236250"
+    },
+    {
+      "files": "d9",
+      "title": "Gili trawangan turtle 01",
+      "author": "Nuctuslasheca",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=59924821"
+    },
+    {
+      "files": "d10",
+      "title": "Gili Air Island from Gili Meno Island, Indonesia",
+      "author": "Vyacheslav Argenberg",
+      "license": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=152522101"
+    },
+    {
+      "files": "d11",
+      "title": "Sunrise boats",
+      "author": "Wiaskara",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?curid=106159918"
+    },
+    {
+      "files": "f-uluwatu",
+      "title": "Pura Luhur Uluwatu",
+      "author": "rheins",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Uluwatu%2C%20rheins&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "f-offering",
+      "title": "Canang Sari (49364678042)",
+      "author": "Enrico Strocchi",
+      "license": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Canang%20Sari%20%2849364678042%29&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "f-batukaru",
+      "title": "The Faithful Gathered",
+      "author": "Franz-Josef Alayon Monsanto",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=The%20Faithful%20Gathered&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "f-terraces",
+      "title": "Rice terraces on Bali – Jatiluwih",
+      "author": "Thomas Fuhrmann",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Rice%20terraces%20on%20Bali%20Jatiluwih&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "ch-ris",
+      "title": "Rice fields at Jatiluwih",
+      "author": "Paxson Woelber",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Rice%20fields%20at%20Jatiluwih&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "ch-tishina",
+      "title": "Gili Meno – panoramio (8)",
+      "author": "Alexey Komarov",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Gili%20Meno%20panoramio%20Komarov&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "d5",
+      "title": "Sunrise on Mount Batur",
+      "author": "TMFalkner",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Sunrise%20on%20Mount%20Batur%20TMFalkner&title=Special:MediaSearch&type=image"
+    }
+  ]
 }

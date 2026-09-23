@@ -9,6 +9,8 @@ import html
 import json
 import pathlib
 
+import bali_map
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BALI = ROOT / "bali"
 
@@ -109,6 +111,16 @@ def header(c):
 
 # ------------------------------------------------------------------ sections
 
+def stamp(cfg):
+    """Круглая печать на обложке: текст по кругу медленно вращается."""
+    ring = f"Бали · Гили Мено · {cfg['dates']} · "
+    return f"""<div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 200 200"><defs><path id="stamp-ring" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0"/></defs>
+            <text><textPath href="#stamp-ring" textLength="462">{e(ring)}</textPath></text></svg>
+          <span class="stamp__c">11<small>дней</small></span>
+        </div>"""
+
+
 def hero(c):
     """Обложка выпуска: шапка журнала, заголовок-логотип, анонсы и главный кадр."""
     h, cfg = c["hero"], c["config"]
@@ -138,6 +150,7 @@ def hero(c):
       </div>
       <figure class="cover__photo">
         {picture(img, sizes="(max-width: 860px) 100vw, 50vw", eager=True)}
+        {stamp(cfg)}
         <figcaption>{e(img['caption'])}</figcaption>
       </figure>
     </div>
@@ -162,18 +175,69 @@ def spread(c):
 """
 
 
+def numbers(c):
+    cells = "".join(f'<div class="num"><p class="num__n">{e(x["n"])}</p><p class="num__t">{e(x["t"])}</p></div>'
+                    for x in c["numbers"])
+    return f"""
+<section class="numbers" aria-label="Коротко о поездке">
+  <div class="wrap"><div class="numbers__row" data-reveal>{cells}</div></div>
+</section>
+"""
+
+
 def intro(c):
     m = c["manifesto"]
     return f"""
 <section class="intro">
   <div class="wrap intro__grid">
-    <div class="intro__media" data-reveal>{picture(m['image'], sizes="(max-width: 860px) 100vw, 40vw")}</div>
+    <div class="intro__media" data-reveal>
+      {picture(m['image'], sizes="(max-width: 860px) 80vw, 34vw", cls="intro__main")}
+      {picture(m['image2'], sizes="(max-width: 860px) 40vw, 16vw", cls="intro__small")}
+    </div>
     <div class="intro__text" data-reveal>
       <p class="intro__lead">{e(m['text'])}</p>
-      <p class="intro__after">{e(m['after'])}</p>
     </div>
   </div>
 </section>
+"""
+
+
+def gallery(c):
+    """Лента «Бали в кадрах»: бесконечная прокрутка, копия ленты скрыта от скринридеров."""
+    g = c["gallery"]
+    def shape(it):
+        if it["height"] > it["width"]:
+            return "tall"
+        return "sq" if it["height"] == it["width"] else "wide"
+
+    def items(hidden):
+        hide = ' aria-hidden="true"' if hidden else ""
+        return "".join(
+            f'<figure class="strip__item strip__item--{shape(it)}"{hide}>'
+            f'{picture(dict(it, alt="" if hidden else it["alt"]), sizes="(max-width: 700px) 60vw, 30vw")}'
+            f'<figcaption>{e(it["caption"])}</figcaption></figure>' for it in g["items"])
+    return f"""
+<section class="strip" aria-labelledby="strip-title">
+  <div class="wrap strip__head">
+    {label("Атмосфера")}
+    <h2 class="h2" id="strip-title">{e(g['title'])}</h2>
+  </div>
+  <div class="strip__viewport" tabindex="0" aria-label="Лента фотографий, прокручивается">
+    <div class="strip__track">{items(False)}{items(True)}</div>
+  </div>
+</section>
+"""
+
+
+def photo_break(b, cls=""):
+    return f"""
+<figure class="pbreak{(" " + cls) if cls else ""}">
+  {picture(b['image'], sizes="100vw")}
+  <figcaption class="pbreak__over wrap">
+    <span class="pbreak__kicker">{e(b['kicker'])}</span>
+    <span class="pbreak__line">{e(b['line'])}</span>
+  </figcaption>
+</figure>
 """
 
 
@@ -183,9 +247,10 @@ ROMAN = {1: "I", 2: "II", 3: "III", 4: "IV"}
 def chapters(c):
     cols = "".join(f"""
       <article class="chapter" data-reveal>
-        <p class="chapter__num"><span class="chapter__roman">{ROMAN[i]}</span>{e(ch['nights'])}</p>
+        <div class="chapter__media">{picture(ch['image'], sizes="(max-width: 700px) 80vw, (max-width: 960px) 45vw, 24vw")}
+          <span class="chapter__roman">{ROMAN[i]}</span></div>
+        <p class="chapter__num">{e(ch['nights'])} · {e(ch['place'])}</p>
         <h3 class="chapter__name">{e(ch['name'])}</h3>
-        <p class="chapter__place">{e(ch['place'])}</p>
         <p class="chapter__text">{e(ch['text'])}</p>
       </article>""" for i, ch in enumerate(c["chapters"], 1))
     return f"""
@@ -193,6 +258,12 @@ def chapters(c):
   <div class="wrap">
     {label("Маршрут")}
     <h2 class="h2">Четыре главы, одиннадцать дней</h2>
+    <div class="map" data-reveal>
+      {bali_map.svg("wide")}
+      {bali_map.svg("narrow")}
+      <p class="map__legend"><span class="map__key map__key--route"></span>Путь группы
+        <span class="map__key map__key--trip"></span>Выезды</p>
+    </div>
     <div class="chapters">{cols}
     </div>
   </div>
@@ -210,20 +281,12 @@ def practices(c):
         <p class="muted">{e(g['text'])}</p>
         <p class="practice__items">{" · ".join(e(x) for x in g['items'])}</p>
       </article>""" for g in p["groups"])
-    path = "".join(f"""
-        <div class="path__step"><p class="path__place">{e(s['place'])}</p><p class="muted">{e(s['text'])}</p></div>"""
-                   for s in p["path"])
     return f"""
 <section class="section" id="practices">
   <div class="wrap">
     {label("Практики")}
     <h2 class="h2">{e(p['title'])}</h2>
     <div class="practices">{groups}
-    </div>
-    <div class="path">
-      <h3 class="path__title">Как практика меняется по пути</h3>
-      <div class="path__row">{path}
-      </div>
     </div>
   </div>
 </section>
@@ -332,14 +395,13 @@ def program(c):
             <h4 class="day__h">
               <button class="day__btn" type="button" id="{did}-trigger" aria-expanded="true"
                       aria-controls="{did}-panel" data-day-trigger>
-                <span class="day__n">{d['n']}</span>
-                <span class="day__title">{e(d['title'])}</span>
+                <span class="day__thumb">{picture(dict(d['image'], alt=""), sizes="120px")}<span class="day__n">{d['n']}</span></span>
+                <span class="day__title">{e(d['title'])}<span class="day__sum">{e(d['summary'])}</span></span>
                 <span class="day__date">{e(d['date'])}</span>
                 <span class="plus" aria-hidden="true"></span>
               </button>
             </h4>
             <div class="day__panel" id="{did}-panel" role="region" aria-labelledby="{did}-trigger">
-              <p class="day__summary">{e(d['summary'])}</p>
               {blocks}
             </div>
           </article>""")
@@ -348,8 +410,9 @@ def program(c):
           <h3 class="prog__chapter-name">{e(ch['name'])} <span>{e(ch['place'])}</span></h3>
           {"".join(days)}
         </section>""")
-    rhythm = "".join(f'<div class="rhythm__row"><p class="rhythm__time">{e(x["time"])}</p><p>{e(x["text"])}</p></div>'
-                     for x in r["rows"])
+    rhythm = "".join(f'<li class="rhythm__row rhythm__row--{i}"><span class="rhythm__dot"></span>'
+                     f'<p class="rhythm__time">{e(x["time"])}</p><p>{e(x["text"])}</p></li>'
+                     for i, x in enumerate(r["rows"]))
     return f"""
 <section class="section section--sand" id="program">
   <div class="wrap prog">
@@ -360,7 +423,7 @@ def program(c):
       <button class="btn btn--line btn--sm" type="button" data-expand-all>Раскрыть все дни</button>
       <div class="rhythm">
         <h3 class="rhythm__title">{e(r['title'])}</h3>
-        {rhythm}
+        <ol class="rhythm__list">{rhythm}</ol>
         <p class="note">{e(r['note'])}</p>
       </div>
     </div>
@@ -513,6 +576,9 @@ def footer(c):
         links += ' <a href="#" data-cta="whatsapp">WhatsApp</a>'
     if cfg.get("privacyUrl"):
         links += f' <a href="{e(cfg["privacyUrl"])}">Политика конфиденциальности</a>'
+    credits = "".join(
+        f'<li>{e(x["title"])} — {e(x["author"])}, <a href="{e(x["licenseUrl"])}" rel="license noopener" target="_blank">{e(x["license"])}</a>, '
+        f'<a href="{e(x["source"])}" rel="noopener" target="_blank">источник</a></li>' for x in c["photoCredits"])
     boot = json.dumps({"telegramUrl": cfg["telegramUrl"], "whatsappNumber": cfg["whatsappNumber"],
                        "prefilledMessage": cfg["prefilledMessage"], "formEndpoint": cfg["formEndpoint"],
                        "ymCounterId": cfg["analytics"]["ymCounterId"]}, ensure_ascii=False)
@@ -523,7 +589,11 @@ def footer(c):
     <p class="footer__note">{e(f['note'])}</p>
     <nav class="footer__links" aria-label="Контакты">{links}</nav>
     <p class="footer__small">{e(f['disclaimer'])}</p>
-    <p class="footer__small">{e(f['credits'])}</p>
+    <details class="credits">
+      <summary>{e(f['credits'])}</summary>
+      <ul>{credits}</ul>
+      <p>Кадры обрезаны и тонированы под общий стиль страницы.</p>
+    </details>
   </div>
 </footer>
 
@@ -541,8 +611,10 @@ def footer(c):
 
 def build():
     c = json.loads((BALI / "content.json").read_text(encoding="utf-8"))
-    parts = [head(c), header(c), hero(c), spread(c), intro(c), chapters(c), practices(c), people(c),
-             stay(c), program(c), terms(c), price(c), faq(c), request(c), footer(c)]
+    parts = [head(c), header(c), hero(c), spread(c), numbers(c), intro(c), gallery(c), chapters(c),
+             practices(c), photo_break(c["breaks"]["batur"]), people(c), stay(c),
+             photo_break(c["breaks"]["gili"], "pbreak--dusk"), program(c), terms(c), price(c), faq(c),
+             request(c), footer(c)]
     out = "".join(parts)
     (BALI / "index.html").write_text(out, encoding="utf-8")
     print(f"bali/index.html — {len(out):,} bytes")

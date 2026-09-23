@@ -47,6 +47,52 @@ SHOTS = {
     "stay-meno-night":    dict(src="stay-meno-night.jpg",    ratio=(3, 2), w=1080, wm=900, focus=(0.50, 0.50), grade="hotel"),
     "stay-meno-pavilion": dict(src="stay-meno-pavilion.jpg", ratio=(4, 3), w=800,  wm=650, focus=(0.50, 0.50), grade="hotel"),
     "stay-meno-room":     dict(src="stay-meno-room.jpg",     ratio=(4, 3), w=800,  wm=650, focus=(0.50, 0.50), grade="hotel"),
+    "stay-ubud-pool":     dict(src="stay-ubud-pool.jpg",     ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.50), grade="hotel"),
+    "stay-meno-pool":     dict(src="stay-meno-pool.jpg",     ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.50), grade="hotel"),
+
+    # ---- Места маршрута: свободные лицензии, авторы — в content.json → photoCredits
+
+    # Второй кадр вступления
+    "frangipani-sea": dict(src="x-frangipani-sea.jpg", ratio=(4, 5), w=560, wm=480, focus=(0.58, 0.55), grade="place"),
+
+    # Главы маршрута
+    "ch-sol":      dict(src="s-uluwatu-cliff.jpg", ratio=(3, 4), w=720, wm=560, focus=(0.42, 0.50), grade="place"),
+    "ch-ris":      dict(src="jatiluwih-4.jpg",     ratio=(3, 4), w=720, wm=560, focus=(0.56, 0.55), grade="place"),
+    "ch-tishina":  dict(src="gilimeno-0.jpg",      ratio=(3, 4), w=720, wm=560, focus=(0.40, 0.50), grade="place"),
+    "ch-return":   dict(src="n-sanur-jukung.jpg",  ratio=(3, 4), w=720, wm=560, focus=(0.46, 0.55), grade="place"),
+
+    # Лента «Бали в кадрах»: разные пропорции, общая высота задаётся в CSS
+    "f-kecak":     dict(src="s-kecak-dance.jpg",  ratio=(4, 5), w=560, wm=440, focus=(0.45, 0.50), grade="place"),
+    "f-offering":  dict(src="offering-0.jpg",     ratio=(1, 1), w=620, wm=460, focus=(0.50, 0.50), grade="place"),
+    "f-dancer":    dict(src="x-dancer.jpg",       ratio=(4, 5), w=560, wm=440, focus=(0.47, 0.45), grade="place"),
+    "f-meno":      dict(src="g-meno-boat.jpg",    ratio=(3, 2), w=840, wm=620, focus=(0.55, 0.55), grade="place"),
+    "f-gate":      dict(src="x-gate.jpg",         ratio=(4, 5), w=560, wm=440, focus=(0.48, 0.55), grade="place"),
+    "f-jukung":    dict(src="n-jukung.jpg",       ratio=(3, 2), w=840, wm=620, focus=(0.45, 0.60), grade="place"),
+    "f-penjor":    dict(src="x-penjor.jpg",       ratio=(4, 5), w=560, wm=440, focus=(0.50, 0.35), grade="place"),
+    "f-coconut":   dict(src="x-coconut.jpg",      ratio=(1, 1), w=620, wm=460, focus=(0.50, 0.40), grade="place"),
+    "f-jungle":    dict(src="u-swing.jpg",        ratio=(4, 5), w=540, wm=440, focus=(0.55, 0.50), grade="place"),
+    "f-uluwatu":   dict(src="uluwatu-3.jpg",      ratio=(3, 2), w=840, wm=620, focus=(0.50, 0.50), grade="place"),
+    "f-batukaru":  dict(src="batukaru-0.jpg",     ratio=(1, 1), w=620, wm=460, focus=(0.50, 0.55), grade="place"),
+    "f-terraces":  dict(src="jatiluwih-1.jpg",    ratio=(3, 2), w=840, wm=620, focus=(0.50, 0.50), grade="place"),
+
+    # Разрывы во всю ширину
+    "break-batur": dict(src="b-batur-pano.jpg",     ratio=(21, 9), w=1600, wm=900, focus=(0.55, 0.45), grade="place",
+                        mobile=dict(ratio=(4, 5), focus=(0.62, 0.45))),
+    "break-gili":  dict(src="g-sunrise-lombok.jpg", ratio=(21, 9), w=1600, wm=900, focus=(0.50, 0.40), grade="place",
+                        mobile=dict(ratio=(4, 5), focus=(0.40, 0.45))),
+
+    # Программа: кадр на каждый день
+    "d1":  dict(src="s-cliffs-turq.jpg",   ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.50), grade="place"),
+    "d2":  dict(src="s-kecak-sunset.jpg",  ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.50), grade="place"),
+    "d3":  dict(src="u-ubud-haze.jpg",     ratio=(4, 3), w=480, wm=400, focus=(0.50, 0.50), grade="place"),
+    "d4":  dict(src="x-tirta.jpg",         ratio=(4, 3), w=480, wm=400, focus=(0.50, 0.55), grade="place"),
+    "d5":  dict(src="batur-1.jpg",         ratio=(4, 3), w=480, wm=400, focus=(0.45, 0.45), grade="place"),
+    "d6":  dict(src="x-frangipani.jpg",    ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.50), grade="place"),
+    "d7":  dict(src="u-jatiluwih-mt.jpg",  ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.50), grade="place"),
+    "d8":  dict(src="g-gili-water.jpg",    ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.45), grade="place"),
+    "d9":  dict(src="g-turtle.jpg",        ratio=(4, 3), w=480, wm=400, focus=(0.50, 0.45), grade="place"),
+    "d10": dict(src="g-meno-turq.jpg",     ratio=(4, 3), w=480, wm=400, focus=(0.55, 0.55), grade="place"),
+    "d11": dict(src="n-sanur-boats.jpg",   ratio=(4, 3), w=480, wm=400, focus=(0.60, 0.55), grade="place"),
 }
 
 PROFILES = {
@@ -61,6 +107,8 @@ PROFILES = {
     "pair-cool": dict(warm_r=1.045, warm_b=0.975, green=0.92, sat=0.86, contrast=1.02, sharpen=40),
     # Гостиничные кадры обычно пересвечены и перекручены по HDR
     "hotel": dict(warm_r=1.01, warm_b=0.995, green=0.84, sat=0.86, contrast=0.98, sharpen=50),
+    # Кадры мест из открытых источников: сводим к тёплому глянцу обложки
+    "place": dict(warm_r=1.02, warm_b=0.985, green=0.93, sat=0.94, contrast=1.03, sharpen=45),
     # Чёрно-белое греть нельзя — уйдёт в сепию
     "mono": dict(warm_r=1.0, warm_b=1.0, green=1.0, sat=1.0, contrast=1.0, sharpen=40),
 }
@@ -109,10 +157,13 @@ def build():
             print("НЕТ ИСХОДНИКА", spec["src"])
             continue
 
-        im = crop_to(Image.open(path).convert("RGB"), spec["ratio"], spec["focus"])
-        im = grade(im, spec["grade"])
+        src = Image.open(path).convert("RGB")
+        im = grade(crop_to(src, spec["ratio"], spec["focus"]), spec["grade"])
+        # Для телефона широкий кадр режется заново под вертикальную пропорцию
+        mob = spec.get("mobile")
+        im_m = grade(crop_to(src, mob["ratio"], mob["focus"]), spec["grade"]) if mob else im
 
-        for suffix, target_w in (("", spec["w"]), ("-m", spec["wm"])):
+        for suffix, target_w, im in (("", spec["w"], im), ("-m", spec["wm"], im_m)):
             target_w = min(target_w, im.width)
             resized = im.resize((target_w, round(im.height * target_w / im.width)), Image.LANCZOS)
             jpg, webp = OUT / f"{name}{suffix}.jpg", OUT / f"{name}{suffix}.webp"
