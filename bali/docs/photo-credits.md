@@ -16,7 +16,7 @@
 | `manifesto` | Вступление |
 | `practice-morning`, `practice-evening` | Практики |
 | `ilya`, `vita`, `lab-back`, `lab-vita`, `andrey` | Ведущие и организатор |
-| `stay-balangan-*`, `stay-ubud-*`, `stay-meno-*` | Где живём: Balangan Village, Villa Silas, Les Villas Ottalia |
+| `stay-balangan-*`, `stay-ubud-*`, `stay-meno-*` | Где живём: Village Bali, Villa Silas, Les Villas Ottalia |
 | `og-image` | Превью в мессенджерах, собирается из `cover` (`scripts/og/og-template.html`) |
 
 ## Места маршрута: авторы и лицензии
@@ -82,5 +82,6 @@
 узнаются по рисовым полям вокруг и надписи VILLA SILAS в бассейне (эти
 снимки на сайт не берём — на них название).
 
-Balangan Village: бассейн — с Booking, шала и номер — с сайта агентства
-Unik Bali; водяной знак агентства в левом нижнем углу обрезан.
+Баланган: сначала на сайт попали фото Balangan Village — это не наш объект.
+Заменены на Village Bali (подтверждено заказчиком 23.09) — фото с официального
+сайта village-bali.com: сад с бассейном сверху, номер, бассейн.

@@ -48,9 +48,9 @@ SHOTS = {
     "stay-meno-night":    dict(src="stay-meno-night.jpg",    ratio=(3, 2), w=1080, wm=900, focus=(0.50, 0.50), grade="hotel"),
     "stay-meno-pavilion": dict(src="stay-meno-pavilion.jpg", ratio=(4, 3), w=800,  wm=650, focus=(0.50, 0.50), grade="hotel"),
     "stay-meno-room":     dict(src="stay-meno-room.jpg",     ratio=(4, 3), w=800,  wm=650, focus=(0.50, 0.50), grade="hotel"),
-    "stay-balangan-pool":  dict(src="stay-balangan-pool.jpg",  ratio=(3, 2), w=1280, wm=900, focus=(0.50, 0.55), grade="hotel"),
-    "stay-balangan-shala": dict(src="stay-balangan-shala.jpg", ratio=(4, 3), w=900,  wm=650, focus=(0.55, 0.45), grade="hotel"),
-    "stay-balangan-room":  dict(src="stay-balangan-room.jpg",  ratio=(4, 3), w=900,  wm=650, focus=(0.50, 0.40), grade="hotel"),
+    "stay-balangan-garden": dict(src="stay-balangan-garden.jpg", ratio=(3, 2), w=1280, wm=900, focus=(0.50, 0.50), grade="hotel"),
+    "stay-balangan-room":   dict(src="stay-balangan-room.jpg",   ratio=(4, 3), w=900,  wm=700, focus=(0.55, 0.50), grade="hotel"),
+    "stay-balangan-pool":   dict(src="stay-balangan-pool.jpg",   ratio=(4, 3), w=900,  wm=700, focus=(0.50, 0.62), grade="hotel"),
 
     # ---- Места маршрута: свободные лицензии, авторы — в content.json → photoCredits
 
