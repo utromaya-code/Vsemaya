@@ -19,11 +19,14 @@ def e(value):
     return html.escape(str(value), quote=True)
 
 
-def picture(img, sizes="100vw", cls="", eager=False):
+def picture(img, sizes="100vw", cls="", eager=False, load=None):
     """<picture> с webp/jpg и мобильным вариантом (или отдельным кадром для телефона)."""
     base = img["src"]
     mobile = img.get("srcMobile") or base + "-m"
     loading = 'loading="eager" fetchpriority="high"' if eager else 'loading="lazy"'
+    if load == "eager-low":
+        # Лента едет по горизонтали: ленивая загрузка не успевает, грузим сразу, но без приоритета
+        loading = 'loading="eager" fetchpriority="low"'
     cls_attr = f' class="{cls}"' if cls else ""
     return (
         f'<picture{cls_attr}>'
@@ -70,7 +73,7 @@ def head(c):
 <meta property="og:description" content="{e(m['ogDescription'])}">
 <meta property="og:url" content="{e(m['siteUrl'])}">
 {og}
-<meta name="theme-color" content="#f6f2ea">
+<meta name="theme-color" content="#fbf8f2">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23283044'/%3E%3Cpath d='M4 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3' stroke='%23C3A057' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -151,7 +154,6 @@ def hero(c):
       <figure class="cover__photo">
         {picture(img, sizes="(max-width: 860px) 100vw, 50vw", eager=True)}
         {stamp(cfg)}
-        <figcaption>{e(img['caption'])}</figcaption>
       </figure>
     </div>
   </div>
@@ -170,7 +172,6 @@ def spread(c):
 <figure class="spread">
   {picture(sp['image'], sizes="100vw")}
   <div class="spread__over"><p class="spread__line wrap">{e(sp['line'])}</p></div>
-  <figcaption class="wrap">{e(sp['caption'])}</figcaption>
 </figure>
 """
 
@@ -214,10 +215,10 @@ def gallery(c):
         hide = ' aria-hidden="true"' if hidden else ""
         return "".join(
             f'<figure class="strip__item strip__item--{shape(it)}"{hide}>'
-            f'{picture(dict(it, alt="" if hidden else it["alt"]), sizes="(max-width: 700px) 60vw, 30vw")}'
-            f'<figcaption>{e(it["caption"])}</figcaption></figure>' for it in g["items"])
+            f'{picture(dict(it, alt="" if hidden else it["alt"]), sizes="(max-width: 700px) 60vw, 30vw", load="eager-low")}'
+            f'</figure>' for it in g["items"])
     return f"""
-<section class="strip" aria-labelledby="strip-title">
+<section class="strip section--night" aria-labelledby="strip-title">
   <div class="wrap strip__head">
     {label("Атмосфера")}
     <h2 class="h2" id="strip-title">{e(g['title'])}</h2>
@@ -234,7 +235,6 @@ def photo_break(b, cls=""):
 <figure class="pbreak{(" " + cls) if cls else ""}">
   {picture(b['image'], sizes="100vw")}
   <figcaption class="pbreak__over wrap">
-    <span class="pbreak__kicker">{e(b['kicker'])}</span>
     <span class="pbreak__line">{e(b['line'])}</span>
   </figcaption>
 </figure>
@@ -327,13 +327,16 @@ def people(c):
   </div>
 </section>
 
-<section class="section section--tight">
+<section class="section org-section">
   <div class="wrap org" data-reveal>
-    <div class="org__media">{picture(org_img, sizes="160px")}</div>
-    <div>
+    <div class="org__media">{picture(org_img, sizes="(max-width: 760px) 70vw, 30vw")}</div>
+    <div class="org__text">
       {label(org['role'], 'label--accent')}
-      <h3 class="h3">{e(org['name'])}</h3>
-      <p class="muted">{e(org['text'])}</p>
+      <h2 class="org__name">{e(org['name'])}</h2>
+      <p class="org__years"><span>{e(org['years'])}</span>{e(org['yearsText'])}</p>
+      <p class="org__places">{" · ".join(e(x) for x in org['places'])}</p>
+      <p class="org__lead">{e(org['text'])}</p>
+      <a class="btn btn--line" href="{e(c['config']['telegramUrl'])}" data-cta="telegram">Написать Андрею</a>
     </div>
   </div>
 </section>
@@ -381,7 +384,7 @@ def stay(c):
 
 
 def program(c):
-    p, r = c["program"], c["rhythm"]
+    p = c["program"]
     chapters_html = []
     for ch in p["chapters"]:
         days = []
@@ -410,9 +413,6 @@ def program(c):
           <h3 class="prog__chapter-name">{e(ch['name'])} <span>{e(ch['place'])}</span></h3>
           {"".join(days)}
         </section>""")
-    rhythm = "".join(f'<li class="rhythm__row rhythm__row--{i}"><span class="rhythm__dot"></span>'
-                     f'<p class="rhythm__time">{e(x["time"])}</p><p>{e(x["text"])}</p></li>'
-                     for i, x in enumerate(r["rows"]))
     return f"""
 <section class="section section--sand" id="program">
   <div class="wrap prog">
@@ -421,11 +421,6 @@ def program(c):
       <h2 class="h2">По дням</h2>
       <p class="muted">{e(p['lead'])}</p>
       <button class="btn btn--line btn--sm" type="button" data-expand-all>Раскрыть все дни</button>
-      <div class="rhythm">
-        <h3 class="rhythm__title">{e(r['title'])}</h3>
-        <ol class="rhythm__list">{rhythm}</ol>
-        <p class="note">{e(r['note'])}</p>
-      </div>
     </div>
     <div class="prog__days">{"".join(chapters_html)}
       <p class="note">{e(p['note'])}</p>
@@ -436,24 +431,17 @@ def program(c):
 
 
 def terms(c):
-    a, arr = c["audience"], c["arrival"]
-    items = "".join(f"<li>{e(x)}</li>" for x in a["items"])
+    arr = c["arrival"]
     rows = "".join(f"""
-        <div class="road__row"><p class="road__time">{e(r['time'])}</p>
-          <div><h4 class="road__title">{e(r['title'])}</h4><p class="muted">{e(r['text'])}</p></div></div>"""
+        <div class="road__row" data-reveal><p class="road__time">{e(r['time'])}</p>
+          <h3 class="road__title">{e(r['title'])}</h3><p class="muted">{e(r['text'])}</p></div>"""
                    for r in arr["rows"])
     return f"""
 <section class="section" id="terms">
   <div class="wrap">
-    {label("Условия участия")}
-    <h2 class="h2">{e(a['title'])}</h2>
-    <div class="terms">
-      <ul class="terms__list" data-reveal>{items}</ul>
-      <div class="terms__note" data-reveal><h3 class="h4">{e(a['load']['title'])}</h3><p class="muted">{e(a['load']['text'])}</p></div>
-      <div class="terms__note" data-reveal><h3 class="h4">{e(a['consent']['title'])}</h3><p class="muted">{e(a['consent']['text'])}</p></div>
-    </div>
-    <div class="road">
-      <h3 class="road__h">{e(arr['title'])}</h3>{rows}
+    {label("Как добраться")}
+    <h2 class="h2">{e(arr['title'])}</h2>
+    <div class="road">{rows}
     </div>
   </div>
 </section>
