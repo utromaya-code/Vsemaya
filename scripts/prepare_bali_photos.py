@@ -20,8 +20,8 @@ OUT = ROOT / "bali" / "images"
 # ratio — соотношение сторон кропа, w / wm — ширина десктопной и мобильной
 # версии, focus — точка, вокруг которой режется кадр (доли ширины и высоты).
 SHOTS = {
-    # Обложка: золотой час, Вита с чашей — самый тёплый и светлый кадр съёмки
-    "cover":     dict(src="vita-bowl.jpg", ratio=(4, 5), w=853, wm=853, focus=(0.45, 0.42), grade="glow"),
+    # Обложка: золотой закат над утёсами Улувату — нейтральный кадр без людей
+    "cover":     dict(src="uluwatu-3.jpg", ratio=(4, 5), w=1200, wm=900, focus=(0.58, 0.50), grade="place"),
 
     # Разворот сразу за обложкой: террасы Джатилувих и горы
     "spread":    dict(src="u-jatiluwih-mt.jpg", ratio=(2, 1), w=1920, wm=900, focus=(0.50, 0.50), grade="place",
@@ -35,10 +35,10 @@ SHOTS = {
     # Ведущие
     "ilya":     dict(src="ilya-namaste.jpg",  ratio=(4, 5), w=900, wm=820, focus=(0.52, 0.40), grade="team"),
     "vita":     dict(src="vita-portrait.jpg", ratio=(4, 5), w=900, wm=820, focus=(0.50, 0.42), grade="team"),
-    "andrey":   dict(src="andrey-src.jpg",    ratio=(4, 5), w=720, wm=720, focus=(0.50, 0.45), grade="portrait"),
+    "andrey":   dict(src="andrey-green.jpg",  ratio=(4, 5), w=720, wm=720, focus=(0.66, 0.50), grade="team"),
 
     # Илья и Вита вместе: оба кадра в ч/б — журнальный разворот на тёмном
-    "lab-back": dict(src="back-mono.jpg", ratio=(3, 4), w=720, wm=600, focus=(0.46, 0.50), grade="bw"),
+    "lab-ilya": dict(src="ilya-taiji.jpg", ratio=(3, 4), w=720, wm=600, focus=(0.50, 0.50), grade="bw"),
     "lab-vita": dict(src="vita-move.jpg", ratio=(3, 4), w=820, wm=600, focus=(0.50, 0.50), grade="bw"),
 
     # Где живём
@@ -73,7 +73,7 @@ SHOTS = {
     "f-penjor":    dict(src="x-penjor.jpg",       ratio=(4, 5), w=560, wm=560, focus=(0.50, 0.35), grade="place"),
     "f-coconut":   dict(src="x-coconut.jpg",      ratio=(1, 1), w=620, wm=620, focus=(0.50, 0.40), grade="place"),
     "f-jungle":    dict(src="u-swing.jpg",        ratio=(4, 5), w=540, wm=540, focus=(0.55, 0.50), grade="place"),
-    "f-uluwatu":   dict(src="uluwatu-3.jpg",      ratio=(3, 2), w=840, wm=840, focus=(0.50, 0.50), grade="place"),
+    "f-kecak-fire": dict(src="kecak-4.jpg",       ratio=(3, 2), w=840, wm=840, focus=(0.50, 0.55), grade="place"),
     "f-batukaru":  dict(src="batukaru-0.jpg",     ratio=(1, 1), w=620, wm=620, focus=(0.50, 0.55), grade="place"),
 
     # Разрывы во всю ширину

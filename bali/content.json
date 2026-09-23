@@ -72,15 +72,15 @@
       },
       {
         "kicker": "Где живём",
-        "text": "Вилла над джунглями Убуда и бунгало у моря",
+        "text": "Вилла среди рисовых полей Убуда и бунгало у моря",
         "href": "#stay"
       }
     ],
     "image": {
       "src": "images/cover",
-      "alt": "Вита с хрустальной поющей чашей в золотом свете заката",
-      "width": 853,
-      "height": 1066
+      "alt": "Золотой закат над океаном у скал Улувату",
+      "width": 1200,
+      "height": 1500
     }
   },
   "manifesto": {
@@ -219,8 +219,8 @@
     "text": "Движение и внимание в паре: контакт, границы, доверие, импровизация. Всё — по согласию и на комфортном уровне.",
     "images": [
       {
-        "src": "images/lab-back",
-        "alt": "Спина и руки в наклоне, чётки",
+        "src": "images/lab-ilya",
+        "alt": "Илья в стойке тайцзи с мечом на камне у воды",
         "width": 720,
         "height": 960
       },
@@ -856,16 +856,16 @@
         "height": 560
       },
       {
+        "src": "images/f-kecak-fire",
+        "alt": "Огненный кечак: танцоры вокруг костра на закате",
+        "width": 840,
+        "height": 560
+      },
+      {
         "src": "images/f-penjor",
         "alt": "Белый пенджор у храма Тирта Эмпул",
         "width": 560,
         "height": 700
-      },
-      {
-        "src": "images/f-uluwatu",
-        "alt": "Закат над утёсами Улувату",
-        "width": 840,
-        "height": 560
       },
       {
         "src": "images/f-coconut",
@@ -1091,8 +1091,8 @@
       "source": "https://commons.wikimedia.org/w/index.php?curid=106159918"
     },
     {
-      "files": "f-uluwatu",
-      "title": "Pura Luhur Uluwatu",
+      "files": "cover",
+      "title": "Sunset at Pura Luhur Uluwatu",
       "author": "rheins",
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
@@ -1153,6 +1153,14 @@
       "license": "CC BY 3.0",
       "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
       "source": "https://commons.wikimedia.org/w/index.php?search=Gili+Meno+panoramio+Komarov&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "f-kecak-fire",
+      "title": "Kecak Fire Dance – Pura Uluwatu Bali",
+      "author": "Rennytan",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Kecak+Fire+Dance+Pura+Uluwatu+Bali&title=Special:MediaSearch&type=image"
     }
   ]
 }

@@ -414,15 +414,19 @@ def program(c):
           {"".join(days)}
         </section>""")
     return f"""
-<section class="section section--sand" id="program">
-  <div class="wrap prog">
-    <div class="prog__side">
-      {label("Программа")}
-      <h2 class="h2">По дням</h2>
-      <p class="muted">{e(p['lead'])}</p>
-      <button class="btn btn--line btn--sm" type="button" data-expand-all>Раскрыть все дни</button>
+<section class="section section--sand prog-section" id="program">
+  <div class="wrap">
+    <div class="prog__head">
+      <div>
+        {label("Программа")}
+        <h2 class="h2">По дням</h2>
+      </div>
+      <button class="prog__toggle" type="button" aria-expanded="true" aria-controls="program-days" data-program-toggle>
+        <span class="prog__toggle-text">Открыть программу · 11 дней</span>
+        <span class="prog__toggle-plus plus" aria-hidden="true"></span>
+      </button>
     </div>
-    <div class="prog__days">{"".join(chapters_html)}
+    <div class="prog__days" id="program-days" role="region" aria-label="Программа по дням">{"".join(chapters_html)}
       <p class="note">{e(p['note'])}</p>
     </div>
   </div>

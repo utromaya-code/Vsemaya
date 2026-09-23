@@ -2,7 +2,7 @@
 
 Три источника:
 
-1. **Съёмка команды** — обложка, практики, ведущие, лаборатории, организатор.
+1. **Съёмка команды** — практики, ведущие, лаборатории, организатор.
 2. **Места, где живём** — фото вилл в Убуде и на Гили Мено.
 3. **Места маршрута** — свободные лицензии (Wikimedia Commons, rawpixel CC0):
    разворот за обложкой, лента «Бали в кадрах», главы маршрута, кадры дней программы
@@ -12,12 +12,12 @@
 
 | Файл | Где на странице |
 | --- | --- |
-| `cover` | Обложка |
 | `manifesto` | Вступление |
 | `practice-morning`, `practice-evening` | Практики |
-| `ilya`, `vita`, `lab-back`, `lab-vita`, `andrey` | Ведущие и организатор |
+| `ilya`, `vita`, `lab-ilya`, `lab-vita` | Ведущие и их общий разворот (ч/б) |
+| `andrey` | Организатор — фото прислано заказчиком 23.09 |
 | `stay-balangan-*`, `stay-ubud-*`, `stay-meno-*` | Где живём: Village Bali, Villa Silas, Les Villas Ottalia |
-| `og-image` | Превью в мессенджерах, собирается из `cover` (`scripts/og/og-template.html`) |
+| `og-image` | Превью в мессенджерах, собирается из `cover` — закат над Улувату (`scripts/og/og-template.html`) |
 
 ## Места маршрута: авторы и лицензии
 
@@ -50,7 +50,7 @@
 | `d9` | Gili trawangan turtle 01 | Nuctuslasheca | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?curid=59924821) |
 | `break-gili` | Gili Air Island from Gili Meno Island, Indonesia | Vyacheslav Argenberg | CC BY 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?curid=152522101) |
 | `d11` | Sunrise boats | Wiaskara | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?curid=106159918) |
-| `f-uluwatu` | Pura Luhur Uluwatu | rheins | CC BY 3.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Uluwatu%2C%20rheins&title=Special:MediaSearch&type=image) |
+| `cover` | Sunset at Pura Luhur Uluwatu | rheins | CC BY 3.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Uluwatu%2C%20rheins&title=Special:MediaSearch&type=image) |
 | `f-offering` | Canang Sari (49364678042) | Enrico Strocchi | CC BY-SA 2.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Canang%20Sari%20%2849364678042%29&title=Special:MediaSearch&type=image) |
 | `f-batukaru` | The Faithful Gathered | Franz-Josef Alayon Monsanto | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=The%20Faithful%20Gathered&title=Special:MediaSearch&type=image) |
 | `d7` | Rice terraces on Bali – Jatiluwih | Thomas Fuhrmann | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Rice%20terraces%20on%20Bali%20Jatiluwih&title=Special:MediaSearch&type=image) |
@@ -58,6 +58,7 @@
 | `ch-tishina` | Gili Meno – panoramio (8) | Alexey Komarov | CC BY 3.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Gili%20Meno%20panoramio%20Komarov&title=Special:MediaSearch&type=image) |
 | `d5` | Sunrise on Mount Batur | TMFalkner | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Sunrise%20on%20Mount%20Batur%20TMFalkner&title=Special:MediaSearch&type=image) |
 | `d10` | Gili Meno – panoramio | Alexey Komarov | CC BY 3.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Gili+Meno+panoramio+Komarov&title=Special:MediaSearch&type=image) |
+| `f-kecak-fire` | Kecak Fire Dance – Pura Uluwatu Bali | Rennytan | CC BY-SA 4.0 | [ссылка](https://commons.wikimedia.org/w/index.php?search=Kecak+Fire+Dance+Pura+Uluwatu+Bali&title=Special:MediaSearch&type=image) |
 
 Подписей под фото на странице нет; alt-тексты честные: если снимок сделан на соседнем острове или в другом
 храме, подпись общая («Черепахи», «Врата храма»), без привязки к нашей точке.

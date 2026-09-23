@@ -104,19 +104,25 @@ function initAccordion(selector, keepOpenIndex) {
 }
 
 function initProgram() {
-  var triggers = initAccordion('[data-day-trigger]', 0);
-  var button = document.querySelector('[data-expand-all]');
-  if (!button || !triggers.length) return;
+  // Все дни свёрнуты; сама программа спрятана под одну кнопку.
+  // Без JS разметка остаётся раскрытой — программа читается целиком.
+  initAccordion('[data-day-trigger]', -1);
+  var button = document.querySelector('[data-program-toggle]');
+  if (!button) return;
+  var box = document.getElementById(button.getAttribute('aria-controls'));
+  var text = button.querySelector('.prog__toggle-text');
+  if (!box) return;
 
+  function set(open) {
+    button.setAttribute('aria-expanded', String(open));
+    box.hidden = !open;
+    if (text) text.textContent = open ? 'Свернуть программу' : 'Открыть программу · 11 дней';
+  }
+  set(false);
   button.addEventListener('click', function () {
-    var shouldOpen = button.getAttribute('data-open') !== 'true';
-    triggers.forEach(function (trigger) {
-      var panel = document.getElementById(trigger.getAttribute('aria-controls'));
-      trigger.setAttribute('aria-expanded', String(shouldOpen));
-      if (panel) panel.hidden = !shouldOpen;
-    });
-    button.setAttribute('data-open', String(shouldOpen));
-    button.textContent = shouldOpen ? 'Свернуть все дни' : 'Раскрыть все дни';
+    var open = button.getAttribute('aria-expanded') !== 'true';
+    set(open);
+    reach(open ? 'program_open' : 'program_close');
   });
 }
 
