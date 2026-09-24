@@ -77,7 +77,7 @@ def head(c):
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23283044'/%3E%3Cpath d='M4 20c4 0 4-3 8-3s4 3 8 3 4-3 8-3' stroke='%23C3A057' stroke-width='2' fill='none'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/cover.webp" media="(min-width: 701px)">
 <link rel="preload" as="image" href="images/cover-m.webp" media="(max-width: 700px)">
 <link rel="stylesheet" href="styles.css">
@@ -223,8 +223,14 @@ def gallery(c):
     {label("Атмосфера")}
     <h2 class="h2" id="strip-title">{e(g['title'])}</h2>
   </div>
-  <div class="strip__viewport" tabindex="0" aria-label="Лента фотографий, прокручивается">
-    <div class="strip__track">{items(False)}{items(True)}</div>
+  <div class="strip__frame">
+    <div class="strip__viewport" tabindex="0" data-strip aria-label="Лента фотографий: листайте стрелками, свайпом или клавишами">
+      <div class="strip__track">{items(False)}{items(True)}</div>
+    </div>
+    <button class="strip__btn strip__btn--prev" type="button" data-strip-prev aria-label="Предыдущие фото">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <button class="strip__btn strip__btn--next" type="button" data-strip-next aria-label="Следующие фото">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
   </div>
 </section>
 """

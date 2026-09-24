@@ -452,6 +452,107 @@ function initForm() {
   }
 }
 
+/* ---------------------------------------------------------------------
+   Лента «Бали в кадрах»: сама медленно плывёт, но её можно листать —
+   стрелками, свайпом, колесом/тачпадом, перетаскиванием мышью и
+   клавишами. После ручного листания автодвижение ждёт несколько секунд.
+   Кадры в разметке продублированы, поэтому лента бесконечная.
+   --------------------------------------------------------------------- */
+function initStrip() {
+  var vp = document.querySelector('[data-strip]');
+  if (!vp) return;
+  var track = vp.querySelector('.strip__track');
+  var prev = document.querySelector('[data-strip-prev]');
+  var next = document.querySelector('[data-strip-next]');
+  var still = reducedMotion();
+  var pos = 0;
+  var hold = 0;        // до какого времени автодвижение на паузе
+  var hover = false;
+  var visible = true;
+  var SPEED = 0.45;    // px за кадр, около 27 px/с
+
+  function half() { return still ? Infinity : track.scrollWidth / 2; }
+  function pause(ms) { hold = Date.now() + ms; }
+  function wrap() {
+    var h = half();
+    if (vp.scrollLeft >= h) vp.scrollLeft -= h;
+    else if (vp.scrollLeft <= 0 && h !== Infinity) vp.scrollLeft += h;
+    pos = vp.scrollLeft;
+  }
+
+  function step() {
+    var item = track.firstElementChild;
+    return item ? item.getBoundingClientRect().width + 16 : 320;
+  }
+  function go(dir) {
+    pause(6000);
+    var dist = step() * (window.innerWidth < 700 ? 1 : 2);
+    if (!still) {
+      // Перед шагом переносимся на такую же точку второй копии ленты,
+      // чтобы у края было куда листать
+      var h = half();
+      if (dir < 0 && vp.scrollLeft < dist) vp.scrollLeft += h;
+      if (dir > 0 && vp.scrollLeft + dist > h * 2 - vp.clientWidth) vp.scrollLeft -= h;
+    }
+    vp.scrollBy({ left: dir * dist, behavior: still ? 'auto' : 'smooth' });
+  }
+  if (prev) prev.addEventListener('click', function () { go(-1); reach('strip_prev'); });
+  if (next) next.addEventListener('click', function () { go(1); reach('strip_next'); });
+
+  // Любое ручное касание — пауза автодвижения
+  ['wheel', 'touchstart', 'keydown'].forEach(function (type) {
+    vp.addEventListener(type, function () { pause(5000); }, { passive: true });
+  });
+  vp.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') hover = true; });
+  vp.addEventListener('pointerleave', function (e) { if (e.pointerType === 'mouse') { hover = false; pause(800); } });
+  // Ручная прокрутка у самого края: незаметно переносимся на ту же
+  // точку другой копии ленты, чтобы листать можно было бесконечно
+  vp.addEventListener('scroll', function () {
+    if (still || Date.now() > hold) return;
+    var h = half();
+    if (vp.scrollLeft > h * 2 - vp.clientWidth - 4) vp.scrollLeft -= h;
+    else if (vp.scrollLeft < 4) vp.scrollLeft += h;
+  }, { passive: true });
+
+  // Перетаскивание мышью (на телефоне работает родной свайп)
+  var drag = null;
+  vp.addEventListener('pointerdown', function (e) {
+    if (e.pointerType !== 'mouse') return;
+    drag = { x: e.clientX, left: vp.scrollLeft };
+    vp.style.cursor = 'grabbing';
+    pause(5000);
+  });
+  window.addEventListener('pointermove', function (e) {
+    if (!drag) return;
+    vp.scrollLeft = drag.left - (e.clientX - drag.x);
+    pause(5000);
+  });
+  window.addEventListener('pointerup', function () {
+    if (!drag) return;
+    drag = null;
+    vp.style.cursor = '';
+    wrap();
+  });
+  track.addEventListener('dragstart', function (e) { e.preventDefault(); });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; }).observe(vp);
+  }
+
+  if (still) return;
+  function frame() {
+    if (visible && !hover && !drag && Date.now() > hold) {
+      if (Math.abs(vp.scrollLeft - pos) > 2) pos = vp.scrollLeft; // человек листал — продолжаем с его места
+      pos += SPEED;
+      var h = half();
+      if (pos >= h) pos -= h;
+      vp.scrollLeft = pos;
+    }
+    window.requestAnimationFrame(frame);
+  }
+  window.requestAnimationFrame(frame);
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   initContactLinks();
   initNav();
@@ -460,6 +561,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initHeader();
   initMobileBar();
   initReveal();
+  initStrip();
   initForm();
   initAnalytics();
 });

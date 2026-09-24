@@ -76,6 +76,12 @@ SHOTS = {
     "f-kecak-fire": dict(src="kecak-4.jpg",       ratio=(3, 2), w=840, wm=840, focus=(0.50, 0.55), grade="place"),
     "f-batukaru":  dict(src="batukaru-0.jpg",     ratio=(1, 1), w=620, wm=620, focus=(0.50, 0.55), grade="place"),
 
+    "f-sunrise":    dict(src="g-sunrise-lombok.jpg", ratio=(3, 2), w=840, wm=840, focus=(0.50, 0.50), grade="place"),
+    "f-turtle":     dict(src="g-turtle.jpg",         ratio=(4, 5), w=560, wm=560, focus=(0.45, 0.45), grade="place"),
+    "f-frangipani": dict(src="x-frangipani.jpg",     ratio=(1, 1), w=620, wm=620, focus=(0.55, 0.50), grade="place"),
+    "f-bay":        dict(src="s-cliffs-turq.jpg",    ratio=(3, 2), w=840, wm=840, focus=(0.55, 0.50), grade="place"),
+    "f-tirta":      dict(src="x-tirta.jpg",          ratio=(4, 5), w=560, wm=560, focus=(0.55, 0.55), grade="place"),
+
     # Разрывы во всю ширину
     "break-batur": dict(src="b-batur-pano.jpg",     ratio=(21, 9), w=1920, wm=900, focus=(0.55, 0.45), grade="place",
                         mobile=dict(ratio=(4, 5), focus=(0.62, 0.45))),

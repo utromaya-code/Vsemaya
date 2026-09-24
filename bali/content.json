@@ -844,10 +844,22 @@
         "height": 620
       },
       {
+        "src": "images/f-turtle",
+        "alt": "Морская черепаха в бирюзовой воде",
+        "width": 560,
+        "height": 700
+      },
+      {
         "src": "images/f-dancer",
         "alt": "Балийская танцовщица в золотом головном уборе",
         "width": 560,
         "height": 700
+      },
+      {
+        "src": "images/f-bay",
+        "alt": "Бирюзовая бухта под утёсами Букита",
+        "width": 840,
+        "height": 560
       },
       {
         "src": "images/f-jukung",
@@ -856,8 +868,20 @@
         "height": 560
       },
       {
+        "src": "images/f-tirta",
+        "alt": "Струи священного источника в храме",
+        "width": 560,
+        "height": 700
+      },
+      {
         "src": "images/f-kecak-fire",
         "alt": "Огненный кечак: танцоры вокруг костра на закате",
+        "width": 840,
+        "height": 560
+      },
+      {
+        "src": "images/f-sunrise",
+        "alt": "Розовый рассвет над лодками и горами Ломбока",
         "width": 840,
         "height": 560
       },
@@ -866,6 +890,12 @@
         "alt": "Белый пенджор у храма Тирта Эмпул",
         "width": 560,
         "height": 700
+      },
+      {
+        "src": "images/f-frangipani",
+        "alt": "Цветы франжипани",
+        "width": 620,
+        "height": 620
       },
       {
         "src": "images/f-coconut",
@@ -1011,7 +1041,7 @@
       "source": "https://commons.wikimedia.org/w/index.php?curid=60338776"
     },
     {
-      "files": "d1",
+      "files": "d1, f-bay",
       "title": "Bali Beach & Blue Sea",
       "author": "rawpixel",
       "license": "CC0",
@@ -1035,7 +1065,7 @@
       "source": "https://www.rawpixel.com/image/3290131/free-photo-image-arecaceae-cc0-countryside"
     },
     {
-      "files": "d4",
+      "files": "d4, f-tirta",
       "title": "WIKITIRTA - TIRTA EMPUL APUAN 7",
       "author": "Anggabuana",
       "license": "CC BY-SA 4.0",
@@ -1043,7 +1073,7 @@
       "source": "https://commons.wikimedia.org/w/index.php?curid=126575543"
     },
     {
-      "files": "d6",
+      "files": "d6, f-frangipani",
       "title": "",
       "author": "rawpixel",
       "license": "CC0",
@@ -1067,7 +1097,7 @@
       "source": "https://commons.wikimedia.org/w/index.php?curid=66236250"
     },
     {
-      "files": "d9",
+      "files": "d9, f-turtle",
       "title": "Gili trawangan turtle 01",
       "author": "Nuctuslasheca",
       "license": "CC BY-SA 4.0",
@@ -1161,6 +1191,14 @@
       "license": "CC BY-SA 4.0",
       "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "source": "https://commons.wikimedia.org/w/index.php?search=Kecak+Fire+Dance+Pura+Uluwatu+Bali&title=Special:MediaSearch&type=image"
+    },
+    {
+      "files": "f-sunrise",
+      "title": "Red colour at sunrise and Lombok's mountains",
+      "author": "Jorge Láscar",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "source": "https://commons.wikimedia.org/w/index.php?search=Red+colour+at+sunrise+and+Lombok%27s+mountains&title=Special:MediaSearch&type=image"
     }
   ]
 }
