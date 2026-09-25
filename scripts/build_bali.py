@@ -193,7 +193,7 @@ def intro(c):
   <div class="wrap intro__grid">
     <div class="intro__media" data-reveal>
       {picture(m['image'], sizes="(max-width: 860px) 80vw, 34vw", cls="intro__main")}
-      {picture(m['image2'], sizes="(max-width: 860px) 40vw, 16vw", cls="intro__small")}
+      {picture(m['image2'], sizes="(max-width: 860px) 40vw, 16vw", cls="intro__small") if m.get('image2') else ""}
     </div>
     <div class="intro__text" data-reveal>
       <p class="intro__lead">{e(m['text'])}</p>
@@ -242,6 +242,7 @@ def photo_break(b, cls=""):
   {picture(b['image'], sizes="100vw")}
   <figcaption class="pbreak__over wrap">
     <span class="pbreak__line">{e(b['line'])}</span>
+    {f'<span class="pbreak__text">{e(b["text"])}</span>' if b.get('text') else ''}
   </figcaption>
 </figure>
 """
@@ -284,7 +285,7 @@ def practices(c):
         <div class="practice__media">{picture(g['image'], sizes="(max-width: 760px) 100vw, 45vw")}</div>
         {label(g['time'], 'label--accent')}
         <h3 class="h3">{e(g['title'])}</h3>
-        <p class="muted">{e(g['text'])}</p>
+        {f'<p class="muted">{e(g["text"])}</p>' if g.get('text') else ''}
         <p class="practice__items">{" · ".join(e(x) for x in g['items'])}</p>
       </article>""" for g in p["groups"])
     return f"""
@@ -315,8 +316,8 @@ def people(c):
     return f"""
 <section class="section section--sand" id="team">
   <div class="wrap">
-    {label("Ведущие")}
-    <h2 class="h2">Кто ведёт</h2>
+    {label("Команда")}
+    <h2 class="h2">Ведущие</h2>
     <div class="leaders">{leaders}
     </div>
   </div>

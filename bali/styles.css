@@ -189,7 +189,7 @@ a { color: inherit; }
 .cover__lines a { display: block; text-decoration: none; }
 .cover__kicker { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 4px; }
 .cover__line { font-family: var(--sans); font-weight: 600; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.4; }
-.cover__lines a:hover .cover__line { font-family: var(--sans); font-weight: 600; font-size: clamp(17px, 1.3vw, 19px); line-height: 1.4; }
+.cover__lines a:hover .cover__line { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 5px; }
 .cover__photo { position: relative; }
 .cover__photo img { aspect-ratio: 4 / 5; object-fit: cover; }
 
@@ -260,7 +260,7 @@ a { color: inherit; }
 
 .intro { padding-block: var(--section); }
 .intro__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 100px); align-items: center; }
-.intro__media { position: relative; padding: 0 22% 16% 0; }
+.intro__media { position: relative; }
 .intro__main img { aspect-ratio: 4 / 5; object-fit: cover; }
 .intro__small { position: absolute; right: 0; bottom: 0; width: 46%; border: clamp(6px, 0.8vw, 12px) solid var(--paper); }
 .intro__small img { aspect-ratio: 4 / 5; object-fit: cover; }
@@ -306,6 +306,7 @@ html:not(.js) .strip__btn { display: none; }
   background: linear-gradient(180deg, rgba(20, 24, 34, 0) 25%, rgba(20, 24, 34, 0.68) 100%);
   max-width: none;
 }
+.pbreak__text { display: block; max-width: 44ch; margin-top: clamp(14px, 1.6vw, 22px); font-size: clamp(16px, 1.3vw, 19px); line-height: 1.55; color: rgba(255, 255, 255, 0.92); text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
 .pbreak__line { text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5); font-family: var(--display); font-weight: 400; font-size: clamp(40px, 7vw, 112px); line-height: 0.95; letter-spacing: -0.02em; max-width: 14ch; }
 @media (max-width: 700px) { .pbreak img { aspect-ratio: 4 / 5; } }
 
@@ -389,9 +390,10 @@ html:not(.js) .strip__btn { display: none; }
 .leader__name { font-family: var(--display); font-weight: 400; font-size: clamp(42px, 4.4vw, 68px); line-height: 1; letter-spacing: -0.02em; margin: 0 0 16px; }
 
 .lab__grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
-.lab__shots { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(10px, 1.2vw, 16px); }
+.lab__shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(8px, 1.2vw, 16px); }
 .lab__shot img { aspect-ratio: 3 / 4; object-fit: cover; }
-.lab__shot:nth-child(2) { margin-top: clamp(32px, 5vw, 80px); }
+.lab__shot:nth-child(2) { margin-top: clamp(24px, 4vw, 64px); }
+.lab__shot:nth-child(3) { margin-top: clamp(12px, 2vw, 32px); }
 
 .org-section { background: var(--cream); }
 .org { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 100px); align-items: center; }
@@ -463,7 +465,7 @@ html:not(.js) .prog__toggle { display: none; }
 .day__block { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding-block: 10px; border-top: 1px solid var(--line); font-size: 16px; }
 .day__time { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-ink); padding-top: 5px; }
 
-.plus { position: relative; width: 16px; height: 16px; align-self: center; }
+.plus { position: relative; flex: none; width: 16px; height: 16px; align-self: center; }
 .plus::before, .plus::after { content: ''; position: absolute; background: currentColor; transition: transform 0.25s ease; }
 .plus::before { left: 0; right: 0; top: 7.5px; height: 1px; }
 .plus::after { top: 0; bottom: 0; left: 7.5px; width: 1px; }
@@ -499,14 +501,14 @@ html:not(.js) .prog__toggle { display: none; }
 
 /* ---------- Вопросы ---------- */
 
-.faq { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-.faq__side { position: sticky; top: calc(var(--header-h) + 24px); }
+.faq__list { max-width: 920px; }
+.faq__side { margin-bottom: clamp(28px, 4vw, 48px); }
 .qa { border-top: 1px solid var(--line); }
 .qa:last-child { border-bottom: 1px solid var(--line); }
 .qa__h { margin: 0; font: inherit; }
 .qa__btn { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 22px 0; background: none; border: 0; text-align: left; cursor: pointer; color: inherit; font: 600 clamp(17px, 1.3vw, 19px) / 1.4 var(--sans); }
 .qa__panel { padding-bottom: 24px; color: var(--muted); max-width: 64ch; }
-@media (max-width: 900px) { .faq { grid-template-columns: 1fr; } .faq__side { position: static; } }
+@media (max-width: 900px) { .faq { grid-template-columns: 1fr; } .faq__side { margin-bottom: clamp(28px, 4vw, 48px); } }
 
 /* ---------- Заявка ---------- */
 
@@ -561,6 +563,40 @@ textarea.field__input { resize: vertical; min-height: 96px; }
 .mobile-bar--hidden { transform: translateY(110%); }
 .mobile-bar__info { font-size: 14px; font-weight: 500; }
 @media (max-width: 760px) { .mobile-bar { display: flex; } body { padding-bottom: 68px; } }
+
+/* ---------- Типографика: три стиля и один дополнительный ----------
+   1. Заголовки — антиква Noto Serif Display 400 (размеры разные, стиль один).
+   2. Текст — Manrope 400.
+   3. Метки — Manrope 600, 12 px, заглавные, разрядка 0.14em.
+   4. Акцент (дополнительный) — Manrope 600 в размер текста.
+   Правила ниже перекрывают частные настройки выше, чтобы стилей не множилось. */
+
+.label, .cover__strip, .cover__fact dt, .cover__kicker, .num__t, .map__legend, .chapter__num,
+.org__years, .prog__chapter-name span, .day__time, .day__date, .road__time, .pack__h,
+.field__label, .btn, .btn--sm, .prog__toggle, .mobile-bar__info {
+  font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; font-style: normal;
+}
+@media (min-width: 901px) { .nav__list a { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; } }
+.map__sea, .map__spot text { font-family: var(--sans); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.map__sea { font-size: calc(12px * var(--fs-sea)); }
+
+body, .lead, .cover__sub, .cover__fact dd, .intro__lead, .chapter__text, .muted, .org__lead,
+.day__sum, .day__block, .qa__panel, .pack__list li, .road__row .muted {
+  font-family: var(--sans); font-weight: 400; letter-spacing: 0;
+}
+.cover__sub, .cover__fact dd, .org__lead, .chapter__text, .pack__list li { font-size: clamp(16px, 1.15vw, 18px); line-height: 1.6; }
+.lead, .intro__lead { font-size: clamp(19px, 1.5vw, 22px); line-height: 1.6; }
+.intro__lead { max-width: 36ch; }
+
+.cover__line, .practice__items, .org__places, .day__title, .qa__btn, .h4, .footer__links a {
+  font-family: var(--sans); font-weight: 600; font-size: clamp(16px, 1.2vw, 18px); line-height: 1.45; letter-spacing: 0; text-transform: none;
+}
+.practice__items { color: var(--ink); margin-top: 0; }
+.cover__tagline { font-size: clamp(26px, 2.4vw, 38px); }
+
+.lab__text .h2 { font-size: clamp(34px, 3.4vw, 52px); overflow-wrap: break-word; hyphens: auto; }
+#practices .h2 { max-width: 20ch; }
 
 /* ---------- Медленный «наезд» камеры на больших кадрах ---------- */
 

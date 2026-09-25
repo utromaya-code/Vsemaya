@@ -39,6 +39,7 @@ SHOTS = {
 
     # Илья и Вита вместе: оба кадра в ч/б — журнальный разворот на тёмном
     "lab-ilya": dict(src="ilya-taiji.jpg", ratio=(3, 4), w=720, wm=600, focus=(0.50, 0.50), grade="bw"),
+    "lab-bowl": dict(src="vita-bowl.jpg", ratio=(3, 4), w=720, wm=600, focus=(0.45, 0.45), grade="bw"),
     "lab-vita": dict(src="vita-move.jpg", ratio=(3, 4), w=820, wm=600, focus=(0.50, 0.50), grade="bw"),
 
     # Где живём
@@ -55,7 +56,6 @@ SHOTS = {
     # ---- Места маршрута: свободные лицензии, авторы — в content.json → photoCredits
 
     # Второй кадр вступления
-    "frangipani-sea": dict(src="x-frangipani-sea.jpg", ratio=(4, 5), w=560, wm=480, focus=(0.58, 0.55), grade="place"),
 
     # Главы маршрута
     "ch-sol":      dict(src="s-uluwatu-cliff.jpg", ratio=(3, 4), w=720, wm=720, focus=(0.42, 0.50), grade="place"),
