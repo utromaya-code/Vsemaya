@@ -1,6 +1,6 @@
 /* =========================================================================
    Соль. Рис. Тишина. — выпуск глянцевого журнала о путешествии.
-   Светлая бумага, контрастная журнальная антиква (Noto Serif Display),
+   Светлая бумага, один шрифт Manrope для всего текста,
    чистый гротеск (Manrope), золото Arrowwood как солнце на странице.
    Палитра — Pantone весна 2027: Antique White, Blue Indigo, Arrowwood,
    Tarragon, Dolphin.
@@ -23,7 +23,7 @@
   --line-strong: rgba(21, 27, 42, 0.9);
   --line-night: rgba(246, 242, 234, 0.18);
 
-  --display: 'Noto Serif Display', 'Didot', 'Bodoni 72', Georgia, serif;
+  --display: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --sans: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --wrap: 1280px;
@@ -565,7 +565,7 @@ textarea.field__input { resize: vertical; min-height: 96px; }
 @media (max-width: 760px) { .mobile-bar { display: flex; } body { padding-bottom: 68px; } }
 
 /* ---------- Типографика: три стиля и один дополнительный ----------
-   1. Заголовки — антиква Noto Serif Display 400 (размеры разные, стиль один).
+   1. Заголовки — Manrope 700 (переопределено ниже: один шрифт на весь сайт).
    2. Текст — Manrope 400.
    3. Метки — Manrope 600, 12 px, заглавные, разрядка 0.14em.
    4. Акцент (дополнительный) — Manrope 600 в размер текста.
@@ -597,6 +597,21 @@ body, .lead, .cover__sub, .cover__fact dd, .intro__lead, .chapter__text, .muted,
 
 .lab__text .h2 { font-size: clamp(34px, 3.4vw, 52px); overflow-wrap: break-word; hyphens: auto; }
 #practices .h2 { max-width: 20ch; }
+
+/* ---------- Один шрифт на весь сайт ----------
+   Заголовки и текст — Manrope. Иерархия только размером и жирностью:
+   заголовки 700 с плотной разрядкой, текст 400, метки 600 заглавными. */
+.h2, .h3, .cover__title, .cover__tagline, .stamp__c, .refrain__track span, .spread__line, .num__n,
+.pbreak__line, .chapter__roman, .chapter__name, .leader__name, .org__name, .org__years span,
+.stay__name, .prog__chapter-name, .day__n, .road__title, .footer__name, .header__brand,
+.map__stay text, .map__island {
+  font-family: var(--sans); font-weight: 700; letter-spacing: -0.035em;
+}
+.cover__tagline, .spread__line, .road__title, .prog__chapter-name, .h3, .map__stay text { font-weight: 600; letter-spacing: -0.02em; }
+.header__brand { font-size: 19px; letter-spacing: -0.02em; }
+.cover__title { font-size: clamp(40px, 8vw, 122px); letter-spacing: -0.045em; justify-content: flex-start; gap: 0.24em; }
+.map__island { letter-spacing: 0.3em; font-weight: 600; }
+@media (max-width: 900px) { .nav__list a { font-family: var(--sans); font-weight: 600; letter-spacing: -0.02em; } }
 
 /* ---------- Медленный «наезд» камеры на больших кадрах ---------- */
 
