@@ -29,7 +29,7 @@ SHOTS = {
 
     # Манифест и практики
     "manifesto":        dict(src="hands-palosanto.jpg", ratio=(4, 5), w=900, wm=820, focus=(0.50, 0.56), grade="team"),
-    "practice-morning": dict(src="ilya-taiji.jpg",      ratio=(4, 5), w=900, wm=820, focus=(0.50, 0.52), grade="glow"),
+    "practice-morning": dict(src="ilya-fan.jpg",        ratio=(4, 5), w=900, wm=820, focus=(0.50, 0.55), grade="team"),
     "practice-evening": dict(src="vita-shore.jpg",      ratio=(4, 5), w=680, wm=640, focus=(0.52, 0.50), grade="team"),
 
     # Ведущие
