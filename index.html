@@ -26,8 +26,8 @@
 
 <link rel="stylesheet" href="styles.css">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<link rel="stylesheet" href="vendor/aos-2.3.4.css">
+<link rel="stylesheet" href="vendor/swiper-11.2.10.min.css">
 
 <link rel="preload" as="image" href="images/hero-pangpema.webp" imagesrcset="images/hero-pangpema-m.webp 900w, images/hero-pangpema.webp 1920w" type="image/webp">
 
@@ -154,7 +154,7 @@
     </div>
     <div class="offer-band__item">
       <span class="offer-band__label">Места</span>
-      <span class="offer-band__value">осталось <span data-cfg="spotsLeft"></span> по ранней цене</span>
+      <span class="offer-band__value">осталось <span data-cfg="spotsLeft"></span> <span data-cfg-plural="spotsLeft" data-forms="место|места|мест"></span> по ранней цене</span>
     </div>
   </div>
 </div>
@@ -853,7 +853,7 @@
     <a class="btn btn--primary" data-cta="telegram" href="#" target="_blank" rel="noopener">Оставить заявку</a>
   </div>
   <p class="price-note">В группе будет не более <span data-cfg="groupMax"></span> человек.</p>
-  <p class="price-note">По ранней цене осталось <span data-cfg="spotsLeft"></span> мест.</p>
+  <p class="price-note">По ранней цене осталось <span data-cfg="spotsLeft"></span> <span data-cfg-plural="spotsLeft" data-forms="место|места|мест"></span> из <span data-cfg="earlySpotsTotal"></span>.</p>
 
   <h3 class="price-terms__title">Условия отмены</h3>
   <ul class="price-terms">
@@ -866,7 +866,7 @@
 </section>
 
 <!-- 14. ЧТО ВХОДИТ / НЕ ВХОДИТ -->
-<section class="section section--includes" id="includes">
+<section class="section section--includes section--light" id="includes">
   <h2 class="section__title">Что входит / что не входит</h2>
   <div class="includes-grid">
     <div class="includes-card includes-card--yes" data-aos="fade-up">
@@ -896,7 +896,7 @@
 </section>
 
 <!-- 15. ДАТЫ И ПЕРЕЛЁТЫ -->
-<section class="section section--dates" id="dates">
+<section class="section section--dates section--light" id="dates">
   <h2 class="section__title">Даты и перелёты</h2>
   <div class="prose" data-aos="fade-up">
     <p>Программа: <span data-cfg="datesFull"></span>, 16 дней (утверждено).</p>
@@ -908,7 +908,7 @@
 </section>
 
 <!-- 16. FAQ -->
-<section class="section section--faq" id="faq">
+<section class="section section--faq section--light" id="faq">
   <h2 class="section__title">Вопросы и ответы</h2>
   <div class="faq-list" data-aos="fade-up">
 
@@ -997,9 +997,9 @@
 
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="vendor/aos-2.3.4.js"></script>
+<script src="vendor/swiper-11.2.10.min.js"></script>
+<script src="vendor/chart-4.6.1.umd.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

@@ -12,6 +12,9 @@
   --color-stone: #93a0b0;
   --color-navy: #0f172a;
   --color-gold: #d97706;
+  /* Заливка кнопок: с белым текстом контраст 5:1 (у #d97706 было 3,2:1) */
+  --color-btn: #b45309;
+  --color-btn-hover: #92400e;
   --color-gold-dim: #f0a83c;
   --color-rhodo: #c65a6c;
   --color-line: rgba(255, 255, 255, 0.12);
@@ -122,11 +125,11 @@ button:focus-visible {
   border: none;
 }
 .btn--primary {
-  background: var(--color-gold);
+  background: var(--color-btn);
   color: #fff;
 }
 .btn--primary:hover {
-  background: var(--color-gold-dim);
+  background: var(--color-btn-hover);
   transform: translateY(-1px);
 }
 .btn--large {
@@ -1251,4 +1254,29 @@ button:focus-visible {
 .sr-friendly {
   font-size: 0.8rem;
   opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------------
+   Светлая полоса: «Что входит», даты и вопросы — передышка после длинной
+   тёмной страницы. Фон тянется на всю ширину экрана, контент остаётся в колонке.
+   ------------------------------------------------------------------------- */
+.section--light {
+  --color-paper-2: #fffdf8;
+  --color-ink: #2f343d;
+  --color-heading: #14181f;
+  --color-stone: #59606b;
+  --color-line: rgba(20, 24, 31, 0.14);
+  --color-gold: #b45309;
+  --color-gold-dim: #92400e;
+  background: #f3eee4;
+  box-shadow: 0 0 0 100vmax #f3eee4;
+  clip-path: inset(0 -100vmax);
+  color: var(--color-ink);
+}
+.section--light + .section--light {
+  padding-top: 0;
+}
+.section--light h2,
+.section--light h3 {
+  color: var(--color-heading);
 }

@@ -14,7 +14,7 @@ const CONFIG = {
   priceEarly: 2200,
   priceRegular: 2500,
   earlySpotsTotal: 5,
-  spotsLeft: 3,
+  spotsLeft: 1, // как на общем сайте путешествий (travel-hub)
   deposit: 1000,
   tipsAmount: 100,
   foodMin: 20,
@@ -91,6 +91,14 @@ function applyConfig() {
     if (key in CONFIG) {
       el.textContent = CONFIG[key];
     }
+  });
+
+  // Слово после числа: 1 место, 3 места, 5 мест
+  document.querySelectorAll('[data-cfg-plural]').forEach((el) => {
+    const n = Number(CONFIG[el.getAttribute('data-cfg-plural')]);
+    const [one, few, many] = (el.getAttribute('data-forms') || '').split('|');
+    const m10 = n % 10, m100 = n % 100;
+    el.textContent = m10 === 1 && m100 !== 11 ? one : m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14) ? few : many;
   });
 
   document.querySelectorAll('[data-cta="telegram"]').forEach((el) => {
